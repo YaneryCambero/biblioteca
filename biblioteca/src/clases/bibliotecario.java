@@ -21,7 +21,7 @@ public class bibliotecario {
 	ResultSet resultado;
 	int cantidadColumnas;
 	
-	public bibliotecario(String nombre, String apellido, String direccion, String fechaNacimiento, String email, String telefono, String fechaIngreso, String cedula, int categoria) throws SQLException{
+	public bibliotecario(String nombre, String apellido, String calle,String sector, String ciudad, String fechaNacimiento, String email, String telefono, String fechaIngreso, String cedula, int categoria) throws SQLException{
 		sql = "SELECT * FROM bibliotecario where nombre ='"+nombre+"' AND apellido = '"+apellido+"'";
 		
 						
@@ -30,8 +30,8 @@ public class bibliotecario {
 				
 				if(!resultado.next())
 				{
-					sql = "INSERT into login (nombre, apellido, direccion, FechaNacimiento, email, telefono, fechaIngreso, cedula, categoria) "
-							+ "VALUES ('"+nombre+"', '"+apellido+"', '"+direccion+"', '"+fechaNacimiento+"', '"+email+"', '"+telefono+"', '"+fechaIngreso+"', '"+cedula+"', '"+categoria+"'";
+					sql = "INSERT into login (nombre, apellido, calle, sector, ciudad, FechaNacimiento, email, telefono, fechaIngreso, cedula, categoria) "
+							+ "VALUES ('"+nombre+"', '"+apellido+"', '"+calle+"', '"+sector+"', "+ciudad+"', "+fechaNacimiento+"', '"+email+"', '"+telefono+"', '"+fechaIngreso+"', '"+cedula+"', '"+categoria+"'";
 						
 						Statement sentencia1 = conectado.createStatement();
 						sentencia1.executeUpdate(sql);

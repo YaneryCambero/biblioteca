@@ -34,12 +34,14 @@ public class FrmBibliotecario extends JDialog {
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
-	private JTextField txtDireccion;
+	private JTextField txtCalle;
 	private JTextField txtEmail;
 	private JTextField txtTelefono;
 	private JFormattedTextField ftfFechaNacimiento;
 	private JFormattedTextField ftfFechaRegistro;
 	private JFormattedTextField ftfCedula;
+	private JTextField txtSector;
+	private JTextField txtCiudad;
 
 	/**
 	 * Launch the application.
@@ -64,7 +66,7 @@ public class FrmBibliotecario extends JDialog {
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setTitle("Registro Bibliotecario");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 332, 339);
+		setBounds(100, 100, 332, 391);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -80,24 +82,24 @@ public class FrmBibliotecario extends JDialog {
 		txtApellido.setBounds(139, 59, 163, 20);
 		contentPane.add(txtApellido);
 		
-		txtDireccion = new JTextField();
-		txtDireccion.setColumns(10);
-		txtDireccion.setBounds(139, 87, 163, 20);
-		contentPane.add(txtDireccion);
+		txtCalle = new JTextField();
+		txtCalle.setColumns(10);
+		txtCalle.setBounds(139, 84, 163, 20);
+		contentPane.add(txtCalle);
 		
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
-		txtEmail.setBounds(139, 136, 163, 20);
+		txtEmail.setBounds(139, 189, 163, 20);
 		contentPane.add(txtEmail);
 		
 		txtTelefono = new JTextField();
 		txtTelefono.setColumns(10);
-		txtTelefono.setBounds(139, 162, 163, 20);
+		txtTelefono.setBounds(139, 215, 163, 20);
 		contentPane.add(txtTelefono);
 		
 		JComboBox cbxCategoria = new JComboBox();
 		cbxCategoria.setModel(new DefaultComboBoxModel(new String[] {"matutino", "vespertino", "nocturno"}));
-		cbxCategoria.setBounds(139, 238, 163, 20);
+		cbxCategoria.setBounds(139, 291, 163, 20);
 		contentPane.add(cbxCategoria);
 		
 		JLabel lblRegistroBibliotecario = new JLabel("Registro Bibliotecario");
@@ -115,34 +117,34 @@ public class FrmBibliotecario extends JDialog {
 		lblApellios.setBounds(10, 67, 111, 14);
 		contentPane.add(lblApellios);
 		
-		JLabel lblDireccion = new JLabel("Direccion:");
+		JLabel lblDireccion = new JLabel("Calle:");
 		lblDireccion.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDireccion.setBounds(10, 90, 111, 14);
 		contentPane.add(lblDireccion);
 		
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmail.setBounds(10, 139, 111, 14);
+		lblEmail.setBounds(10, 192, 111, 14);
 		contentPane.add(lblEmail);
 		
 		JLabel lblTelefono = new JLabel("Telefono:");
 		lblTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTelefono.setBounds(10, 165, 111, 14);
+		lblTelefono.setBounds(10, 218, 111, 14);
 		contentPane.add(lblTelefono);
 		
 		JLabel lblFechaDeRegistro = new JLabel("Fecha de registro:");
 		lblFechaDeRegistro.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblFechaDeRegistro.setBounds(10, 191, 111, 14);
+		lblFechaDeRegistro.setBounds(10, 244, 111, 14);
 		contentPane.add(lblFechaDeRegistro);
 		
 		JLabel lblCategoria = new JLabel("Categoria:");
 		lblCategoria.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCategoria.setBounds(10, 241, 111, 14);
+		lblCategoria.setBounds(10, 294, 111, 14);
 		contentPane.add(lblCategoria);
 		
 		JLabel lblCedula = new JLabel("Cedula:");
 		lblCedula.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCedula.setBounds(10, 215, 111, 14);
+		lblCedula.setBounds(10, 268, 111, 14);
 		contentPane.add(lblCedula);
 		
 		try {
@@ -151,28 +153,28 @@ public class FrmBibliotecario extends JDialog {
 			
 			JLabel lblFechaNacimiento = new JLabel("Fecha nacimiento:");
 			lblFechaNacimiento.setHorizontalAlignment(SwingConstants.RIGHT);
-			lblFechaNacimiento.setBounds(14, 114, 107, 16);
+			lblFechaNacimiento.setBounds(14, 167, 107, 16);
 			contentPane.add(lblFechaNacimiento);
 			
 			JLabel lblFormatoFecha = new JLabel("AAAA-MM-DD");
-			lblFormatoFecha.setBounds(213, 114, 89, 16);
+			lblFormatoFecha.setBounds(213, 167, 89, 16);
 			contentPane.add(lblFormatoFecha);
 			
 			JLabel label = new JLabel("AAAA-MM-DD");
-			label.setBounds(213, 189, 89, 16);
+			label.setBounds(213, 242, 89, 16);
 			contentPane.add(label);
 			ftfFechaNacimiento = new JFormattedTextField(mascaraFecha);
-			ftfFechaNacimiento.setBounds(139, 112, 70, 20);
+			ftfFechaNacimiento.setBounds(139, 165, 70, 20);
 			contentPane.add(ftfFechaNacimiento);
 			
 			ftfFechaRegistro = new JFormattedTextField(mascaraFecha);
-			ftfFechaRegistro.setBounds(139, 188, 70, 20);
+			ftfFechaRegistro.setBounds(139, 241, 70, 20);
 			contentPane.add(ftfFechaRegistro);
 			
 			MaskFormatter mascaraCedula = new MaskFormatter("###-#######-#");
 			mascaraCedula.setPlaceholderCharacter('_');
 			JFormattedTextField ftfCedula = new JFormattedTextField(mascaraCedula);
-			ftfCedula.setBounds(139, 212, 98, 20);
+			ftfCedula.setBounds(139, 265, 98, 20);
 			contentPane.add(ftfCedula);
 			
 		} catch (ParseException e) {
@@ -186,7 +188,7 @@ public class FrmBibliotecario extends JDialog {
 				txtNombre.setText("");
 				txtApellido.setText("");
 				ftfCedula.setText("");
-				txtDireccion.setText("");
+				txtCalle.setText("");
 				txtEmail.setText("");
 				ftfFechaNacimiento.setText("");
 				ftfFechaRegistro.setText("");
@@ -194,20 +196,20 @@ public class FrmBibliotecario extends JDialog {
 				cbxCategoria.setSelectedIndex(0);
 			}
 		});
-		btnNuevo.setBounds(10, 270, 89, 23);
+		btnNuevo.setBounds(10, 322, 89, 23);
 		contentPane.add(btnNuevo);
 		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					bibliotecario Bibliotecario = new bibliotecario(txtNombre.getText(),txtApellido.getText(),txtDireccion.getText(),ftfFechaNacimiento.getText(),txtEmail.getText(),txtTelefono.getText(),ftfFechaRegistro.getText(),ftfCedula.getText(),cbxCategoria.getSelectedIndex());
+					bibliotecario Bibliotecario = new bibliotecario(txtNombre.getText(),txtApellido.getText(),txtCalle.getText(),txtSector.getText(),txtCiudad.getText(),ftfFechaNacimiento.getText(),txtEmail.getText(),txtTelefono.getText(),ftfFechaRegistro.getText(),ftfCedula.getText(),cbxCategoria.getSelectedIndex());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		btnGuardar.setBounds(112, 270, 89, 23);
+		btnGuardar.setBounds(112, 322, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnSalir = new JButton("Salir");
@@ -216,8 +218,28 @@ public class FrmBibliotecario extends JDialog {
 				FrmBibliotecario.this.dispose();
 			}
 		});
-		btnSalir.setBounds(213, 270, 89, 23);
+		btnSalir.setBounds(213, 322, 89, 23);
 		contentPane.add(btnSalir);
+		
+		JLabel lblSector = new JLabel("Sector:");
+		lblSector.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSector.setBounds(75, 115, 46, 14);
+		contentPane.add(lblSector);
+		
+		JLabel lblCiudad = new JLabel("Ciudad:");
+		lblCiudad.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCiudad.setBounds(75, 140, 46, 14);
+		contentPane.add(lblCiudad);
+		
+		txtSector = new JTextField();
+		txtSector.setBounds(139, 111, 163, 20);
+		contentPane.add(txtSector);
+		txtSector.setColumns(10);
+		
+		txtCiudad = new JTextField();
+		txtCiudad.setBounds(139, 137, 163, 20);
+		contentPane.add(txtCiudad);
+		txtCiudad.setColumns(10);
 		
 		
 		
