@@ -33,6 +33,7 @@ public class login
 				 {
 					JOptionPane.showMessageDialog(null, "usuario no encontrado");
 					FrmLogin login = new FrmLogin();
+					login.setLocationRelativeTo(null);
 					login.setVisible(true);
 				 }
 			

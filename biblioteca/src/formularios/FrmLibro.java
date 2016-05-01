@@ -6,7 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clases.libro;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
@@ -154,9 +158,14 @@ public class FrmLibro extends JDialog {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+			int estado = 1;
+			int Cantidad = Integer.parseInt(txtCantidad.getText());
+			int numeroPagina = Integer.parseInt(txtNumeroDePaginas.getText());
+
+					libro Libro = new libro(txtTitulo.getText(), txtAutor.getText(), txtEditor.getText(), txtGenero.getText(), txtSubGenero.getText(), txtIdioma.getText(), estado, txtCategoria.getText(),txtPublicacion.getText(), txtEditorial.getText(), numeroPagina, txtCondicionesFisicas.getText(),Cantidad, txtEdicion.getText());
 					
 				} catch (Exception e2) {
-					// TODO: handle exception
+					JOptionPane.showMessageDialog(FrmLibro.this, e2);
 				}
 			}
 		});

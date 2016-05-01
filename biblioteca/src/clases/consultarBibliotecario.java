@@ -27,7 +27,7 @@ public class consultarBibliotecario {
 			criterioDeBusqueda = "apellido";
 		}
 		
-		sql = "SELECT * FROM bibliotecario WHERE  "+criterioDeBusqueda+" like '%"+informacionBuscar+"%'";
+		sql = "SELECT * FROM bibliotecario WHERE  "+criterioDeBusqueda+" = '"+informacionBuscar+"'";
 		
 			Statement sentencia = conectado.createStatement();
 			resultado = sentencia.executeQuery(sql);

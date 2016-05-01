@@ -26,6 +26,7 @@ import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFormattedTextField.AbstractFormatterFactory;
+import java.awt.Toolkit;
 
 
 
@@ -63,6 +64,7 @@ public class FrmBibliotecario extends JDialog {
 	 * Create the frame.
 	 */
 	public FrmBibliotecario() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmBibliotecario.class.getResource("/imagenes/PNG-32/Profile.png")));
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setTitle("Registro Bibliotecario");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

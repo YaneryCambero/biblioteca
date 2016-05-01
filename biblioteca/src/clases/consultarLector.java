@@ -29,7 +29,7 @@ public class consultarLector {
 		
 		
 		
-		sql = "SELECT * FROM lector WHERE "+criterioDeBusqueda+" like '%"+informacionBuscar+"%'";
+		sql = "SELECT * FROM lector WHERE "+criterioDeBusqueda+" = '"+informacionBuscar+"'";
 		
 			Statement sentencia = conectado.createStatement();
 			resultado = sentencia.executeQuery(sql);

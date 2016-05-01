@@ -101,7 +101,6 @@ public class FrmLogin extends JDialog {
 					JOptionPane.showMessageDialog(null, "campo vacio por favor llenar campo");
 				}else
 				 {
-					//setVisible(false);
 					FrmLogin.this.dispose();
 					login inicio = new login(usuario,contrasena);
 				 }

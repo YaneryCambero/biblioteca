@@ -31,7 +31,7 @@ public class consultarPrestamo {
 		
 		
 		
-		sql = "SELECT * FROM prestamo WHERE "+criterioDeBusqueda+" like '%"+informacionBuscar+"%'";
+		sql = "SELECT * FROM prestamo WHERE "+criterioDeBusqueda+" = '"+informacionBuscar+"'";
 		
 			Statement sentencia = conectado.createStatement();
 			resultado = sentencia.executeQuery(sql);
