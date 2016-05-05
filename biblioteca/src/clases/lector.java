@@ -9,8 +9,7 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
-
-public class bibliotecario {
+public class lector {
 	conectar conexion = new conectar();
 	Connection conectado = conexion.conexion();
 	String sql="";
@@ -21,8 +20,8 @@ public class bibliotecario {
 	ResultSet resultado;
 	int cantidadColumnas;
 	
-	public bibliotecario(String nombre, String apellido, String calle,String sector, String ciudad, String fechaNacimiento, String email, String telefono, String fechaIngreso, String cedula, int categoria) throws SQLException{
-		sql = "SELECT * FROM bibliotecario where nombre ='"+nombre+"' AND apellido = '"+apellido+"'";
+	public lector(String nombre, String apellido, String cedula, String fechaNacimiento, String telefono,  String calle ,String sector, String ciudad, String email, int categoria ) throws SQLException{
+		sql = "SELECT * FROM lector where nombre ='"+nombre+"' AND apellido = '"+apellido+"'";
 		
 						
 				Statement sentencia = conectado.createStatement();
@@ -30,8 +29,8 @@ public class bibliotecario {
 				
 				if(!resultado.next())
 				{
-					sql = "INSERT into bibliotecario (nombre, apellido, calle, sector, ciudad, FechaNacimiento, email, telefono, fechaIngreso, cedula, categoria) "
-							+ "VALUES ('"+nombre+"', '"+apellido+"', '"+calle+"', '"+sector+"', "+ciudad+"', "+fechaNacimiento+"', '"+email+"', '"+telefono+"', '"+fechaIngreso+"', '"+cedula+"', '"+categoria+"'";
+					sql = "INSERT into lector (nombre, apellido, cedula, FechaNacimiento, telefono, calle, sector, ciudad, email, categoria) "
+							+ "VALUES ('"+nombre+"', '"+apellido+"','"+cedula+"',"+fechaNacimiento+"', '"+telefono+"',"+calle+"', '"+sector+"', "+ciudad+"', '"+email+"', '"+categoria+"'";
 						
 						Statement sentencia1 = conectado.createStatement();
 						sentencia1.executeUpdate(sql);
@@ -39,7 +38,7 @@ public class bibliotecario {
 						JOptionPane.showMessageDialog(null, "Creacion Exitoso");
 						
 				}else{
-					JOptionPane.showMessageDialog(null, "Bibliotecario registrado");
+					JOptionPane.showMessageDialog(null, "Lector registrado");
 				}	
 					
 	}
