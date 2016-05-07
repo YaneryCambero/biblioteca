@@ -15,12 +15,6 @@ public class libro {
 	conectar conexion = new conectar();
 	Connection conectado = conexion.conexion();
 	String sql="";
-	String criterioDeBusqueda;
-	ResultSetMetaData metaDatos;
-	Vector<Vector<String>> datosDeFilas = new Vector<Vector<String>>();
-	Vector<String> nombreColumnas = new Vector<String>();
-	ResultSet resultado;
-	int cantidadColumnas;
 	int id;
 	
 	public libro(String titulo, String autor, String editor, String genero, String subGenero, String idioma, int estado, String categoria, String publicacion, String editorial, int numeroPagina, String estadoFisico, int cantidad, String edicion ) throws SQLException{

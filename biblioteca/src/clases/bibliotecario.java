@@ -14,14 +14,8 @@ public class bibliotecario {
 	conectar conexion = new conectar();
 	Connection conectado = conexion.conexion();
 	String sql="";
-	String criterioDeBusqueda;
-	ResultSetMetaData metaDatos;
-	Vector<Vector<String>> datosDeFilas = new Vector<Vector<String>>();
-	Vector<String> nombreColumnas = new Vector<String>();
-	ResultSet resultado;
-	int cantidadColumnas;
 	
-	public bibliotecario(String nombre, String apellido, String calle,String sector, String ciudad, String fechaNacimiento, String email, String telefono, String fechaIngreso, String cedula, int categoria) throws SQLException{
+	public bibliotecario(String nombre, String apellido, String calle,String sector, String ciudad, String fechaNacimiento, String email, String telefono, String fechaIngreso, String cedula, int tanda) throws SQLException{
 		sql = "SELECT * FROM bibliotecario where nombre ='"+nombre+"' AND apellido = '"+apellido+"'";
 		
 						
@@ -30,8 +24,8 @@ public class bibliotecario {
 				
 				if(!resultado.next())
 				{
-					sql = "INSERT into bibliotecario (nombre, apellido, calle, sector, ciudad, FechaNacimiento, email, telefono, fechaIngreso, cedula, categoria) "
-							+ "VALUES ('"+nombre+"', '"+apellido+"', '"+calle+"', '"+sector+"', "+ciudad+"', "+fechaNacimiento+"', '"+email+"', '"+telefono+"', '"+fechaIngreso+"', '"+cedula+"', '"+categoria+"'";
+					sql = "INSERT into bibliotecario (nombre, apellido, FechaNacimiento, email, telefono, fechaIngreso, cedula, tanda, calle, sector, ciudad) "
+							+ "VALUES ('"+nombre+"', '"+apellido+"', '"+fechaNacimiento+"', '"+email+"', "+telefono+"', "+fechaIngreso+"', '"+cedula+"', '"+tanda+"', '"+calle+"', '"+sector+"', '"+ciudad+"'";
 						
 						Statement sentencia1 = conectado.createStatement();
 						sentencia1.executeUpdate(sql);

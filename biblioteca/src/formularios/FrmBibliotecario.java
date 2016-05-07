@@ -11,6 +11,7 @@ import javax.swing.text.MaskFormatter;
 import clases.bibliotecario;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -27,6 +28,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFormattedTextField.AbstractFormatterFactory;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 
@@ -38,11 +41,15 @@ public class FrmBibliotecario extends JDialog {
 	private JTextField txtCalle;
 	private JTextField txtEmail;
 	private JTextField txtTelefono;
-	private JFormattedTextField ftfFechaNacimiento;
-	private JFormattedTextField ftfFechaRegistro;
-	private JFormattedTextField ftfCedula;
 	private JTextField txtSector;
 	private JTextField txtCiudad;
+	private JTextField txtFechaNacimientoAnyo;
+	private JTextField txtFechaNacimientoMes;
+	private JTextField txtFechaNacimientoDia;
+	private JTextField txtFechaRegistroAnyo;
+	private JTextField txtFechaRegistroMes;
+	private JTextField txtFechaRegistroDia;
+	private JTextField txtCedula;
 
 	/**
 	 * Launch the application.
@@ -91,13 +98,184 @@ public class FrmBibliotecario extends JDialog {
 		
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
-		txtEmail.setBounds(139, 294, 163, 20);
+		txtEmail.setBounds(139, 290, 163, 20);
 		contentPane.add(txtEmail);
 		
 		txtTelefono = new JTextField();
 		txtTelefono.setColumns(10);
 		txtTelefono.setBounds(139, 146, 163, 20);
 		contentPane.add(txtTelefono);
+		
+		txtSector = new JTextField();
+		txtSector.setBounds(139, 204, 163, 20);
+		contentPane.add(txtSector);
+		txtSector.setColumns(10);
+		
+		txtCiudad = new JTextField();
+		txtCiudad.setBounds(139, 230, 163, 20);
+		contentPane.add(txtCiudad);
+		txtCiudad.setColumns(10);
+		
+		txtFechaNacimientoAnyo = new JTextField();
+		txtFechaNacimientoAnyo.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int limiteCaracter = 4;
+				char c = e.getKeyChar();
+				
+				if(Character.isLetter(c)){
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir numeros");
+				}
+				
+				if(txtFechaNacimientoAnyo.getText().length() >= limiteCaracter){
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir 4 digitos");
+				}
+			}
+		});
+		txtFechaNacimientoAnyo.setBounds(139, 90, 33, 20);
+		contentPane.add(txtFechaNacimientoAnyo);
+		txtFechaNacimientoAnyo.setColumns(10);
+		
+		txtFechaNacimientoMes = new JTextField();
+		txtFechaNacimientoMes.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int limiteCaracter = 2;
+				char c = e.getKeyChar();
+				
+				if(Character.isLetter(c)){ 
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir numeros");
+				}
+				
+				if(txtFechaNacimientoMes.getText().length() >= limiteCaracter){
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir 2 digitos");
+				}
+			}
+		});
+		txtFechaNacimientoMes.setColumns(10);
+		txtFechaNacimientoMes.setBounds(176, 90, 18, 20);
+		contentPane.add(txtFechaNacimientoMes);
+		
+		txtFechaNacimientoDia = new JTextField();
+		txtFechaNacimientoDia.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int limiteCaracter = 2;
+				char c = e.getKeyChar();
+				
+				if(Character.isLetter(c)){
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir numeros");
+				}
+				
+				if(txtFechaNacimientoDia.getText().length() >= limiteCaracter){ 
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir 2 digitos");
+				}
+			}
+		});
+		txtFechaNacimientoDia.setColumns(10);
+		txtFechaNacimientoDia.setBounds(198, 90, 18, 20);
+		contentPane.add(txtFechaNacimientoDia);
+		
+		txtFechaRegistroAnyo = new JTextField();
+		txtFechaRegistroAnyo.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int limiteCaracter = 4;
+				char c = e.getKeyChar();
+				
+				if(Character.isLetter(c)){
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir numeros");
+				}
+				
+				if(txtFechaRegistroAnyo.getText().length() >= limiteCaracter){
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir 4 digitos");
+				}
+			}
+		});
+		txtFechaRegistroAnyo.setColumns(10);
+		txtFechaRegistroAnyo.setBounds(139, 265, 33, 20);
+		contentPane.add(txtFechaRegistroAnyo);
+		
+		txtFechaRegistroMes = new JTextField();
+		txtFechaRegistroMes.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int limiteCaracter = 2;
+				char c = e.getKeyChar();
+				
+				if(Character.isLetter(c)){
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir numeros");
+				}
+				
+				if(txtFechaRegistroMes.getText().length() >= limiteCaracter){
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir 2 digitos");
+				}
+			}
+		});
+		txtFechaRegistroMes.setColumns(10);
+		txtFechaRegistroMes.setBounds(176, 265, 18, 20);
+		contentPane.add(txtFechaRegistroMes);
+		
+		txtFechaRegistroDia = new JTextField();
+		txtFechaRegistroDia.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int limiteCaracter = 2;
+				char c = e.getKeyChar();
+				
+				if(Character.isLetter(c)){
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir numeros");
+				}
+				
+				if(txtFechaRegistroDia.getText().length() >= limiteCaracter){ 
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir 2 digitos");
+				}
+			}
+		});
+		txtFechaRegistroDia.setColumns(10);
+		txtFechaRegistroDia.setBounds(198, 265, 18, 20);
+		contentPane.add(txtFechaRegistroDia);
+		
+		txtCedula = new JTextField();
+		txtCedula.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int limiteCaracter = 11;
+				
+				if(txtCedula.getText().length() >= limiteCaracter){
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir 11 digitos");
+				}
+			}
+		});
+		txtCedula.setBounds(139, 118, 83, 20);
+		contentPane.add(txtCedula);
+		txtCedula.setColumns(10);
 		
 		JComboBox cbxCategoria = new JComboBox();
 		cbxCategoria.setModel(new DefaultComboBoxModel(new String[] {"matutino", "vespertino", "nocturno"}));
@@ -106,7 +284,7 @@ public class FrmBibliotecario extends JDialog {
 		
 		JLabel lblRegistroBibliotecario = new JLabel("Registro Bibliotecario");
 		lblRegistroBibliotecario.setFont(new Font("Segoe Print", Font.BOLD, 20));
-		lblRegistroBibliotecario.setBounds(42, 6, 223, 31);
+		lblRegistroBibliotecario.setBounds(93, 0, 223, 31);
 		contentPane.add(lblRegistroBibliotecario);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
@@ -126,7 +304,7 @@ public class FrmBibliotecario extends JDialog {
 		
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmail.setBounds(10, 297, 111, 14);
+		lblEmail.setBounds(10, 295, 111, 14);
 		contentPane.add(lblEmail);
 		
 		JLabel lblTelefono = new JLabel("Telefono:");
@@ -139,7 +317,7 @@ public class FrmBibliotecario extends JDialog {
 		lblFechaDeRegistro.setBounds(10, 269, 111, 14);
 		contentPane.add(lblFechaDeRegistro);
 		
-		JLabel lblCategoria = new JLabel("Categoria:");
+		JLabel lblCategoria = new JLabel("Tanda:");
 		lblCategoria.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCategoria.setBounds(10, 319, 111, 14);
 		contentPane.add(lblCategoria);
@@ -159,25 +337,15 @@ public class FrmBibliotecario extends JDialog {
 			contentPane.add(lblFechaNacimiento);
 			
 			JLabel lblFormatoFecha = new JLabel("AAAA-MM-DD");
-			lblFormatoFecha.setBounds(213, 90, 89, 16);
+			lblFormatoFecha.setBounds(223, 91, 89, 16);
 			contentPane.add(lblFormatoFecha);
 			
 			JLabel label = new JLabel("AAAA-MM-DD");
-			label.setBounds(213, 267, 89, 16);
+			label.setBounds(223, 266, 89, 16);
 			contentPane.add(label);
-			ftfFechaNacimiento = new JFormattedTextField(mascaraFecha);
-			ftfFechaNacimiento.setBounds(139, 90, 70, 20);
-			contentPane.add(ftfFechaNacimiento);
-			
-			ftfFechaRegistro = new JFormattedTextField(mascaraFecha);
-			ftfFechaRegistro.setBounds(139, 263, 70, 20);
-			contentPane.add(ftfFechaRegistro);
 			
 			MaskFormatter mascaraCedula = new MaskFormatter("###-#######-#");
 			mascaraCedula.setPlaceholderCharacter('_');
-			JFormattedTextField ftfCedula = new JFormattedTextField(mascaraCedula);
-			ftfCedula.setBounds(139, 118, 98, 20);
-			contentPane.add(ftfCedula);
 			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -189,39 +357,19 @@ public class FrmBibliotecario extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				txtNombre.setText("");
 				txtApellido.setText("");
-				ftfCedula.setText("");
+				txtCedula.setText("");
 				txtCalle.setText("");
 				txtEmail.setText("");
-				ftfFechaNacimiento.setText("");
-				ftfFechaRegistro.setText("");
+				txtFechaNacimientoAnyo.setText("");
+				txtFechaNacimientoMes.setText("");
+				txtFechaNacimientoDia.setText("");
+				txtFechaRegistroAnyo.setText("");
+				txtFechaRegistroMes.setText("");
+				txtFechaRegistroDia.setText("");
 				txtTelefono.setText("");
 				cbxCategoria.setSelectedIndex(0);
 			}
 		});
-		btnNuevo.setBounds(58, 343, 89, 23);
-		contentPane.add(btnNuevo);
-		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try {
-					bibliotecario Bibliotecario = new bibliotecario(txtNombre.getText(),txtApellido.getText(),txtCalle.getText(),txtSector.getText(),txtCiudad.getText(),ftfFechaNacimiento.getText(),txtEmail.getText(),txtTelefono.getText(),ftfFechaRegistro.getText(),ftfCedula.getText(),cbxCategoria.getSelectedIndex());
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		btnGuardar.setBounds(167, 343, 89, 23);
-		contentPane.add(btnGuardar);
-		
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				FrmBibliotecario.this.dispose();
-			}
-		});
-		btnSalir.setBounds(261, 343, 89, 23);
-		contentPane.add(btnSalir);
 		
 		JLabel lblSector = new JLabel("Sector:");
 		lblSector.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -232,16 +380,33 @@ public class FrmBibliotecario extends JDialog {
 		lblCiudad.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCiudad.setBounds(75, 233, 46, 14);
 		contentPane.add(lblCiudad);
+		btnNuevo.setBounds(58, 343, 89, 23);
+		contentPane.add(btnNuevo);
 		
-		txtSector = new JTextField();
-		txtSector.setBounds(139, 204, 163, 20);
-		contentPane.add(txtSector);
-		txtSector.setColumns(10);
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String fechaNacimiento = txtFechaNacimientoAnyo.getText() +"-"+ txtFechaNacimientoMes.getText() +"-"+ txtFechaNacimientoDia.getText();
+				String fechaRegistro = txtFechaRegistroAnyo.getText() +"-"+ txtFechaRegistroMes.getText() +"-"+ txtFechaRegistroDia.getText();
+				
+				try {
+					bibliotecario Bibliotecario = new bibliotecario(txtNombre.getText(),txtApellido.getText(),txtCalle.getText(),txtSector.getText(),txtCiudad.getText(),fechaNacimiento,txtEmail.getText(),txtTelefono.getText(),fechaRegistro,txtCedula.getText(),cbxCategoria.getSelectedIndex());
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		btnGuardar.setBounds(159, 343, 89, 23);
+		contentPane.add(btnGuardar);
 		
-		txtCiudad = new JTextField();
-		txtCiudad.setBounds(139, 230, 163, 20);
-		contentPane.add(txtCiudad);
-		txtCiudad.setColumns(10);
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrmBibliotecario.this.dispose();
+			}
+		});
+		btnSalir.setBounds(261, 343, 89, 23);
+		contentPane.add(btnSalir);
 		
 		
 		

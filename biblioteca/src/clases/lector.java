@@ -13,12 +13,6 @@ public class lector {
 	conectar conexion = new conectar();
 	Connection conectado = conexion.conexion();
 	String sql="";
-	String criterioDeBusqueda;
-	ResultSetMetaData metaDatos;
-	Vector<Vector<String>> datosDeFilas = new Vector<Vector<String>>();
-	Vector<String> nombreColumnas = new Vector<String>();
-	ResultSet resultado;
-	int cantidadColumnas;
 	
 	public lector(String nombre, String apellido, String cedula, String fechaNacimiento, String telefono,  String calle ,String sector, String ciudad, String email, int categoria ) throws SQLException{
 		sql = "SELECT * FROM lector where nombre ='"+nombre+"' AND apellido = '"+apellido+"'";
@@ -29,8 +23,8 @@ public class lector {
 				
 				if(!resultado.next())
 				{
-					sql = "INSERT into lector (nombre, apellido, cedula, FechaNacimiento, telefono, calle, sector, ciudad, email, categoria) "
-							+ "VALUES ('"+nombre+"', '"+apellido+"','"+cedula+"',"+fechaNacimiento+"', '"+telefono+"',"+calle+"', '"+sector+"', "+ciudad+"', '"+email+"', '"+categoria+"'";
+					sql = "INSERT into lector (nombre, apellido, FechaNacimiento, telefono, categoria, cedula, email, calle, sector, ciudad) "
+							+ "VALUES ('"+nombre+"', '"+apellido+"','"+fechaNacimiento+"',"+telefono+"', '"+categoria+"',"+cedula+"', '"+email+"', "+calle+"', '"+sector+"', '"+ciudad+"'";
 						
 						Statement sentencia1 = conectado.createStatement();
 						sentencia1.executeUpdate(sql);
