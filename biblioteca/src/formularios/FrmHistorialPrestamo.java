@@ -15,11 +15,15 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import java.awt.Dialog.ModalityType;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FrmHistorialPrestamo extends JDialog {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtCodigoPrestamo;
 	private JTable table;
 
 	/**
@@ -51,17 +55,19 @@ public class FrmHistorialPrestamo extends JDialog {
 		contentPane.setLayout(null);
 		
 		JLabel lblHistorialDePrestamos = new JLabel("Historial de Prestamos");
-		lblHistorialDePrestamos.setBounds(395, 11, 129, 14);
+		lblHistorialDePrestamos.setFont(new Font("Segoe Print", Font.BOLD, 20));
+		lblHistorialDePrestamos.setBounds(340, 11, 237, 31);
 		contentPane.add(lblHistorialDePrestamos);
 		
-		JLabel lblEscribaElCodigo = new JLabel("Escriba el codigo del prestamo");
-		lblEscribaElCodigo.setBounds(292, 50, 165, 14);
+		JLabel lblEscribaElCodigo = new JLabel("Escriba el codigo del prestamo:");
+		lblEscribaElCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEscribaElCodigo.setBounds(188, 74, 207, 14);
 		contentPane.add(lblEscribaElCodigo);
 		
-		textField = new JTextField();
-		textField.setBounds(480, 47, 106, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtCodigoPrestamo = new JTextField();
+		txtCodigoPrestamo.setBounds(405, 71, 189, 20);
+		contentPane.add(txtCodigoPrestamo);
+		txtCodigoPrestamo.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(12, 120, 934, 212);
@@ -74,12 +80,25 @@ public class FrmHistorialPrestamo extends JDialog {
 		scrollPane.add(table);
 		
 		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(604, 22, 89, 23);
+		btnBuscar.setBounds(604, 70, 89, 23);
 		contentPane.add(btnBuscar);
 		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(604, 46, 89, 23);
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrmHistorialPrestamo.this.dispose();
+			}
+		});
+		btnSalir.setBounds(604, 42, 89, 23);
 		contentPane.add(btnSalir);
+		
+		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtCodigoPrestamo.setText("");
+			}
+		});
+		btnNuevo.setBounds(604, 14, 89, 23);
+		contentPane.add(btnNuevo);
 	}
-
 }

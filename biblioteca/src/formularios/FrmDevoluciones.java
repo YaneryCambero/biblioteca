@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 public class FrmDevoluciones extends JDialog {
 
@@ -54,48 +55,9 @@ public class FrmDevoluciones extends JDialog {
 		contentPane.setLayout(null);
 		
 		JLabel lblDevoluciones = new JLabel("Devoluciones");
-		lblDevoluciones.setBounds(413, 11, 89, 14);
+		lblDevoluciones.setFont(new Font("Segoe Print", Font.BOLD, 20));
+		lblDevoluciones.setBounds(385, 11, 138, 23);
 		contentPane.add(lblDevoluciones);
-		
-		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(12, 133, 934, 199);
-		scrollPane.setBorder(new LineBorder(Color.BLACK));
-		scrollPane.setBackground(Color.BLUE);
-		contentPane.add(scrollPane);
-		
-		JButton btnDevolverAlEstante = new JButton("Buscar");
-		btnDevolverAlEstante.setBounds(548, 65, 89, 23);
-		contentPane.add(btnDevolverAlEstante);
-		
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(548, 99, 89, 23);
-		contentPane.add(btnSalir);
-		
-		table = new JTable();
-		table.setBounds(20, 238, 387, -132);
-		scrollPane.add(table);
-		
-		JLabel lblBuscarPor = new JLabel("Buscar Por");
-		lblBuscarPor.setBounds(277, 69, 67, 14);
-		contentPane.add(lblBuscarPor);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Fecha", "Codigo"}));
-		comboBox.setBounds(413, 66, 94, 20);
-		contentPane.add(comboBox);
-		
-		textField = new JTextField();
-		textField.setBounds(409, 97, 114, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblInformacionABuscar = new JLabel("Informacion a Buscar");
-		lblInformacionABuscar.setBounds(277, 103, 113, 14);
-		contentPane.add(lblInformacionABuscar);
-		
-		JButton btnNuevo = new JButton("Nuevo");
-		btnNuevo.setBounds(548, 31, 89, 23);
-		contentPane.add(btnNuevo);
 		
 		JLabel lblNewLabel = new JLabel("Total de registros");
 		lblNewLabel.setBounds(12, 349, 94, 14);
@@ -104,5 +66,47 @@ public class FrmDevoluciones extends JDialog {
 		JLabel label = new JLabel("0");
 		label.setBounds(117, 349, 33, 14);
 		contentPane.add(label);
+		
+		JLabel lblBuscarPor = new JLabel("Buscar Por:");
+		lblBuscarPor.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblBuscarPor.setBounds(277, 69, 113, 14);
+		contentPane.add(lblBuscarPor);
+		
+		JLabel lblInformacionABuscar = new JLabel("Informacion a Buscar:");
+		lblInformacionABuscar.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblInformacionABuscar.setBounds(223, 103, 167, 14);
+		contentPane.add(lblInformacionABuscar);
+		
+		textField = new JTextField();
+		textField.setBounds(409, 97, 114, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(12, 133, 934, 199);
+		scrollPane.setBorder(new LineBorder(Color.BLACK));
+		scrollPane.setBackground(Color.BLUE);
+		contentPane.add(scrollPane);
+		
+		JButton btnDevolverAlEstante = new JButton("Buscar");
+		btnDevolverAlEstante.setBounds(548, 96, 89, 23);
+		contentPane.add(btnDevolverAlEstante);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.setBounds(548, 65, 89, 23);
+		contentPane.add(btnSalir);
+		
+		table = new JTable();
+		table.setBounds(20, 238, 387, -132);
+		scrollPane.add(table);
+		
+		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo.setBounds(548, 31, 89, 23);
+		contentPane.add(btnNuevo);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Fecha", "Codigo"}));
+		comboBox.setBounds(410, 66, 113, 20);
+		contentPane.add(comboBox);
 	}
 }

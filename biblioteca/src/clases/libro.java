@@ -45,7 +45,7 @@ public class libro {
 				JOptionPane.showMessageDialog(null, "Creacion Exitoso");
 				
 		}else{
-			JOptionPane.showMessageDialog(null, "libro registrado");
+			JOptionPane.showMessageDialog(null, "libro existe........ favor verificar");
 		} 	
 	}
 

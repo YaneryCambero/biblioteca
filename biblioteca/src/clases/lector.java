@@ -32,7 +32,7 @@ public class lector {
 						JOptionPane.showMessageDialog(null, "Creacion Exitoso");
 						
 				}else{
-					JOptionPane.showMessageDialog(null, "Lector registrado");
+					JOptionPane.showMessageDialog(null, "Lector existe........ favor verificar");
 				}	
 					
 	}

@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import java.awt.Dialog.ModalityType;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class FrmEstadoSistema extends JDialog {
 
@@ -44,31 +46,36 @@ public class FrmEstadoSistema extends JDialog {
 		contentPane.setLayout(null);
 		
 		JLabel lblEstadoDelSistema = new JLabel("Estado del sistema");
-		lblEstadoDelSistema.setBounds(143, 26, 89, 14);
+		lblEstadoDelSistema.setFont(new Font("Segoe Print", Font.BOLD, 20));
+		lblEstadoDelSistema.setBounds(121, 24, 197, 23);
 		contentPane.add(lblEstadoDelSistema);
 		
-		JLabel lblTotalDeLibros = new JLabel("Total de Libros");
-		lblTotalDeLibros.setBounds(22, 89, 82, 14);
+		JLabel lblTotalDeLibros = new JLabel("Total de Libros:");
+		lblTotalDeLibros.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTotalDeLibros.setBounds(22, 89, 107, 14);
 		contentPane.add(lblTotalDeLibros);
 		
-		JLabel lblLibrosPrestados = new JLabel("Libros Prestados");
-		lblLibrosPrestados.setBounds(22, 127, 82, 14);
+		JLabel lblLibrosPrestados = new JLabel("Libros Prestados:");
+		lblLibrosPrestados.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblLibrosPrestados.setBounds(22, 127, 107, 14);
 		contentPane.add(lblLibrosPrestados);
 		
-		JLabel lblLibrosEn = new JLabel("Libros en Recepcion");
-		lblLibrosEn.setBounds(232, 89, 107, 14);
+		JLabel lblLibrosEn = new JLabel("Libros en Recepcion:");
+		lblLibrosEn.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblLibrosEn.setBounds(210, 89, 129, 14);
 		contentPane.add(lblLibrosEn);
 		
-		JLabel lblLectoresActivos = new JLabel("Lectores Activos");
-		lblLectoresActivos.setBounds(232, 127, 89, 14);
+		JLabel lblLectoresActivos = new JLabel("Lectores Activos:");
+		lblLectoresActivos.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblLectoresActivos.setBounds(210, 127, 129, 14);
 		contentPane.add(lblLectoresActivos);
 		
 		JLabel label = new JLabel("0");
-		label.setBounds(107, 89, 46, 14);
+		label.setBounds(152, 89, 46, 14);
 		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("0");
-		label_1.setBounds(107, 127, 46, 14);
+		label_1.setBounds(152, 127, 46, 14);
 		contentPane.add(label_1);
 		
 		JLabel label_2 = new JLabel("0");
@@ -80,11 +87,11 @@ public class FrmEstadoSistema extends JDialog {
 		contentPane.add(label_3);
 		
 		JButton btnActualizar = new JButton("Actualizar");
-		btnActualizar.setBounds(39, 191, 89, 23);
+		btnActualizar.setBounds(107, 188, 110, 23);
 		contentPane.add(btnActualizar);
 		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(161, 191, 89, 23);
+		btnSalir.setBounds(229, 188, 89, 23);
 		contentPane.add(btnSalir);
 	}
 
