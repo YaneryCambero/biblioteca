@@ -14,6 +14,9 @@ import javax.swing.JDialog;
 import javax.swing.JTable;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
+
+import clases.prestamo;
+
 import javax.swing.ListSelectionModel;
 import java.awt.Dialog.ModalityType;
 import javax.swing.JScrollPane;
@@ -23,25 +26,31 @@ import javax.swing.SwingConstants;
 import javax.swing.AbstractListModel;
 import java.awt.ScrollPane;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Wrapper;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 
 public class FrmPrestamo extends JDialog {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField txtCodigo;
+	private JTextField txtNombre;
+	private JTextField txtApellido;
+	private JTextField txtTelefono;
+	private JTextField txtCategoria;
+	private JTextField txtCedula;
+	private JTextField txtDireccion;
+	private JTextField txtEmail;
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTextField textField_10;
 	private JTextField textField_11;
 	private JTextField textField_12;
 	private JTextField textField_13;
+	private boolean control;
+	private ResultSet datosDeFilas;
 
 	/**
 	 * Launch the application.
@@ -101,76 +110,104 @@ public class FrmPrestamo extends JDialog {
 		lblTelefono.setBounds(20, 110, 80, 14);
 		panel.add(lblTelefono);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(105, 107, 86, 20);
-		panel.add(textField_3);
-		textField_3.setEditable(false);
-		textField_3.setColumns(10);
+		txtTelefono = new JTextField();
+		txtTelefono.setBounds(105, 107, 141, 20);
+		panel.add(txtTelefono);
+		txtTelefono.setEditable(false);
+		txtTelefono.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(105, 82, 86, 20);
-		panel.add(textField_2);
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
+		txtApellido = new JTextField();
+		txtApellido.setBounds(105, 82, 141, 20);
+		panel.add(txtApellido);
+		txtApellido.setEditable(false);
+		txtApellido.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(105, 57, 86, 20);
-		panel.add(textField_1);
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
+		txtNombre = new JTextField();
+		txtNombre.setBounds(105, 57, 141, 20);
+		panel.add(txtNombre);
+		txtNombre.setEditable(false);
+		txtNombre.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setBounds(105, 33, 86, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		txtCodigo = new JTextField();
+		txtCodigo.setBounds(105, 33, 86, 20);
+		panel.add(txtCodigo);
+		txtCodigo.setColumns(10);
 		
 		JButton btnBuscar_1 = new JButton("Buscar");
+		btnBuscar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				prestamo Prestamo = new prestamo();
+				
+			    try {
+					control = Prestamo.buscarLector(txtCodigo.getText());
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			    
+			    if(control){
+			    	try {
+						datosDeFilas = Prestamo.obtenerDatosFilas();
+			
+						txtNombre.setText(datosDeFilas.getString(2));
+						txtApellido.setText(datosDeFilas.getString(3));
+						txtTelefono.setText(datosDeFilas.getString(5));
+						txtCategoria.setText(datosDeFilas.getString(6));
+						txtCedula.setText(datosDeFilas.getString(7));
+						txtDireccion.setText(datosDeFilas.getString(9) +" "+ datosDeFilas.getString(10) +" "+ datosDeFilas.getString(11));
+						txtEmail.setText(datosDeFilas.getString(8));
+			        
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+			    }
+			}
+		});
 		btnBuscar_1.setBounds(201, 29, 89, 23);
 		panel.add(btnBuscar_1);
 		
 		JLabel lblCategoria = new JLabel("Categoria:");
 		lblCategoria.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCategoria.setBounds(338, 35, 92, 14);
+		lblCategoria.setBounds(308, 35, 92, 14);
 		panel.add(lblCategoria);
 		
 		JLabel lblCedula = new JLabel("Cedula:");
 		lblCedula.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCedula.setBounds(338, 60, 92, 14);
+		lblCedula.setBounds(308, 60, 92, 14);
 		panel.add(lblCedula);
 		
 		JLabel lblDirecccion = new JLabel("Direcccion:");
 		lblDirecccion.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDirecccion.setBounds(338, 85, 92, 14);
+		lblDirecccion.setBounds(308, 85, 92, 14);
 		panel.add(lblDirecccion);
 		
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmail.setBounds(338, 110, 92, 14);
+		lblEmail.setBounds(308, 110, 92, 14);
 		panel.add(lblEmail);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(437, 33, 86, 20);
-		panel.add(textField_4);
-		textField_4.setEditable(false);
-		textField_4.setColumns(10);
+		txtCategoria = new JTextField();
+		txtCategoria.setBounds(418, 30, 141, 20);
+		panel.add(txtCategoria);
+		txtCategoria.setEditable(false);
+		txtCategoria.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(437, 57, 86, 20);
-		panel.add(textField_5);
-		textField_5.setEditable(false);
-		textField_5.setColumns(10);
+		txtCedula = new JTextField();
+		txtCedula.setBounds(418, 54, 141, 20);
+		panel.add(txtCedula);
+		txtCedula.setEditable(false);
+		txtCedula.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(437, 82, 86, 20);
-		panel.add(textField_6);
-		textField_6.setEditable(false);
-		textField_6.setColumns(10);
+		txtDireccion = new JTextField();
+		txtDireccion.setBounds(418, 79, 141, 20);
+		panel.add(txtDireccion);
+		txtDireccion.setEditable(false);
+		txtDireccion.setColumns(10);
 		
-		textField_7 = new JTextField();
-		textField_7.setBounds(437, 107, 86, 20);
-		panel.add(textField_7);
-		textField_7.setEditable(false);
-		textField_7.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setBounds(418, 104, 141, 20);
+		panel.add(txtEmail);
+		txtEmail.setEditable(false);
+		txtEmail.setColumns(10);
 		
 		JButton btnNuevo = new JButton("Nuevo");
 		btnNuevo.setBounds(137, 468, 89, 23);
