@@ -13,15 +13,22 @@ import javax.swing.JDialog;
 
 import java.awt.Font;
 import javax.swing.border.LineBorder;
+
+import clases.autor;
+
 import java.awt.Color;
 import java.awt.Dialog.ModalityType;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
 
 public class FrmAutor extends JDialog {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtNombre;
+	private JTextField txtApellido;
+	private JTextField txtNacionalidad;
 
 	/**
 	 * Launch the application.
@@ -45,59 +52,83 @@ public class FrmAutor extends JDialog {
 	public FrmAutor() {
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 249);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Nombre");
-		lblNewLabel.setBounds(33, 70, 46, 14);
+		JLabel lblNewLabel = new JLabel("Nombre:");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel.setBounds(71, 57, 57, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblApelido = new JLabel("Apelido");
-		lblApelido.setBounds(33, 95, 46, 14);
+		JLabel lblApelido = new JLabel("Apelido:");
+		lblApelido.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblApelido.setBounds(71, 85, 57, 14);
 		contentPane.add(lblApelido);
 		
-		JLabel lblNacionalidad = new JLabel("Nacionalidad");
-		lblNacionalidad.setBounds(33, 120, 86, 14);
+		JLabel lblNacionalidad = new JLabel("Nacionalidad:");
+		lblNacionalidad.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNacionalidad.setBounds(42, 113, 86, 14);
 		contentPane.add(lblNacionalidad);
 		
-		textField = new JTextField();
-		textField.setBounds(111, 67, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		JLabel lblNewLabel_1 = new JLabel("Registro Autor");
+		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD, 20));
+		lblNewLabel_1.setBounds(130, 11, 156, 32);
+		contentPane.add(lblNewLabel_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(111, 92, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtNombre = new JTextField();
+		txtNombre.setBounds(138, 54, 115, 20);
+		contentPane.add(txtNombre);
+		txtNombre.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(112, 117, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		txtApellido = new JTextField();
+		txtApellido.setBounds(138, 82, 115, 20);
+		contentPane.add(txtApellido);
+		txtApellido.setColumns(10);
+		
+		txtNacionalidad = new JTextField();
+		txtNacionalidad.setBounds(139, 110, 114, 20);
+		contentPane.add(txtNacionalidad);
+		txtNacionalidad.setColumns(10);
 		
 		JButton btnNuevo = new JButton("Nuevo");
-		btnNuevo.setBounds(10, 167, 89, 23);
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtNombre.setText("");
+				txtApellido.setText("");
+				txtNacionalidad.setText("");
+			}
+		});
+		btnNuevo.setBounds(71, 165, 89, 23);
 		contentPane.add(btnNuevo);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(117, 167, 89, 23);
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					autor Autor = new autor(txtNombre.getText(), txtApellido.getText(), txtNacionalidad.getText());
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnGuardar.setBounds(170, 165, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(215, 167, 89, 23);
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrmAutor.this.dispose();
+			}
+		});
+		btnSalir.setBounds(268, 165, 89, 23);
 		contentPane.add(btnSalir);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(282, 44, 142, 105);
+		panel.setBounds(270, 44, 133, 97);
 		contentPane.add(panel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Registro Autor");
-		lblNewLabel_1.setFont(new Font("Georgia", Font.BOLD, 20));
-		lblNewLabel_1.setBounds(120, 11, 195, 32);
-		contentPane.add(lblNewLabel_1);
 	}
 }

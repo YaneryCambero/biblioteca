@@ -33,7 +33,7 @@ public class bibliotecario {
 						JOptionPane.showMessageDialog(null, "Creacion Exitoso");
 						
 				}else{
-					JOptionPane.showMessageDialog(null, "Bibliotecario registrado");
+					JOptionPane.showMessageDialog(null, "Bibliotecario existe....... favor de verificar");
 				}	
 					
 	}
