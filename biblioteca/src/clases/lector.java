@@ -24,7 +24,7 @@ public class lector {
 				if(!resultado.next())
 				{
 					sql = "INSERT into lector (nombre, apellido, FechaNacimiento, telefono, categoria, cedula, email, calle, sector, ciudad) "
-							+ "VALUES ('"+nombre+"', '"+apellido+"','"+fechaNacimiento+"',"+telefono+"', '"+categoria+"',"+cedula+"', '"+email+"', "+calle+"', '"+sector+"', '"+ciudad+"'";
+							+ "VALUES ('"+nombre+"', '"+apellido+"','"+fechaNacimiento+"',"+telefono+"', '"+categoria+"',"+cedula+"', '"+email+"', "+calle+"', '"+sector+"', '"+ciudad+"')";
 						
 						Statement sentencia1 = conectado.createStatement();
 						sentencia1.executeUpdate(sql);

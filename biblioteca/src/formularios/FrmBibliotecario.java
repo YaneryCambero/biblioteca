@@ -75,7 +75,7 @@ public class FrmBibliotecario extends JDialog {
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setTitle("Registro Bibliotecario");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 430, 415);
+		setBounds(100, 100, 430, 416);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

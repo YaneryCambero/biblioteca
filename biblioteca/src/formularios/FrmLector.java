@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -23,6 +24,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import clases.lector;
+import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class FrmLector extends JDialog {
 
@@ -32,10 +36,13 @@ public class FrmLector extends JDialog {
 	private JTextField txtCiudad;
 	private JTextField txtEmail;
 	private JTextField txtTelefono;
-	private JTextField ftfFechaNacimiento;
 	private JTextField txtCalle;
 	private JTextField txtSector;
 	private JTextField ftfCedula;
+	private JTextField txtFechaNacimientoAnyo;
+	private JTextField txtFechaNacimientoMes;
+	private JTextField txtFechaNacimientoDia;
+	private JTextField txtCedula;
 
 	/**
 	 * Launch the application.
@@ -45,24 +52,7 @@ public class FrmLector extends JDialog {
 			public void run() {
 				try {
 					FrmLector frame = new FrmLector();
-					
-					LookAndFeelInfo[] apariencias = UIManager.getInstalledLookAndFeels();
-					
-					LookAndFeelInfo aparienciaActual = apariencias[0];
-										
-					for (int i = 0; i < apariencias.length; i++) {
-						System.out.println(apariencias[i].getClassName());
-						if (apariencias[i].getClassName().indexOf("WindowsLookAndFeel") >= 0){
-							aparienciaActual=apariencias[i];
-						}
-					}
-					
-					UIManager.setLookAndFeel(aparienciaActual.getClassName());
-					SwingUtilities.updateComponentTreeUI(frame);
-					
-					frame.setVisible(true);
-					System.out.println(apariencias.length);
-				
+					frame.setVisible(true);				
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -76,66 +66,74 @@ public class FrmLector extends JDialog {
 	public FrmLector() {
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 466, 384);
+		setBounds(100, 100, 430, 416);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblRegistroDeLectores = new JLabel("Registro de Lector");
-		lblRegistroDeLectores.setBounds(175, 0, 109, 14);
+		lblRegistroDeLectores.setFont(new Font("Segoe Print", Font.BOLD, 20));
+		lblRegistroDeLectores.setBounds(111, 0, 199, 28);
 		contentPane.add(lblRegistroDeLectores);
 		
-		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(10, 28, 46, 14);
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNombre.setBounds(35, 39, 138, 14);
 		contentPane.add(lblNombre);
 		
-		JLabel lblApellido = new JLabel("Apellido");
-		lblApellido.setBounds(10, 56, 46, 14);
+		JLabel lblApellido = new JLabel("Apellido:");
+		lblApellido.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblApellido.setBounds(35, 67, 138, 14);
 		contentPane.add(lblApellido);
 		
-		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(24, 258, 32, 14);
+		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEmail.setBounds(101, 272, 72, 14);
 		contentPane.add(lblEmail);
 		
-		JLabel lblTelefono = new JLabel("Telefono");
-		lblTelefono.setBounds(10, 140, 46, 14);
+		JLabel lblTelefono = new JLabel("Telefono:");
+		lblTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTelefono.setBounds(35, 151, 138, 14);
 		contentPane.add(lblTelefono);
 		
-		JLabel lblCedula = new JLabel("Cedula");
-		lblCedula.setBounds(10, 84, 46, 14);
+		JLabel lblCedula = new JLabel("Cedula:");
+		lblCedula.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCedula.setBounds(35, 95, 138, 14);
 		contentPane.add(lblCedula);
 		
-		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento");
-		lblFechaDeNacimiento.setBounds(10, 112, 119, 14);
+		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
+		lblFechaDeNacimiento.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblFechaDeNacimiento.setBounds(35, 126, 138, 14);
 		contentPane.add(lblFechaDeNacimiento);
 		
-		JLabel lblCategoria = new JLabel("Categoria");
-		lblCategoria.setBounds(10, 283, 78, 14);
+		JLabel lblCategoria = new JLabel("Categoria:");
+		lblCategoria.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCategoria.setBounds(95, 305, 78, 14);
 		contentPane.add(lblCategoria);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(58, 25, 86, 20);
+		txtNombre.setBounds(179, 36, 176, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtApellido = new JTextField();
-		txtApellido.setBounds(58, 53, 86, 20);
+		txtApellido.setBounds(179, 64, 176, 20);
 		contentPane.add(txtApellido);
 		txtApellido.setColumns(10);
 		
 		txtCiudad = new JTextField();
-		txtCiudad.setBounds(58, 223, 86, 20);
+		txtCiudad.setBounds(179, 238, 176, 20);
 		contentPane.add(txtCiudad);
 		txtCiudad.setColumns(10);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(52, 255, 86, 20);
+		txtEmail.setBounds(179, 269, 176, 20);
 		contentPane.add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		txtTelefono = new JTextField();
-		txtTelefono.setBounds(58, 137, 86, 20);
+		txtTelefono.setBounds(179, 150, 176, 20);
 		contentPane.add(txtTelefono);
 		txtTelefono.setColumns(10);
 		
@@ -146,24 +144,17 @@ public class FrmLector extends JDialog {
 		
 		JComboBox cbbCategoria = new JComboBox();
 		cbbCategoria.setModel(new DefaultComboBoxModel<Object>(new String[] {"Estudiante", "Profesor"}));
-		cbbCategoria.setBounds(66, 283, 78, 20);
+		cbbCategoria.setBounds(179, 302, 130, 20);
 		contentPane.add(cbbCategoria);
 		
 		try {
 			MaskFormatter mascaraFecha = new MaskFormatter("####-##-##");
 			mascaraFecha.setPlaceholderCharacter('_');
-			ftfFechaNacimiento = new JFormattedTextField(mascaraFecha);
-			ftfFechaNacimiento.setBounds(152, 109, 70, 20);
-			contentPane.add(ftfFechaNacimiento);
 			
 			MaskFormatter mascaraCedula = new MaskFormatter("###-#######-#");
 			mascaraCedula.setPlaceholderCharacter('_');
-			JFormattedTextField ftfCedula = new JFormattedTextField(mascaraCedula);
-			ftfCedula.setBounds(58, 81, 98, 20);
-			contentPane.add(ftfCedula);
 			
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -176,7 +167,9 @@ public class FrmLector extends JDialog {
 				txtApellido.setText("");
 				txtCiudad.setText("");
 				ftfCedula.setText("");
-				ftfFechaNacimiento.setText("");
+				txtFechaNacimientoAnyo.setText("");
+				txtFechaNacimientoMes.setText("");
+				txtFechaNacimientoDia.setText("");
 				txtCalle.setText("");
 				txtSector.setText("");
 				txtCiudad.setText("");
@@ -187,15 +180,16 @@ public class FrmLector extends JDialog {
 				
 			}
 		});
-		btnNuevo.setBounds(76, 312, 89, 23);
+		btnNuevo.setBounds(58, 344, 89, 23);
 		contentPane.add(btnNuevo);
 		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String fechaNacimiento = txtFechaNacimientoAnyo +"-"+ txtFechaNacimientoMes.getText() +"-"+ txtFechaNacimientoDia.getText();
 				try{
 					
-					lector Lector = new lector(txtNombre.getText(), txtApellido.getText(),ftfCedula.getText(), ftfFechaNacimiento.getText(), txtTelefono.getText(), txtCalle.getText(), txtSector.getText(), txtCiudad.getText(), txtEmail.getText(), cbbCategoria.getSelectedIndex());
+					lector Lector = new lector(txtNombre.getText(), txtApellido.getText(),ftfCedula.getText(), fechaNacimiento, txtTelefono.getText(), txtCalle.getText(), txtSector.getText(), txtCiudad.getText(), txtEmail.getText(), cbbCategoria.getSelectedIndex());
 				
 				}catch (SQLException e)
 				{
@@ -203,7 +197,7 @@ public class FrmLector extends JDialog {
 				}
 			}
 		});
-		btnGuardar.setBounds(175, 312, 89, 23);
+		btnGuardar.setBounds(157, 344, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnSalir = new JButton("Salir");
@@ -212,36 +206,75 @@ public class FrmLector extends JDialog {
 				FrmLector.this.dispose();
 			}
 		});
-		btnSalir.setBounds(278, 312, 89, 23);
+		btnSalir.setBounds(256, 344, 89, 23);
 		contentPane.add(btnSalir);
 		
 		JLabel label = new JLabel("Calle:");
 		label.setHorizontalAlignment(SwingConstants.RIGHT);
-		label.setBounds(12, 174, 38, 14);
+		label.setBounds(37, 185, 136, 14);
 		contentPane.add(label);
 		
 		txtCalle = new JTextField();
 		txtCalle.setColumns(10);
-		txtCalle.setBounds(58, 165, 163, 20);
+		txtCalle.setBounds(179, 180, 176, 20);
 		contentPane.add(txtCalle);
 		
 		JLabel label_1 = new JLabel("Sector:");
 		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_1.setBounds(4, 199, 46, 14);
+		label_1.setBounds(29, 210, 144, 14);
 		contentPane.add(label_1);
 		
 		txtSector = new JTextField();
 		txtSector.setColumns(10);
-		txtSector.setBounds(59, 192, 163, 20);
+		txtSector.setBounds(179, 208, 176, 20);
 		contentPane.add(txtSector);
 		
 		JLabel label_2 = new JLabel("Ciudad:");
 		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_2.setBounds(10, 226, 46, 14);
+		label_2.setBounds(35, 243, 138, 14);
 		contentPane.add(label_2);
 		
 		JLabel label_3 = new JLabel("AAAA-MM-DD");
-		label_3.setBounds(232, 111, 89, 16);
+		label_3.setBounds(266, 125, 89, 16);
 		contentPane.add(label_3);
+		
+		txtFechaNacimientoAnyo = new JTextField();
+		txtFechaNacimientoAnyo.setColumns(10);
+		txtFechaNacimientoAnyo.setBounds(179, 123, 33, 20);
+		contentPane.add(txtFechaNacimientoAnyo);
+		
+		txtFechaNacimientoMes = new JTextField();
+		txtFechaNacimientoMes.setColumns(10);
+		txtFechaNacimientoMes.setBounds(216, 123, 18, 20);
+		contentPane.add(txtFechaNacimientoMes);
+		
+		txtFechaNacimientoDia = new JTextField();
+		txtFechaNacimientoDia.setColumns(10);
+		txtFechaNacimientoDia.setBounds(238, 123, 18, 20);
+		contentPane.add(txtFechaNacimientoDia);
+		
+		txtCedula = new JTextField();
+		txtCedula.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int limiteCaracter = 11;
+				char c = e.getKeyChar();
+				
+				if(Character.isLetter(c)){ 
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir numero");
+				}
+				
+				if(txtCedula.getText().length() >= limiteCaracter){ 
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "solo puede introducir 11 digitos");
+				}
+			}
+		});
+		txtCedula.setBounds(179, 92, 89, 20);
+		contentPane.add(txtCedula);
+		txtCedula.setColumns(10);
 	}
 }

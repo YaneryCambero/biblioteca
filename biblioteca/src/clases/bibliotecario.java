@@ -25,7 +25,7 @@ public class bibliotecario {
 				if(!resultado.next())
 				{
 					sql = "INSERT into bibliotecario (nombre, apellido, FechaNacimiento, email, telefono, fechaIngreso, cedula, tanda, calle, sector, ciudad) "
-							+ "VALUES ('"+nombre+"', '"+apellido+"', '"+fechaNacimiento+"', '"+email+"', "+telefono+"', "+fechaIngreso+"', '"+cedula+"', '"+tanda+"', '"+calle+"', '"+sector+"', '"+ciudad+"'";
+							+ "VALUES ('"+nombre+"', '"+apellido+"', '"+fechaNacimiento+"', '"+email+"', "+telefono+"', "+fechaIngreso+"', '"+cedula+"', '"+tanda+"', '"+calle+"', '"+sector+"', '"+ciudad+"')";
 						
 						Statement sentencia1 = conectado.createStatement();
 						sentencia1.executeUpdate(sql);
