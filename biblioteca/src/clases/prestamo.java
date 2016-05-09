@@ -13,10 +13,8 @@ public class prestamo {
 	conectar conexion = new conectar();
 	Connection conectado = conexion.conexion();
 	String sql="";
-	String criterioDeBusqueda;
 	ResultSetMetaData metaDatos;
 	ResultSet resultado;
-	int cantidadColumnas;
 	boolean control = false;
 	
 	public boolean buscarLector(String codigo) throws SQLException{
@@ -27,7 +25,6 @@ public class prestamo {
 		
 		if(resultado.next())
 		{
-		     metaDatos = resultado.getMetaData();
 		     control = true;
 		}else
 		 {

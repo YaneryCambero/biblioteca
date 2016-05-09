@@ -80,6 +80,10 @@ public class FrmHistorialPrestamo extends JDialog {
 		scrollPane.add(table);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnBuscar.setBounds(604, 70, 89, 23);
 		contentPane.add(btnBuscar);
 		

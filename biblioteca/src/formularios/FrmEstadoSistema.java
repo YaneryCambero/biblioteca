@@ -6,12 +6,17 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clases.estadoSistema;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import java.awt.Dialog.ModalityType;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FrmEstadoSistema extends JDialog {
 
@@ -70,27 +75,34 @@ public class FrmEstadoSistema extends JDialog {
 		lblLectoresActivos.setBounds(210, 127, 129, 14);
 		contentPane.add(lblLectoresActivos);
 		
-		JLabel label = new JLabel("0");
-		label.setBounds(152, 89, 46, 14);
-		contentPane.add(label);
+		JLabel lblCantidadLibros = new JLabel("0");
+		lblCantidadLibros.setBounds(152, 89, 46, 14);
+		contentPane.add(lblCantidadLibros);
 		
-		JLabel label_1 = new JLabel("0");
-		label_1.setBounds(152, 127, 46, 14);
-		contentPane.add(label_1);
+		JLabel lblCantidadLibrosPrestados = new JLabel("0");
+		lblCantidadLibrosPrestados.setBounds(152, 127, 46, 14);
+		contentPane.add(lblCantidadLibrosPrestados);
 		
-		JLabel label_2 = new JLabel("0");
-		label_2.setBounds(355, 89, 46, 14);
-		contentPane.add(label_2);
+		JLabel lblCantidadLibrosRecepcion = new JLabel("0");
+		lblCantidadLibrosRecepcion.setBounds(355, 89, 46, 14);
+		contentPane.add(lblCantidadLibrosRecepcion);
 		
-		JLabel label_3 = new JLabel("0");
-		label_3.setBounds(355, 127, 46, 14);
-		contentPane.add(label_3);
+		estadoSistema cantidadLectores = new estadoSistema();
+		
+		JLabel lblCantidadLectoresActivos = new JLabel(Integer.toString(cantidadLectores.mostrarLector()));
+		lblCantidadLectoresActivos.setBounds(355, 127, 46, 14);
+		contentPane.add(lblCantidadLectoresActivos);
 		
 		JButton btnActualizar = new JButton("Actualizar");
 		btnActualizar.setBounds(107, 188, 110, 23);
 		contentPane.add(btnActualizar);
 		
 		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrmEstadoSistema.this.dispose();
+			}
+		});
 		btnSalir.setBounds(229, 188, 89, 23);
 		contentPane.add(btnSalir);
 	}

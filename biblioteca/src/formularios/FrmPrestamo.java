@@ -22,6 +22,7 @@ import java.awt.Dialog.ModalityType;
 import javax.swing.JScrollPane;
 import java.awt.List;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.AbstractListModel;
 import java.awt.ScrollPane;
@@ -29,6 +30,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Wrapper;
+import java.util.Calendar;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 
@@ -43,12 +45,12 @@ public class FrmPrestamo extends JDialog {
 	private JTextField txtCedula;
 	private JTextField txtDireccion;
 	private JTextField txtEmail;
-	private JTextField textField_8;
-	private JTextField textField_9;
+	private static JTextField txtFechaPrestamo;
+	private JTextField txtHoraPrestamo;
 	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
+	private JTextField txtEstado;
+	private JTextField txtPrestadoPor;
+	private JTextField txtHoraEntrega;
 	private boolean control;
 	private ResultSet datosDeFilas;
 
@@ -59,8 +61,10 @@ public class FrmPrestamo extends JDialog {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+				
 					FrmPrestamo frame = new FrmPrestamo();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -82,6 +86,7 @@ public class FrmPrestamo extends JDialog {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBounds(10, 11, 571, 153);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -157,7 +162,7 @@ public class FrmPrestamo extends JDialog {
 						txtEmail.setText(datosDeFilas.getString(8));
 			        
 					} catch (SQLException e1) {
-						e1.printStackTrace();
+						JOptionPane.showMessageDialog(rootPane, e1);
 					}
 			    }
 			}
@@ -222,6 +227,7 @@ public class FrmPrestamo extends JDialog {
 		contentPane.add(btnSalir);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBounds(10, 175, 571, 123);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -240,15 +246,15 @@ public class FrmPrestamo extends JDialog {
 		panel_1.add(lblHoraPrestamo);
 		lblHoraPrestamo.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		textField_9 = new JTextField();
-		textField_9.setBounds(188, 63, 86, 20);
-		panel_1.add(textField_9);
-		textField_9.setColumns(10);
+		txtHoraPrestamo = new JTextField();
+		txtHoraPrestamo.setBounds(188, 63, 86, 20);
+		panel_1.add(txtHoraPrestamo);
+		txtHoraPrestamo.setColumns(10);
 		
-		textField_8 = new JTextField();
-		textField_8.setBounds(188, 39, 86, 20);
-		panel_1.add(textField_8);
-		textField_8.setColumns(10);
+		txtFechaPrestamo = new JTextField();
+		txtFechaPrestamo.setBounds(188, 39, 86, 20);
+		panel_1.add(txtFechaPrestamo);
+		txtFechaPrestamo.setColumns(10);
 		
 		JLabel lblEstaddo = new JLabel("Estado");
 		lblEstaddo.setBounds(292, 42, 86, 14);
@@ -265,22 +271,23 @@ public class FrmPrestamo extends JDialog {
 		panel_1.add(lblHoraEntrega);
 		lblHoraEntrega.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		textField_11 = new JTextField();
-		textField_11.setBounds(396, 38, 86, 20);
-		panel_1.add(textField_11);
-		textField_11.setColumns(10);
+		txtEstado = new JTextField();
+		txtEstado.setBounds(396, 38, 86, 20);
+		panel_1.add(txtEstado);
+		txtEstado.setColumns(10);
 		
-		textField_12 = new JTextField();
-		textField_12.setBounds(396, 63, 86, 20);
-		panel_1.add(textField_12);
-		textField_12.setColumns(10);
+		txtPrestadoPor = new JTextField();
+		txtPrestadoPor.setBounds(396, 63, 86, 20);
+		panel_1.add(txtPrestadoPor);
+		txtPrestadoPor.setColumns(10);
 		
-		textField_13 = new JTextField();
-		textField_13.setBounds(396, 90, 86, 20);
-		panel_1.add(textField_13);
-		textField_13.setColumns(10);
+		txtHoraEntrega = new JTextField();
+		txtHoraEntrega.setBounds(396, 90, 86, 20);
+		panel_1.add(txtHoraEntrega);
+		txtHoraEntrega.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_2.setBounds(10, 311, 571, 146);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
