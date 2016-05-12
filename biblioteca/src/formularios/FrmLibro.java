@@ -17,24 +17,27 @@ import javax.swing.JTextField;
 import java.awt.Dialog.ModalityType;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class FrmLibro extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField txtTitulo;
-	private JTextField txtAutor;
 	private JTextField txtEditor;
 	private JTextField txtGenero;
 	private JTextField txtSubGenero;
 	private JTextField txtIdioma;
 	private JTextField txtCondicionesFisicas;
-	private JTextField txtCategoria;
 	private JTextField txtPublicacion;
 	private JTextField txtEditorial;
 	private JTextField txtNumeroDePaginas;
 	private JTextField txtCantidad;
 	private JTextField txtEdicion;
+	private ResultSet autor;
 
 	/**
 	 * Launch the application.
@@ -75,7 +78,7 @@ public class FrmLibro extends JDialog {
 		
 		JLabel lblAutor = new JLabel("Autor:");
 		lblAutor.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblAutor.setBounds(85, 63, 46, 14);
+		lblAutor.setBounds(10, 66, 46, 14);
 		contentPane.add(lblAutor);
 		
 		JLabel lblEditor = new JLabel("Editor:");
@@ -133,17 +136,26 @@ public class FrmLibro extends JDialog {
 		lblEdicion.setBounds(330, 137, 49, 14);
 		contentPane.add(lblEdicion);
 		
+		JComboBox cbxAutor = new JComboBox();
+		cbxAutor.setBounds(66, 63, 197, 20);
+		contentPane.add(cbxAutor);
+		
+		JComboBox cbxCategoria = new JComboBox();
+		cbxCategoria.setModel(new DefaultComboBoxModel(new String[] {"Excelente", "Regular", "Malo"}));
+		cbxCategoria.setBounds(157, 213, 101, 20);
+		contentPane.add(cbxCategoria);
+		
 		JButton btnNuevo = new JButton("Nuevo");
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				txtTitulo.setText("");
-				txtAutor.setText("");
+				cbxAutor.setSelectedIndex(1);
 				txtEditor.setText("");
 				txtGenero.setText("");
 				txtSubGenero.setText("");
 				txtIdioma.setText("");
 				txtCondicionesFisicas.setText("");
-				txtCategoria.setText("");
+				cbxCategoria.setSelectedIndex(1);
 				txtPublicacion.setText("");
 				txtEditorial.setText("");
 				txtNumeroDePaginas.setText("");
@@ -162,7 +174,7 @@ public class FrmLibro extends JDialog {
 			int Cantidad = Integer.parseInt(txtCantidad.getText());
 			int numeroPagina = Integer.parseInt(txtNumeroDePaginas.getText());
 
-					libro Libro = new libro(txtTitulo.getText(), txtAutor.getText(), txtEditor.getText(), txtGenero.getText(), txtSubGenero.getText(), txtIdioma.getText(), estado, txtCategoria.getText(),txtPublicacion.getText(), txtEditorial.getText(), numeroPagina, txtCondicionesFisicas.getText(),Cantidad, txtEdicion.getText());
+					libro Libro = new libro(txtTitulo.getText(), cbxAutor.getSelectedItem().toString(), txtEditor.getText(), txtGenero.getText(), txtSubGenero.getText(), txtIdioma.getText(), estado, cbxCategoria.getSelectedItem().toString(),txtPublicacion.getText(), txtEditorial.getText(), numeroPagina, txtCondicionesFisicas.getText(),Cantidad, txtEdicion.getText());
 					
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(FrmLibro.this, e2);
@@ -185,11 +197,6 @@ public class FrmLibro extends JDialog {
 		txtTitulo.setBounds(157, 40, 86, 20);
 		contentPane.add(txtTitulo);
 		txtTitulo.setColumns(10);
-		
-		txtAutor = new JTextField();
-		txtAutor.setBounds(157, 62, 86, 20);
-		contentPane.add(txtAutor);
-		txtAutor.setColumns(10);
 		
 		txtEditor = new JTextField();
 		txtEditor.setColumns(10);
@@ -216,11 +223,6 @@ public class FrmLibro extends JDialog {
 		txtCondicionesFisicas.setBounds(157, 188, 86, 20);
 		contentPane.add(txtCondicionesFisicas);
 		
-		txtCategoria = new JTextField();
-		txtCategoria.setColumns(10);
-		txtCategoria.setBounds(157, 213, 86, 20);
-		contentPane.add(txtCategoria);
-		
 		txtPublicacion = new JTextField();
 		txtPublicacion.setColumns(10);
 		txtPublicacion.setBounds(403, 38, 86, 20);
@@ -245,6 +247,22 @@ public class FrmLibro extends JDialog {
 		txtEdicion.setColumns(10);
 		txtEdicion.setBounds(403, 137, 86, 20);
 		contentPane.add(txtEdicion);
+		
+		
+		
+		
+		
+		try {
+			libro autores = new libro();
+			
+			autor = autores.mostrarAutor();
+			
+			do{
+				cbxAutor.addItem(autor.getObject(1).toString() +" "+ autor.getObject(2).toString());
+			}while(autor.next());
+		} catch (SQLException e1) {
+			JOptionPane.showMessageDialog(null, e1);
+		}
+		
 	}
-
 }

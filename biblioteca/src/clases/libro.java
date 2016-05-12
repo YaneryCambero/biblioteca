@@ -16,16 +16,19 @@ public class libro {
 	Connection conectado = conexion.conexion();
 	String sql="";
 	int id;
+	ResultSet resultadoAutores;
 	
 	public libro(String titulo, String autor, String editor, String genero, String subGenero, String idioma, int estado, String categoria, String publicacion, String editorial, int numeroPagina, String estadoFisico, int cantidad, String edicion ) throws SQLException{
-		sql = "SELECT id FROM autor where nombre ='"+autor+"'";
+		sql = "SELECT id, nombre, apellido FROM autor";
 		
 		
 		Statement sentencia = conectado.createStatement();
 		ResultSet resultado = sentencia.executeQuery(sql);
 		
 		if(resultado.next()){
-			id = Integer.parseInt(resultado.getObject(1).toString());
+			if(String.format("%s %s", resultado.getString(2), resultado.getString(3)).equals(autor)){
+				id = resultado.getInt(1);
+			}
 		}else{
 			throw new SQLException("autor no encontrado");
 		}
@@ -47,6 +50,24 @@ public class libro {
 		}else{
 			JOptionPane.showMessageDialog(null, "libro existe........ favor verificar");
 		} 	
+	}
+	
+	public libro() throws SQLException{
+        sql = "SELECT nombre, apellido FROM autor";
+		
+		Statement sentencia = conectado.createStatement();
+	    resultadoAutores = sentencia.executeQuery(sql);
+	}
+	
+	public ResultSet mostrarAutor()throws SQLException{
+		
+		if(!resultadoAutores.next()){
+			
+			throw new SQLException("autor no encontrado");
+		}
+		
+		return resultadoAutores;
+		
 	}
 
 }
