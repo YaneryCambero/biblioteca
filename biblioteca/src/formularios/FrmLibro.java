@@ -1,27 +1,26 @@
 package formularios;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import clases.libro;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JTextField;
+import java.awt.Dialog.ModalityType;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class FrmLibro extends JDialog {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtTitulo;
 	private JTextField txtAutor;
@@ -157,28 +156,17 @@ public class FrmLibro extends JDialog {
 		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
-			private libro libro;
-
 			public void actionPerformed(ActionEvent e) {
 				try {
 			int estado = 1;
 			int Cantidad = Integer.parseInt(txtCantidad.getText());
 			int numeroPagina = Integer.parseInt(txtNumeroDePaginas.getText());
 
-					setLibro(new libro(txtTitulo.getText(), txtAutor.getText(), txtEditor.getText(), txtGenero.getText(), txtSubGenero.getText(), txtIdioma.getText(), estado, txtCategoria.getText(),txtPublicacion.getText(), txtEditorial.getText(), numeroPagina, txtCondicionesFisicas.getText(),Cantidad, txtEdicion.getText()));
+					libro Libro = new libro(txtTitulo.getText(), txtAutor.getText(), txtEditor.getText(), txtGenero.getText(), txtSubGenero.getText(), txtIdioma.getText(), estado, txtCategoria.getText(),txtPublicacion.getText(), txtEditorial.getText(), numeroPagina, txtCondicionesFisicas.getText(),Cantidad, txtEdicion.getText());
 					
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(FrmLibro.this, e2);
 				}
-			}
-
-			@SuppressWarnings("unused")
-			public libro getLibro() {
-				return libro;
-			}
-
-			public void setLibro(libro libro) {
-				this.libro = libro;
 			}
 		});
 		btnGuardar.setBounds(243, 244, 89, 23);

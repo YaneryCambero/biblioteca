@@ -1,32 +1,36 @@
 package formularios;
 
-import java.awt.Color;
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import clases.login;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
+import javax.swing.UIManager;
+import java.awt.Color;
+import javax.swing.border.BevelBorder;
+import java.awt.Font;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Dialog.ModalityType;
+import javax.swing.SwingConstants;
+
 public class FrmLogin extends JDialog {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField TxtUsuario;
 	private JPasswordField TxtContrasena;
@@ -87,8 +91,6 @@ public class FrmLogin extends JDialog {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.setIcon(new ImageIcon(FrmLogin.class.getResource("/imagenes/apply.gif")));
 		btnEntrar.addActionListener(new ActionListener() {
-			private login inicio;
-
 			public void actionPerformed(ActionEvent arg0)
 			{
 				String usuario = TxtUsuario.getText();
@@ -100,17 +102,8 @@ public class FrmLogin extends JDialog {
 				}else
 				 {
 					FrmLogin.this.dispose();
-					setInicio(new login(usuario,contrasena));
+					login inicio = new login(usuario,contrasena);
 				 }
-			}
-
-			@SuppressWarnings("unused")
-			public login getInicio() {
-				return inicio;
-			}
-
-			public void setInicio(login inicio) {
-				this.inicio = inicio;
 			}
 		});
 		

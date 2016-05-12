@@ -1,35 +1,35 @@
 package formularios;
 
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.sql.SQLException;
 import java.text.ParseException;
 
+import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import clases.lector;
+import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class FrmLector extends JDialog {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
@@ -142,7 +142,7 @@ public class FrmLector extends JDialog {
 		contentPane.add(ftfFechaNacimiento);
 		ftfFechaNacimiento.setColumns(10);*/
 		
-		JComboBox<Object> cbbCategoria = new JComboBox<Object>();
+		JComboBox cbbCategoria = new JComboBox();
 		cbbCategoria.setModel(new DefaultComboBoxModel<Object>(new String[] {"Estudiante", "Profesor"}));
 		cbbCategoria.setBounds(179, 302, 130, 20);
 		contentPane.add(cbbCategoria);
@@ -185,27 +185,16 @@ public class FrmLector extends JDialog {
 		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
-			private lector lector;
-
 			public void actionPerformed(ActionEvent arg0) {
 				String fechaNacimiento = txtFechaNacimientoAnyo +"-"+ txtFechaNacimientoMes.getText() +"-"+ txtFechaNacimientoDia.getText();
 				try{
 					
-					setLector(new lector(txtNombre.getText(), txtApellido.getText(),ftfCedula.getText(), fechaNacimiento, txtTelefono.getText(), txtCalle.getText(), txtSector.getText(), txtCiudad.getText(), txtEmail.getText(), cbbCategoria.getSelectedIndex()));
+					lector Lector = new lector(txtNombre.getText(), txtApellido.getText(),ftfCedula.getText(), fechaNacimiento, txtTelefono.getText(), txtCalle.getText(), txtSector.getText(), txtCiudad.getText(), txtEmail.getText(), cbbCategoria.getSelectedIndex());
 				
 				}catch (SQLException e)
 				{
 				   e.printStackTrace();	
 				}
-			}
-
-			@SuppressWarnings("unused")
-			public lector getLector() {
-				return lector;
-			}
-
-			public void setLector(lector lector) {
-				this.lector = lector;
 			}
 		});
 		btnGuardar.setBounds(157, 344, 89, 23);
