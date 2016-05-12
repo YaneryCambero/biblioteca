@@ -233,7 +233,7 @@ public class FrmPrestamo extends JDialog {
 		panel_1.setLayout(null);
 		
 		JLabel lblInformacionDelPrestamo = new JLabel("Informacion del prestamo");
-		lblInformacionDelPrestamo.setBounds(224, 5, 149, 14);
+		lblInformacionDelPrestamo.setBounds(225, 12, 149, 14);
 		panel_1.add(lblInformacionDelPrestamo);
 		
 		JLabel lblFechaPrestamo = new JLabel("Fecha Prestamo");

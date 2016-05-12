@@ -103,9 +103,11 @@ public class FrmEstadoSistema extends JDialog {
 		JButton btnActualizar = new JButton("Actualizar");
 		btnActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				FrmEstadoSistema.this.dispose();
+			//	JOptionPane.showMessageDialog(null, "Sistema Actualizado");
 				FrmEstadoSistema.this.setVisible(true);
-				//JOptionPane.showMessageDialog(, "Sistema Actualizado");
+			
 			}
 		});
 		btnActualizar.setBounds(107, 188, 110, 23);
