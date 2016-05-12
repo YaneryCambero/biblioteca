@@ -146,7 +146,7 @@ public class FrmPrestamo extends JDialog {
 			    try {
 					control = Prestamo.buscarLector(txtCodigo.getText());
 				} catch (SQLException e1) {
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(rootPane, e1);
 				}
 			    
 			    if(control){
@@ -162,7 +162,7 @@ public class FrmPrestamo extends JDialog {
 						txtEmail.setText(datosDeFilas.getString(8));
 			        
 					} catch (SQLException e1) {
-						JOptionPane.showMessageDialog(rootPane, e1);
+						
 					}
 			    }
 			}

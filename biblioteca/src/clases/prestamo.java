@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+import javax.swing.RootPaneContainer;
 import javax.xml.ws.FaultAction;
 
 public class prestamo {	
@@ -28,7 +30,7 @@ public class prestamo {
 		     control = true;
 		}else
 		 {
-				throw new SQLException("no tenia datos");
+				JOptionPane.showMessageDialog(null, "No hay datos");
 		 }
 		
 		return control;

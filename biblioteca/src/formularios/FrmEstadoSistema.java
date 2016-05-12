@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import clases.estadoSistema;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import java.awt.Dialog.ModalityType;
@@ -75,15 +76,21 @@ public class FrmEstadoSistema extends JDialog {
 		lblLectoresActivos.setBounds(210, 127, 129, 14);
 		contentPane.add(lblLectoresActivos);
 		
-		JLabel lblCantidadLibros = new JLabel("0");
+		estadoSistema cantidadLibros = new estadoSistema();
+		
+		JLabel lblCantidadLibros = new JLabel(Integer.toString(cantidadLibros.mostrarLibros()));
 		lblCantidadLibros.setBounds(152, 89, 46, 14);
 		contentPane.add(lblCantidadLibros);
 		
-		JLabel lblCantidadLibrosPrestados = new JLabel("0");
+		estadoSistema cantidadLibrosPrestado = new estadoSistema();
+		
+		JLabel lblCantidadLibrosPrestados = new JLabel(Integer.toString(cantidadLibrosPrestado.mostrarLibrosPrestados()));
 		lblCantidadLibrosPrestados.setBounds(152, 127, 46, 14);
 		contentPane.add(lblCantidadLibrosPrestados);
 		
-		JLabel lblCantidadLibrosRecepcion = new JLabel("0");
+		estadoSistema cantidadLibrosEnRecepcion = new estadoSistema();
+		
+		JLabel lblCantidadLibrosRecepcion = new JLabel(Integer.toString(cantidadLibrosEnRecepcion.mostrarLibrosEnRecepccion()));
 		lblCantidadLibrosRecepcion.setBounds(355, 89, 46, 14);
 		contentPane.add(lblCantidadLibrosRecepcion);
 		
@@ -94,6 +101,13 @@ public class FrmEstadoSistema extends JDialog {
 		contentPane.add(lblCantidadLectoresActivos);
 		
 		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrmEstadoSistema.this.dispose();
+				FrmEstadoSistema.this.setVisible(true);
+				//JOptionPane.showMessageDialog(, "Sistema Actualizado");
+			}
+		});
 		btnActualizar.setBounds(107, 188, 110, 23);
 		contentPane.add(btnActualizar);
 		

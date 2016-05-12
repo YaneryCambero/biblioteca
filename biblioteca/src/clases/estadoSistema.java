@@ -17,6 +17,7 @@ public class estadoSistema {
 	public int mostrarLector(){ 
 		sql = "SELECT * FROM lector";
 		
+		
 		Statement sentencia;
 		try {
 			sentencia = conectado.createStatement();
@@ -33,5 +34,47 @@ public class estadoSistema {
 		return CantidadFilas;
 		
 	}
+	
+	public int mostrarLibros(){ 
+		sql = "SELECT * FROM libros";
+		Statement sentencia;
+		try {
+			sentencia = conectado.createStatement();
+			resultado = sentencia.executeQuery(sql);
+			
+			if(resultado.next()){ 
+				CantidadFilas = resultado.getRow();
+			}
+		} catch (SQLException e) {
+		  
+		}
 
+		return CantidadFilas;
+	}
+		public int mostrarLibrosPrestados(){ 
+			sql = "SELECT * FROM prestamo";
+			
+			
+			Statement sentencia;
+			try {
+				sentencia = conectado.createStatement();
+				resultado = sentencia.executeQuery(sql);
+				
+				if(resultado.next()){ 
+					CantidadFilas = resultado.getRow();
+				}
+			} catch (SQLException e) {
+			  
+			}
+			
+			
+			return CantidadFilas;
+			
+		}
+		public int mostrarLibrosEnRecepccion(){
+			
+			return (mostrarLibros() - mostrarLibrosPrestados());
+		}
+		
+		
 }
