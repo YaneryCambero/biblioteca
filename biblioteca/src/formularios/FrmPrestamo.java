@@ -232,6 +232,8 @@ public class FrmPrestamo extends JDialog {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
+		System.out.println("hola mundo");
+		
 		JLabel lblInformacionDelPrestamo = new JLabel("Informacion del prestamo");
 		lblInformacionDelPrestamo.setBounds(225, 12, 149, 14);
 		panel_1.add(lblInformacionDelPrestamo);
