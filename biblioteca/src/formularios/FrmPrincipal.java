@@ -268,6 +268,18 @@ public class FrmPrincipal extends JFrame {
 		
 		JMenu mnAyuda = new JMenu("Ayuda");
 		menuBar.add(mnAyuda);
+		
+		JMenuItem mntmInformacionDelSistema = new JMenuItem("Informacion del sistema");
+		mntmInformacionDelSistema.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Los creadores del sistema son:\n\n Nombre                                   Matricula\n"
+						+ "\n Heriberto Espino                 100040664"
+						+ "\n Wendy Rodriguez               100071795"
+						+ "\n Francisco Moran     "
+						+ "\n Yanery R. Cambero Hez    100159623");
+			}
+		});
+		mnAyuda.add(mntmInformacionDelSistema);
 		contentPane = new JPanel()
 		{
 			@Override
@@ -285,13 +297,13 @@ public class FrmPrincipal extends JFrame {
 		
 		JLabel label = new JLabel("Biblioteca");
 		label.setFont(new Font("Segoe Print", Font.BOLD, 50));
-		label.setBounds(215, 11, 259, 61);
+		label.setBounds(211, 61, 259, 61);
 		contentPane.add(label);
 		
 		JLabel lblNewLabel_1 = new JLabel("Biblioteca");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD, 50));
-		lblNewLabel_1.setBounds(220, 11, 259, 61);
+		lblNewLabel_1.setBounds(211, 61, 259, 61);
 		contentPane.add(lblNewLabel_1);
 		setResizable(false);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2016 a las 17:25:32
+-- Tiempo de generación: 19-05-2016 a las 19:48:40
 -- Versión del servidor: 5.7.11-log
 -- Versión de PHP: 5.5.12
 
@@ -35,7 +35,14 @@ CREATE TABLE IF NOT EXISTS `autor` (
   `apellido` varchar(75) NOT NULL DEFAULT '0',
   `nacionalidad` varchar(50) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `autor`
+--
+
+INSERT INTO `autor` (`id`, `nombre`, `apellido`, `nacionalidad`) VALUES
+(1, 'Yanery', 'Cambero', 'Dominicana');
 
 -- --------------------------------------------------------
 
@@ -48,13 +55,15 @@ CREATE TABLE IF NOT EXISTS `bibliotecario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL DEFAULT '0',
   `apellido` varchar(50) NOT NULL DEFAULT '0',
-  `direccion` varchar(50) NOT NULL DEFAULT '0',
   `FechaNacimiento` date NOT NULL DEFAULT '0000-00-00',
   `email` varchar(50) NOT NULL DEFAULT '0',
   `telefono` varchar(50) NOT NULL DEFAULT '0',
   `fechaIngreso` date NOT NULL DEFAULT '0000-00-00',
   `cedula` varchar(50) NOT NULL DEFAULT '0',
   `categoria` varchar(50) NOT NULL DEFAULT '0',
+  `calle` varchar(30) DEFAULT NULL,
+  `sector` varchar(30) DEFAULT NULL,
+  `ciudad` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -90,8 +99,10 @@ CREATE TABLE IF NOT EXISTS `lector` (
   `telefono` varchar(50) NOT NULL DEFAULT '0',
   `categoria` varchar(50) NOT NULL DEFAULT '0',
   `cedula` varchar(50) NOT NULL DEFAULT '0',
-  `direccion` varchar(50) NOT NULL DEFAULT '0',
   `email` varchar(50) NOT NULL DEFAULT '0',
+  `calle` varchar(30) DEFAULT NULL,
+  `sector` varchar(30) DEFAULT NULL,
+  `ciudad` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
