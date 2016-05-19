@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.Vector;
 
 public class ConsultarPrestamo {
-	BaseDeDatos conexion = new BaseDeDatos();
-	Connection conectado = conexion.conexion();
+	BaseDeDatos conetar = new BaseDeDatos();
+	Connection conexion = conetar.conexion();
 	String sql="";
 	String criterioDeBusqueda;
 	ResultSetMetaData metaDatos;
@@ -33,7 +33,7 @@ public class ConsultarPrestamo {
 		
 		sql = "SELECT * FROM prestamo WHERE "+criterioDeBusqueda+" = '"+informacionBuscar+"'";
 		
-			Statement sentencia = conectado.createStatement();
+			Statement sentencia = conexion.createStatement();
 			resultado = sentencia.executeQuery(sql);
 			
 			if(resultado.next())

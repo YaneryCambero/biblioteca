@@ -10,15 +10,15 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 public class Lector {
-	BaseDeDatos conexion = new BaseDeDatos();
-	Connection conectado = conexion.conexion();
+	BaseDeDatos conectar = new BaseDeDatos();
+	Connection conexion = conectar.conexion();
 	String sql="";
 	
 	public Lector(String nombre, String apellido, String cedula, String fechaNacimiento, String telefono,  String calle ,String sector, String ciudad, String email, int categoria ) throws SQLException{
 		sql = "SELECT * FROM lector where nombre ='"+nombre+"' AND apellido = '"+apellido+"'";
 		
 						
-				Statement sentencia = conectado.createStatement();
+				Statement sentencia = conexion.createStatement();
 				ResultSet resultado = sentencia.executeQuery(sql);
 				
 				if(!resultado.next())
@@ -26,7 +26,7 @@ public class Lector {
 					sql = "INSERT into lector (nombre, apellido, FechaNacimiento, telefono, categoria, cedula, email, calle, sector, ciudad) "
 							+ "VALUES ('"+nombre+"', '"+apellido+"','"+fechaNacimiento+"',"+telefono+"', '"+categoria+"',"+cedula+"', '"+email+"', "+calle+"', '"+sector+"', '"+ciudad+"')";
 						
-						Statement sentencia1 = conectado.createStatement();
+						Statement sentencia1 = conexion.createStatement();
 						sentencia1.executeUpdate(sql);
 						
 						JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");

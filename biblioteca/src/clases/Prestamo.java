@@ -12,8 +12,8 @@ import javax.swing.RootPaneContainer;
 import javax.xml.ws.FaultAction;
 
 public class Prestamo {	
-	BaseDeDatos conexion = new BaseDeDatos();
-	Connection conectado = conexion.conexion();
+	BaseDeDatos conectar = new BaseDeDatos();
+	Connection conexion = conectar.conexion();
 	String sql="";
 	ResultSetMetaData metaDatos;
 	ResultSet resultado;
@@ -22,7 +22,7 @@ public class Prestamo {
 	public boolean buscarLector(String codigo) throws SQLException{
 		sql = "SELECT * FROM lector WHERE id = '"+codigo+"'";
 		
-		Statement sentencia = conectado.createStatement();
+		Statement sentencia = conexion.createStatement();
 		resultado = sentencia.executeQuery(sql);
 		
 		if(resultado.next())

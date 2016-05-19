@@ -12,8 +12,8 @@ import formularios.FrmPrincipal;
 
 public class Login 
 {
-	BaseDeDatos conexion = new BaseDeDatos();
-	Connection conectado = conexion.conexion();
+	BaseDeDatos conectar = new BaseDeDatos();
+	Connection conexion = conectar.conexion();
 	String sql="";
 	
 	public Login(String usuario, String contrsena)
@@ -22,7 +22,7 @@ public class Login
 		
 		try {
 						
-				Statement sentencia = conectado.createStatement();
+				Statement sentencia = conexion.createStatement();
 				ResultSet resultado = sentencia.executeQuery(sql);
 				
 				if(resultado.next())

@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 
 
 public class Libro {
-	BaseDeDatos conexion = new BaseDeDatos();
-	Connection conectado = conexion.conexion();
+	BaseDeDatos conectar = new BaseDeDatos();
+	Connection conexion = conectar.conexion();
 	String sql="";
 	int id;
 	ResultSet resultadoAutores;
@@ -22,7 +22,7 @@ public class Libro {
 		sql = "SELECT id, nombre, apellido FROM autor";
 		
 		
-		Statement sentencia = conectado.createStatement();
+		Statement sentencia = conexion.createStatement();
 		ResultSet resultado = sentencia.executeQuery(sql);
 		
 		if(resultado.next()){
@@ -42,7 +42,7 @@ public class Libro {
 		{
 			String sql1 = "INSERT INTO libros (titulo, id_autor, editor, genero, subgenero, idioma, id_estado, categoria, publicacion, editorial, numeroPagina, estadoFisico, cantidad, edicion) VALUES ('"+titulo+"','"+id+"','"+editor+"','"+genero+"','"+subGenero+"','"+idioma+"','"+estado+"','"+categoria+"','"+publicacion+"','"+editorial+"','"+numeroPagina+"','"+estadoFisico+"','"+cantidad+"','"+edicion+"')";
 				
-				PreparedStatement sentencia1 = conectado.prepareStatement(sql1);
+				PreparedStatement sentencia1 = conexion.prepareStatement(sql1);
 				sentencia1.executeUpdate();
 				
 				JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
@@ -55,7 +55,7 @@ public class Libro {
 	public Libro() throws SQLException{
         sql = "SELECT nombre, apellido FROM autor";
 		
-		Statement sentencia = conectado.createStatement();
+		Statement sentencia = conexion.createStatement();
 	    resultadoAutores = sentencia.executeQuery(sql);
 	}
 	

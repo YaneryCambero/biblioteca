@@ -107,7 +107,7 @@ public class FrmLogin extends JDialog {
 			}
 		});
 		
-		btnEntrar.setBounds(167, 116, 89, 23);
+		btnEntrar.setBounds(97, 117, 89, 23);
 		contentPane.add(btnEntrar);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -119,6 +119,21 @@ public class FrmLogin extends JDialog {
 		lblLogin.setFont(new Font("Segoe Print", Font.PLAIN, 25));
 		lblLogin.setBounds(177, 0, 89, 33);
 		contentPane.add(lblLogin);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				FrmLogin.this.dispose();
+				
+				/*FrmPrincipal formularioPrincipal = new FrmPrincipal();
+				formularioPrincipal.setAlwaysOnTop(true);
+				formularioPrincipal.setLocationRelativeTo(null);
+				formularioPrincipal.setVisible(true);*/
+			}
+		});
+		btnCancelar.setBounds(197, 115, 98, 26);
+		contentPane.add(btnCancelar);
 		
 	}
 }

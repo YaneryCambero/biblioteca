@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class EstadoSistema {
-	BaseDeDatos conexion = new BaseDeDatos();
-	Connection conectado = conexion.conexion();
+	BaseDeDatos conectar = new BaseDeDatos();
+	Connection conexion = conectar.conexion();
 	String sql="";
 	ResultSetMetaData metaDatos;
 	ResultSet resultado;
@@ -20,7 +20,7 @@ public class EstadoSistema {
 		
 		Statement sentencia;
 		try {
-			sentencia = conectado.createStatement();
+			sentencia = conexion.createStatement();
 			resultado = sentencia.executeQuery(sql);
 			
 			if(resultado.next()){ 
@@ -39,7 +39,7 @@ public class EstadoSistema {
 		sql = "SELECT * FROM libros";
 		Statement sentencia;
 		try {
-			sentencia = conectado.createStatement();
+			sentencia = conexion.createStatement();
 			resultado = sentencia.executeQuery(sql);
 			
 			if(resultado.next()){ 
@@ -57,7 +57,7 @@ public class EstadoSistema {
 			
 			Statement sentencia;
 			try {
-				sentencia = conectado.createStatement();
+				sentencia = conexion.createStatement();
 				resultado = sentencia.executeQuery(sql);
 				
 				if(resultado.next()){ 

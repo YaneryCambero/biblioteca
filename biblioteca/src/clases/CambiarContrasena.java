@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 
 public class CambiarContrasena
 {
-	BaseDeDatos conexion = new BaseDeDatos();
-	Connection conectado = conexion.conexion();
+	BaseDeDatos conectar = new BaseDeDatos();
+	Connection conexion = conectar.conexion();
 	String sql="";
 	
 	public CambiarContrasena(String usuario, String contrasena, String nuevaContrasena, String confirmarContrasena)
@@ -20,7 +20,7 @@ public class CambiarContrasena
 		
 		try {
 						
-				Statement sentencia = conectado.createStatement();
+				Statement sentencia = conexion.createStatement();
 				ResultSet resultado = sentencia.executeQuery(sql);
 				
 				if(resultado.next())
@@ -28,7 +28,7 @@ public class CambiarContrasena
 					if(nuevaContrasena.equals(confirmarContrasena)){
 						sql = "UPDATE login SET contrasena ='"+nuevaContrasena+"' where id ='"+resultado.getObject("id")+"'";
 						
-						Statement sentencia1 = conectado.createStatement();
+						Statement sentencia1 = conexion.createStatement();
 						sentencia1.executeUpdate(sql);
 						
 						JOptionPane.showMessageDialog(null, "Cambio Exitoso");

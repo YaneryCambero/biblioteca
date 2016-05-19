@@ -223,6 +223,11 @@ public class FrmPrestamo extends JDialog {
 		contentPane.add(btnGuardar);
 		
 		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrmPrestamo.this.dispose();
+			}
+		});
 		btnSalir.setBounds(350, 468, 89, 23);
 		contentPane.add(btnSalir);
 		

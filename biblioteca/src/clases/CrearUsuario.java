@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 
 public class CrearUsuario
 {
-	BaseDeDatos conexion = new BaseDeDatos();
-	Connection conectado = conexion.conexion();
+	BaseDeDatos conectar = new BaseDeDatos();
+	Connection conexion = conectar.conexion();
 	String sql="";
 	
 	public CrearUsuario(String usuario, String contrasena, String confirmarContrasena, boolean permisos)
@@ -19,7 +19,7 @@ public class CrearUsuario
 		
 		try {
 						
-				Statement sentencia = conectado.createStatement();
+				Statement sentencia = conexion.createStatement();
 				ResultSet resultado = sentencia.executeQuery(sql);
 				
 				if(!resultado.next())
@@ -27,7 +27,7 @@ public class CrearUsuario
 					if(contrasena.equals(confirmarContrasena)){
 						sql = "INSERT into login (usuario, contrasena, permiso) VALUES ('"+usuario+"', '"+contrasena+"', '"+permisos+"')";
 						
-						Statement sentencia1 = conectado.createStatement();
+						Statement sentencia1 = conexion.createStatement();
 						sentencia1.executeUpdate(sql);
 						
 						JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
