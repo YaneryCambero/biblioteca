@@ -37,7 +37,7 @@ public class ConsultarBibliotecario {
 			     metaDatos = resultado.getMetaData();
 			}else
 			 {
-					throw new SQLException("No tienea datos");
+					throw new SQLException("No tiene datos");
 			 }
 		
 	}
