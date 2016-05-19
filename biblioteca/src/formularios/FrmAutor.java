@@ -14,7 +14,7 @@ import javax.swing.JDialog;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
 
-import clases.autor;
+import clases.Autor;
 
 import java.awt.Color;
 import java.awt.Dialog.ModalityType;
@@ -108,7 +108,7 @@ public class FrmAutor extends JDialog {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					autor Autor = new autor(txtNombre.getText(), txtApellido.getText(), txtNacionalidad.getText());
+					Autor Autor = new Autor(txtNombre.getText(), txtApellido.getText(), txtNacionalidad.getText());
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}

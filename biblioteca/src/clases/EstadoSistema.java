@@ -6,8 +6,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class estadoSistema {
-	conectar conexion = new conectar();
+public class EstadoSistema {
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	ResultSetMetaData metaDatos;

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-public class consultarLibros {
-	conectar conexion = new conectar();
+public class ConsultarLibros {
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	String criterioDeBusqueda;
@@ -18,7 +18,7 @@ public class consultarLibros {
 	ResultSet resultado;
 	int cantidadColumnas;
 	
-	public consultarLibros(int buscarPor, String informacionBuscar) throws SQLException{
+	public ConsultarLibros(int buscarPor, String informacionBuscar) throws SQLException{
 		if(0 == buscarPor){
 			criterioDeBusqueda = "id";
 		}else if (1 == buscarPor) {
@@ -39,7 +39,7 @@ public class consultarLibros {
 			     metaDatos = resultado.getMetaData();
 			}else
 			 {
-					throw new SQLException("no tenia datos");
+					throw new SQLException("No tiene datos");
 			 }
 	}
 	

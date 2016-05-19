@@ -5,20 +5,20 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-public class conectar 
+public class BaseDeDatos 
 {
-	Connection con = null;
+	Connection conexion = null;
 	
 	public Connection conexion()
 	{
 		try 
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3307/biblioteca","root","1234");
+			conexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/biblioteca","root","1234");
 		} catch (ClassNotFoundException | SQLException e) {
-			JOptionPane.showMessageDialog(null, "error de conexion");
+			JOptionPane.showMessageDialog(null, "Error de conexion");
 		}
 		
-		return con;
+		return conexion;
 	}
 }

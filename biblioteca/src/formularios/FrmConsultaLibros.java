@@ -10,8 +10,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-import clases.consultarLector;
-import clases.consultarLibros;
+import clases.ConsultarLector;
+import clases.ConsultarLibros;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -94,11 +94,11 @@ public class FrmConsultaLibros extends JDialog {
 		JButton btnBuscar = new JButton("Buscar ");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				consultarLibros consulta;
+				ConsultarLibros consulta;
 				int control = 0;
 				
 				try {
-					consulta = new consultarLibros(cbxBuscarPor.getSelectedIndex(),txtBuscarPor.getText());
+					consulta = new ConsultarLibros(cbxBuscarPor.getSelectedIndex(),txtBuscarPor.getText());
 					nombreColumnas = consulta.obtenerNombreDeColumnas();
 					datosDeFilas = consulta.obtenerDatosFilas();
 				} catch (SQLException e) {

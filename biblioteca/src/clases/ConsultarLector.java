@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-public class consultarBibliotecario {
-	conectar conexion = new conectar();
+public class ConsultarLector {
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	String criterioDeBusqueda;
@@ -18,7 +18,7 @@ public class consultarBibliotecario {
 	ResultSet resultado;
 	int cantidadColumnas;
 	
-	public consultarBibliotecario(int buscarPor, String informacionBuscar) throws SQLException{
+	public ConsultarLector(int buscarPor, String informacionBuscar) throws SQLException{
 		if(0 == buscarPor){
 			criterioDeBusqueda = "id";
 		}else if (1 == buscarPor) {
@@ -27,7 +27,9 @@ public class consultarBibliotecario {
 			criterioDeBusqueda = "apellido";
 		}
 		
-		sql = "SELECT * FROM bibliotecario WHERE  "+criterioDeBusqueda+" = '"+informacionBuscar+"'";
+		
+		
+		sql = "SELECT * FROM lector WHERE "+criterioDeBusqueda+" = '"+informacionBuscar+"'";
 		
 			Statement sentencia = conectado.createStatement();
 			resultado = sentencia.executeQuery(sql);
@@ -37,25 +39,24 @@ public class consultarBibliotecario {
 			     metaDatos = resultado.getMetaData();
 			}else
 			 {
-					throw new SQLException("no tenia datos");
+					throw new SQLException("No tiene datos");
 			 }
-		
 	}
 	
 	public Vector<String> obtenerNombreDeColumnas() throws SQLException{
 		
 		
 		
-		cantidadColumnas = metaDatos.getColumnCount();
-		for(int i =1; i <= cantidadColumnas; i++)
-		{
-			 nombreColumnas.add(metaDatos.getColumnName(i));
-		}
-				
+			cantidadColumnas = metaDatos.getColumnCount();
+			for(int i =1; i <= cantidadColumnas; i++)
+			{
+				 nombreColumnas.add(metaDatos.getColumnName(i));
+			}
+					
+		
+		return nombreColumnas;
+	}
 	
-	return nombreColumnas;
-}
-
 	public Vector<Vector<String>> obtenerDatosFilas() throws SQLException{
 		
 			resultado.beforeFirst();
@@ -71,5 +72,4 @@ public class consultarBibliotecario {
 		
 		return datosDeFilas;
 	}
-
 }

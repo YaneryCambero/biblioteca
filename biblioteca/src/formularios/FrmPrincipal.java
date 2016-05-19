@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
 
-import clases.login;
+import clases.Login;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;

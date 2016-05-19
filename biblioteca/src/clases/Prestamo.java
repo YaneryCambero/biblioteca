@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.RootPaneContainer;
 import javax.xml.ws.FaultAction;
 
-public class prestamo {	
-	conectar conexion = new conectar();
+public class Prestamo {	
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	ResultSetMetaData metaDatos;

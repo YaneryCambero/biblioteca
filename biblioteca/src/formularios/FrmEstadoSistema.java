@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import clases.estadoSistema;
+import clases.EstadoSistema;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -76,25 +76,25 @@ public class FrmEstadoSistema extends JDialog {
 		lblLectoresActivos.setBounds(210, 127, 129, 14);
 		contentPane.add(lblLectoresActivos);
 		
-		estadoSistema cantidadLibros = new estadoSistema();
+		EstadoSistema cantidadLibros = new EstadoSistema();
 		
 		JLabel lblCantidadLibros = new JLabel(Integer.toString(cantidadLibros.mostrarLibros()));
 		lblCantidadLibros.setBounds(152, 89, 46, 14);
 		contentPane.add(lblCantidadLibros);
 		
-		estadoSistema cantidadLibrosPrestado = new estadoSistema();
+		EstadoSistema cantidadLibrosPrestado = new EstadoSistema();
 		
 		JLabel lblCantidadLibrosPrestados = new JLabel(Integer.toString(cantidadLibrosPrestado.mostrarLibrosPrestados()));
 		lblCantidadLibrosPrestados.setBounds(152, 127, 46, 14);
 		contentPane.add(lblCantidadLibrosPrestados);
 		
-		estadoSistema cantidadLibrosEnRecepcion = new estadoSistema();
+		EstadoSistema cantidadLibrosEnRecepcion = new EstadoSistema();
 		
 		JLabel lblCantidadLibrosRecepcion = new JLabel(Integer.toString(cantidadLibrosEnRecepcion.mostrarLibrosEnRecepccion()));
 		lblCantidadLibrosRecepcion.setBounds(355, 89, 46, 14);
 		contentPane.add(lblCantidadLibrosRecepcion);
 		
-		estadoSistema cantidadLectores = new estadoSistema();
+		EstadoSistema cantidadLectores = new EstadoSistema();
 		
 		JLabel lblCantidadLectoresActivos = new JLabel(Integer.toString(cantidadLectores.mostrarLector()));
 		lblCantidadLectoresActivos.setBounds(355, 127, 46, 14);

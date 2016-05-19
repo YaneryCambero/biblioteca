@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import clases.login;
+import clases.Login;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -58,9 +58,9 @@ public class FrmLogin extends JDialog {
 	public FrmLogin() {
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setResizable(false);
-		setBackground(Color.WHITE);
+		setBackground(Color.DARK_GRAY);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmLogin.class.getResource("/imagenes/PNG-32/Profile.png")));
-		setTitle("login");
+		setTitle("Login");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 457, 206);
 		contentPane = new JPanel();
@@ -69,12 +69,12 @@ public class FrmLogin extends JDialog {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblUsuario = new JLabel("usuario:");
+		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuario.setBounds(45, 47, 66, 14);
 		contentPane.add(lblUsuario);
 		
-		JLabel lblContrasena = new JLabel("contrasena:");
+		JLabel lblContrasena = new JLabel("Contraseña:");
 		lblContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasena.setBounds(27, 75, 84, 14);
 		contentPane.add(lblContrasena);
@@ -102,7 +102,7 @@ public class FrmLogin extends JDialog {
 				}else
 				 {
 					FrmLogin.this.dispose();
-					login inicio = new login(usuario,contrasena);
+					Login inicio = new Login(usuario,contrasena);
 				 }
 			}
 		});
@@ -116,7 +116,7 @@ public class FrmLogin extends JDialog {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblLogin = new JLabel("Login");
-		lblLogin.setFont(new Font("Segoe Print", Font.BOLD, 25));
+		lblLogin.setFont(new Font("Segoe Print", Font.PLAIN, 25));
 		lblLogin.setBounds(177, 0, 89, 33);
 		contentPane.add(lblLogin);
 		

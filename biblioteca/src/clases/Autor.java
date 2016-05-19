@@ -7,12 +7,12 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class autor {
-	conectar conexion = new conectar();
+public class Autor {
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	
-	public autor(String nombre, String apellido, String nacionalidad) throws SQLException{ 
+	public Autor(String nombre, String apellido, String nacionalidad) throws SQLException{ 
 		sql = "SELECT * FROM autor where nombre ='"+nombre+"' AND apellido = '"+apellido+"'";
 		
 		
@@ -27,10 +27,10 @@ public class autor {
 				Statement sentencia1 = conectado.createStatement();
 				sentencia1.executeUpdate(sql);
 				
-				JOptionPane.showMessageDialog(null, "Creacion Exitoso");
+				JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
 				
 		}else{
-			JOptionPane.showMessageDialog(null, "autor existe...... favor de verificar");
+			JOptionPane.showMessageDialog(null, "Autor existe...... favor de verificar");
 		}	
 	}
 

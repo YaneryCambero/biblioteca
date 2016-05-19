@@ -9,12 +9,12 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
-public class lector {
-	conectar conexion = new conectar();
+public class Lector {
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	
-	public lector(String nombre, String apellido, String cedula, String fechaNacimiento, String telefono,  String calle ,String sector, String ciudad, String email, int categoria ) throws SQLException{
+	public Lector(String nombre, String apellido, String cedula, String fechaNacimiento, String telefono,  String calle ,String sector, String ciudad, String email, int categoria ) throws SQLException{
 		sql = "SELECT * FROM lector where nombre ='"+nombre+"' AND apellido = '"+apellido+"'";
 		
 						
@@ -29,7 +29,7 @@ public class lector {
 						Statement sentencia1 = conectado.createStatement();
 						sentencia1.executeUpdate(sql);
 						
-						JOptionPane.showMessageDialog(null, "Creacion Exitoso");
+						JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
 						
 				}else{
 					JOptionPane.showMessageDialog(null, "Lector existe........ favor verificar");

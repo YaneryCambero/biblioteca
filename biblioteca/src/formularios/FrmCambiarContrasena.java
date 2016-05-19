@@ -14,7 +14,7 @@ import javax.swing.JDialog;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
-import clases.cambiarContrasena;
+import clases.CambiarContrasena;
 
 import java.awt.Component;
 import java.awt.Window.Type;
@@ -124,7 +124,7 @@ public class FrmCambiarContrasena extends JDialog {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				cambiarContrasena cambiar = new cambiarContrasena(TxtUsuario.getText(), new String(TxtContrasenaActual.getPassword()), new String(TxtNuevoContrasena.getPassword()), new String(TxtConfirmarContrasena.getPassword()));
+				CambiarContrasena cambiar = new CambiarContrasena(TxtUsuario.getText(), new String(TxtContrasenaActual.getPassword()), new String(TxtNuevoContrasena.getPassword()), new String(TxtConfirmarContrasena.getPassword()));
 				TxtUsuario.setText("");
 				TxtContrasenaActual.setText("");
 				TxtNuevoContrasena.setText("");

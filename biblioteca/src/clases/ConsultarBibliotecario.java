@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-public class consultarPrestamo {
-	conectar conexion = new conectar();
+public class ConsultarBibliotecario {
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	String criterioDeBusqueda;
@@ -18,20 +18,16 @@ public class consultarPrestamo {
 	ResultSet resultado;
 	int cantidadColumnas;
 	
-	public consultarPrestamo(int buscarPor, String informacionBuscar) throws SQLException{
+	public ConsultarBibliotecario(int buscarPor, String informacionBuscar) throws SQLException{
 		if(0 == buscarPor){
 			criterioDeBusqueda = "id";
 		}else if (1 == buscarPor) {
-			criterioDeBusqueda = "id_bibliotecario";
-		}else if(2 == buscarPor){
-			criterioDeBusqueda = "id_libro";
+			criterioDeBusqueda = "nombre";
 		}else{
-			criterioDeBusqueda = "id_lector";
+			criterioDeBusqueda = "apellido";
 		}
 		
-		
-		
-		sql = "SELECT * FROM prestamo WHERE "+criterioDeBusqueda+" = '"+informacionBuscar+"'";
+		sql = "SELECT * FROM bibliotecario WHERE  "+criterioDeBusqueda+" = '"+informacionBuscar+"'";
 		
 			Statement sentencia = conectado.createStatement();
 			resultado = sentencia.executeQuery(sql);
@@ -41,8 +37,9 @@ public class consultarPrestamo {
 			     metaDatos = resultado.getMetaData();
 			}else
 			 {
-					throw new SQLException("no tenia datos");
+					throw new SQLException("No tienea datos");
 			 }
+		
 	}
 	
 	public Vector<String> obtenerNombreDeColumnas() throws SQLException{
@@ -59,20 +56,20 @@ public class consultarPrestamo {
 	return nombreColumnas;
 }
 
-public Vector<Vector<String>> obtenerDatosFilas() throws SQLException{
-	
-		resultado.beforeFirst();
-		while(resultado.next())
-		{
-			Vector<String> temporal = new Vector<>();
-			datosDeFilas.add(temporal);
-			for(int i = 1; i<= cantidadColumnas;i++ )
+	public Vector<Vector<String>> obtenerDatosFilas() throws SQLException{
+		
+			resultado.beforeFirst();
+			while(resultado.next())
 			{
-			  temporal.add(resultado.getObject(i).toString());
+				Vector<String> temporal = new Vector<>();
+				datosDeFilas.add(temporal);
+				for(int i = 1; i<= cantidadColumnas;i++ )
+				{
+				  temporal.add(resultado.getObject(i).toString());
+				}
 			}
-		}
-	
-	return datosDeFilas;
-}
+		
+		return datosDeFilas;
+	}
 
 }

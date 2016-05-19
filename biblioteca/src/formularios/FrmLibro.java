@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import clases.libro;
+import clases.Libro;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -219,7 +219,7 @@ public class FrmLibro extends JDialog {
 			int Cantidad = Integer.parseInt(txtCantidad.getText());
 			int numeroPagina = Integer.parseInt(txtNumeroDePaginas.getText());
 
-					libro Libro = new libro(txtTitulo.getText(), cbxAutor.getSelectedItem().toString(), txtEditor.getText(), cbxGenero.getSelectedItem().toString(), cbxSubGenero.getSelectedItem().toString(), cbxIdioma.getSelectedItem().toString(), estado, cbxCategoria.getSelectedItem().toString(),txtPublicacion.getText(), txtEditorial.getText(), numeroPagina,cbxCondicionesFisicas.getSelectedItem().toString(),Cantidad, txtEdicion.getText());
+					Libro Libro = new Libro(txtTitulo.getText(), cbxAutor.getSelectedItem().toString(), txtEditor.getText(), cbxGenero.getSelectedItem().toString(), cbxSubGenero.getSelectedItem().toString(), cbxIdioma.getSelectedItem().toString(), estado, cbxCategoria.getSelectedItem().toString(),txtPublicacion.getText(), txtEditorial.getText(), numeroPagina,cbxCondicionesFisicas.getSelectedItem().toString(),Cantidad, txtEdicion.getText());
 					
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(FrmLibro.this, e2);
@@ -283,7 +283,7 @@ public class FrmLibro extends JDialog {
 		
 		
 		try {
-			libro autores = new libro();
+			Libro autores = new Libro();
 			
 			autor = autores.mostrarAutor();
 			

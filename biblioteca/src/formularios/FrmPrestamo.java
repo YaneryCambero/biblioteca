@@ -15,7 +15,7 @@ import javax.swing.JTable;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 
-import clases.prestamo;
+import clases.Prestamo;
 
 import javax.swing.ListSelectionModel;
 import java.awt.Dialog.ModalityType;
@@ -141,7 +141,7 @@ public class FrmPrestamo extends JDialog {
 		JButton btnBuscar_1 = new JButton("Buscar");
 		btnBuscar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				prestamo Prestamo = new prestamo();
+				Prestamo Prestamo = new Prestamo();
 				
 			    try {
 					control = Prestamo.buscarLector(txtCodigo.getText());

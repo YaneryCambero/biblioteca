@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-import clases.bibliotecario;
+import clases.Bibliotecario;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -390,7 +390,7 @@ public class FrmBibliotecario extends JDialog {
 				String fechaRegistro = txtFechaRegistroAnyo.getText() +"-"+ txtFechaRegistroMes.getText() +"-"+ txtFechaRegistroDia.getText();
 				
 				try {
-					bibliotecario Bibliotecario = new bibliotecario(txtNombre.getText(),txtApellido.getText(),txtCalle.getText(),txtSector.getText(),txtCiudad.getText(),fechaNacimiento,txtEmail.getText(),txtTelefono.getText(),fechaRegistro,txtCedula.getText(),cbxCategoria.getSelectedIndex());
+					Bibliotecario Bibliotecario = new Bibliotecario(txtNombre.getText(),txtApellido.getText(),txtCalle.getText(),txtSector.getText(),txtCiudad.getText(),fechaNacimiento,txtEmail.getText(),txtTelefono.getText(),fechaRegistro,txtCedula.getText(),cbxCategoria.getSelectedIndex());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}

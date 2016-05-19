@@ -9,11 +9,11 @@ import javax.swing.JOptionPane;
 
 public class CrearUsuario
 {
-	conectar conexion = new conectar();
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	
-	public CrearUsuario(String usuario, String contrasena, String confirmarContrasena, boolean admin)
+	public CrearUsuario(String usuario, String contrasena, String confirmarContrasena, boolean permisos)
 	{
 		sql = "SELECT * FROM login where usuario ='"+usuario+"'";
 		
@@ -25,17 +25,17 @@ public class CrearUsuario
 				if(!resultado.next())
 				{
 					if(contrasena.equals(confirmarContrasena)){
-						sql = "INSERT into login (usuario, contrasena, permiso) VALUES ('"+usuario+"', '"+contrasena+"', '"+admin+"')";
+						sql = "INSERT into login (usuario, contrasena, permiso) VALUES ('"+usuario+"', '"+contrasena+"', '"+permisos+"')";
 						
 						Statement sentencia1 = conectado.createStatement();
 						sentencia1.executeUpdate(sql);
 						
-						JOptionPane.showMessageDialog(null, "Creacion Exitoso");
+						JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
 						
 						
 					}else
 					 {
-						JOptionPane.showMessageDialog(null, "contrasena no concuerdan");
+						JOptionPane.showMessageDialog(null, "Contrasena no concuerdan");
 					 }
 				}else
 				 {

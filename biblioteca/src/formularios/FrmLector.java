@@ -23,7 +23,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-import clases.lector;
+import clases.Lector;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -189,7 +189,7 @@ public class FrmLector extends JDialog {
 				String fechaNacimiento = txtFechaNacimientoAnyo +"-"+ txtFechaNacimientoMes.getText() +"-"+ txtFechaNacimientoDia.getText();
 				try{
 					
-					lector Lector = new lector(txtNombre.getText(), txtApellido.getText(),ftfCedula.getText(), fechaNacimiento, txtTelefono.getText(), txtCalle.getText(), txtSector.getText(), txtCiudad.getText(), txtEmail.getText(), cbbCategoria.getSelectedIndex());
+					Lector Lector = new Lector(txtNombre.getText(), txtApellido.getText(),ftfCedula.getText(), fechaNacimiento, txtTelefono.getText(), txtCalle.getText(), txtSector.getText(), txtCiudad.getText(), txtEmail.getText(), cbbCategoria.getSelectedIndex());
 				
 				}catch (SQLException e)
 				{

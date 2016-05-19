@@ -11,14 +11,14 @@ import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 
-public class libro {
-	conectar conexion = new conectar();
+public class Libro {
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	int id;
 	ResultSet resultadoAutores;
 	
-	public libro(String titulo, String autor, String editor, String genero, String subGenero, String idioma, int estado, String categoria, String publicacion, String editorial, int numeroPagina, String estadoFisico, int cantidad, String edicion ) throws SQLException{
+	public Libro(String titulo, String autor, String editor, String genero, String subGenero, String idioma, int estado, String categoria, String publicacion, String editorial, int numeroPagina, String estadoFisico, int cantidad, String edicion ) throws SQLException{
 		sql = "SELECT id, nombre, apellido FROM autor";
 		
 		
@@ -45,14 +45,14 @@ public class libro {
 				PreparedStatement sentencia1 = conectado.prepareStatement(sql1);
 				sentencia1.executeUpdate();
 				
-				JOptionPane.showMessageDialog(null, "Creacion Exitoso");
+				JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
 				
 		}else{
-			JOptionPane.showMessageDialog(null, "libro existe........ favor verificar");
+			JOptionPane.showMessageDialog(null, "El libro existe........ favor verificar");
 		} 	
 	}
 	
-	public libro() throws SQLException{
+	public Libro() throws SQLException{
         sql = "SELECT nombre, apellido FROM autor";
 		
 		Statement sentencia = conectado.createStatement();
@@ -63,7 +63,7 @@ public class libro {
 		
 		if(!resultadoAutores.next()){
 			
-			throw new SQLException("autor no encontrado");
+			throw new SQLException("Autor no encontrado");
 		}
 		
 		return resultadoAutores;

@@ -8,13 +8,13 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 
-public class cambiarContrasena
+public class CambiarContrasena
 {
-	conectar conexion = new conectar();
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	
-	public cambiarContrasena(String usuario, String contrasena, String nuevaContrasena, String confirmarContrasena)
+	public CambiarContrasena(String usuario, String contrasena, String nuevaContrasena, String confirmarContrasena)
 	{
         sql = "SELECT * FROM login where usuario ='"+usuario+"' and contrasena ='"+contrasena+"'";
 		

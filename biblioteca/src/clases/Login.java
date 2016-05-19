@@ -10,15 +10,15 @@ import javax.swing.JOptionPane;
 import formularios.FrmLogin;
 import formularios.FrmPrincipal;
 
-public class login 
+public class Login 
 {
-	conectar conexion = new conectar();
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	
-	public login(String usu, String pass)
+	public Login(String usuario, String contrsena)
 	{
-		sql = "SELECT * FROM login where usuario ='"+usu+"' and contrasena ='"+pass+"'";
+		sql = "SELECT * FROM login where usuario ='"+usuario+"' and contrasena ='"+contrsena+"'";
 		
 		try {
 						
@@ -31,7 +31,7 @@ public class login
 					principal.setVisible(true);
 				}else
 				 {
-					JOptionPane.showMessageDialog(null, "usuario no encontrado");
+					JOptionPane.showMessageDialog(null, "Usuario no encontrado");
 					FrmLogin login = new FrmLogin();
 					login.setLocationRelativeTo(null);
 					login.setVisible(true);

@@ -10,12 +10,12 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 
-public class bibliotecario {
-	conectar conexion = new conectar();
+public class Bibliotecario {
+	BaseDeDatos conexion = new BaseDeDatos();
 	Connection conectado = conexion.conexion();
 	String sql="";
 	
-	public bibliotecario(String nombre, String apellido, String calle,String sector, String ciudad, String fechaNacimiento, String email, String telefono, String fechaIngreso, String cedula, int tanda) throws SQLException{
+	public Bibliotecario(String nombre, String apellido, String calle,String sector, String ciudad, String fechaNacimiento, String email, String telefono, String fechaIngreso, String cedula, int tanda) throws SQLException{
 		sql = "SELECT * FROM bibliotecario where nombre ='"+nombre+"' AND apellido = '"+apellido+"'";
 		
 						
@@ -30,7 +30,7 @@ public class bibliotecario {
 						Statement sentencia1 = conectado.createStatement();
 						sentencia1.executeUpdate(sql);
 						
-						JOptionPane.showMessageDialog(null, "Creacion Exitoso");
+						JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
 						
 				}else{
 					JOptionPane.showMessageDialog(null, "Bibliotecario existe....... favor de verificar");
