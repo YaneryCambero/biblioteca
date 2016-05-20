@@ -12,9 +12,9 @@ public class EstadoSistema {
 	String sql="";
 	ResultSetMetaData metaDatos;
 	ResultSet resultado;
-	int CantidadFilas = 0;
 	
 	public int mostrarLector(){ 
+		int CantidadLectores = 0;
 		sql = "SELECT * FROM lector";
 		
 		
@@ -24,18 +24,19 @@ public class EstadoSistema {
 			resultado = sentencia.executeQuery(sql);
 			
 			if(resultado.next()){ 
-				CantidadFilas = resultado.getRow();
+				CantidadLectores = resultado.getRow();
 			}
 		} catch (SQLException e) {
-		  
+		  CantidadLectores = 0;
 		}
 		
 		
-		return CantidadFilas;
+		return CantidadLectores;
 		
 	}
 	
 	public int mostrarLibros(){ 
+		int CantidadLibros = 0;
 		sql = "SELECT * FROM libros";
 		Statement sentencia;
 		try {
@@ -43,15 +44,16 @@ public class EstadoSistema {
 			resultado = sentencia.executeQuery(sql);
 			
 			if(resultado.next()){ 
-				CantidadFilas = resultado.getRow();
+				CantidadLibros = resultado.getRow();
 			}
 		} catch (SQLException e) {
-		  
+		  CantidadLibros = 0;
 		}
 
-		return CantidadFilas;
+		return CantidadLibros;
 	}
 		public int mostrarLibrosPrestados(){ 
+			int CantidadLibrosPrestado = 0;
 			sql = "SELECT * FROM prestamo";
 			
 			
@@ -61,19 +63,21 @@ public class EstadoSistema {
 				resultado = sentencia.executeQuery(sql);
 				
 				if(resultado.next()){ 
-					CantidadFilas = resultado.getRow();
+					CantidadLibrosPrestado = resultado.getRow();
 				}
 			} catch (SQLException e) {
-			  
+			  CantidadLibrosPrestado = 0;
 			}
 			
 			
-			return CantidadFilas;
+			return CantidadLibrosPrestado;
 			
 		}
 		public int mostrarLibrosEnRecepccion(){
 			
-			return (mostrarLibros() - mostrarLibrosPrestados());
+			int librosRecepcion = mostrarLibros() - mostrarLibrosPrestados();
+			
+			return (librosRecepcion);
 		}
 		
 		
