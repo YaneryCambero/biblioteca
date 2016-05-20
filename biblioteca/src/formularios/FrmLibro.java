@@ -189,6 +189,7 @@ public class FrmLibro extends JDialog {
 		});
 		
 		cbxGenero.setModel(new DefaultComboBoxModel(new String[] {"Dramatico", "Epico", "Lirico"}));
+		cbxGenero.setSelectedIndex(0);
 		cbxGenero.setBounds(124, 111, 124, 20);
 		contentPane.add(cbxGenero);
 		

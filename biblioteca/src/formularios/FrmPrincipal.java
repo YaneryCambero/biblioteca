@@ -297,7 +297,7 @@ public class FrmPrincipal extends JFrame {
 		
 		JLabel label = new JLabel("Biblioteca");
 		label.setFont(new Font("Segoe Print", Font.BOLD, 50));
-		label.setBounds(211, 61, 259, 61);
+		label.setBounds(215, 58, 259, 61);
 		contentPane.add(label);
 		
 		JLabel lblNewLabel_1 = new JLabel("Biblioteca");

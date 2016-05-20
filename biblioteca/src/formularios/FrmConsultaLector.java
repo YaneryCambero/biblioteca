@@ -118,7 +118,6 @@ public class FrmConsultaLector extends JDialog {
 		lblTotalDeRegistros.setBounds(12, 345, 103, 14);
 		contentPane.add(lblTotalDeRegistros);
 		
-		
 		txtBuscarPor = new JTextField();
 		txtBuscarPor.setBounds(394, 77, 193, 20);
 		contentPane.add(txtBuscarPor);
