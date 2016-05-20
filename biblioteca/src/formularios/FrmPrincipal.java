@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
 
+import com.alee.laf.WebLookAndFeel;
+
 import clases.Login;
 
 import javax.swing.JMenuBar;
@@ -18,6 +20,11 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import java.awt.Window.Type;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Toolkit;
@@ -32,10 +39,12 @@ import java.awt.Color;
 import java.awt.Dialog.ModalityType;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Arrays;
 
 public class FrmPrincipal extends JFrame {
 
 	private JPanel contentPane;
+	private LookAndFeelInfo[] apariencias;
 
 	/**
 	 * Launch the application.
@@ -260,11 +269,11 @@ public class FrmPrincipal extends JFrame {
 		});
 		mnConsultas.add(mntmEstadoDelSistema);
 		
-		JMenu mnNewMenu_1 = new JMenu("Utilitarios");
-		menuBar.add(mnNewMenu_1);
+		JMenu menuUtilitarios = new JMenu("Utilitarios");
+		menuBar.add(menuUtilitarios);
 		
 		JMenuItem mntmRealizarCopiaDe = new JMenuItem("Realizar copia de seguridad");
-		mnNewMenu_1.add(mntmRealizarCopiaDe);
+		menuUtilitarios.add(mntmRealizarCopiaDe);
 		
 		JMenu mnAyuda = new JMenu("Ayuda");
 		menuBar.add(mnAyuda);
@@ -307,6 +316,54 @@ public class FrmPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		setResizable(false);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
+		apariencias = UIManager.getInstalledLookAndFeels();
+		apariencias = Arrays.copyOf( apariencias, apariencias.length + 1 );
+		
+		LookAndFeelInfo webLAF = new LookAndFeelInfo( "WebLAF", WebLookAndFeel.class.getCanonicalName());
+		apariencias[apariencias.length - 1] = webLAF;	
+		
+		//crear los elementos del menu necesarios para cambiar la apariencia visual de la aplicacion.
+		JMenu menuTemas = new JMenu("Temas");
+		menuUtilitarios.add(menuTemas);
+		
+		for (int i = 0; i < apariencias.length; i++) {		
+			final JMenuItem menuItemActual = new JMenuItem( apariencias[i].getName() );
+			menuTemas.add(menuItemActual);
+			menuItemActual.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					cambiarAparienciaVisual( menuItemActual.getText(), apariencias );					
+				}
+			});
+		}		
+		cambiarAparienciaVisual("Windows", apariencias);
+	}
+	
+	private void cambiarAparienciaVisual(String apariencia, LookAndFeelInfo[] apariencias) {
+		LookAndFeelInfo aparienciaActual = null;
+		
+		for (int i = 0; i < apariencias.length; i++) {
+			if( apariencias[i].getName().equals(apariencia) )			{
+				aparienciaActual = apariencias[i];
+				break;
+			}
+		}
+		
+		if(aparienciaActual != null) {
+			
+				try {
+					UIManager.setLookAndFeel( aparienciaActual.getClassName() );
+					SwingUtilities.updateComponentTreeUI(this);
+				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+						| UnsupportedLookAndFeelException e) {
+				
+					e.printStackTrace();
+				}
+				
+		}
 	}
 
 	private void confirmarCierre() {
