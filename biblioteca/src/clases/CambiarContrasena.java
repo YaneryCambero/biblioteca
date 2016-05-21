@@ -1,11 +1,15 @@
 package clases;
 
+import java.awt.Dialog.ModalityType;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
+import javax.swing.RootPaneContainer;
+
+import formularios.FrmCambiarContrasena;
 
 
 public class CambiarContrasena
@@ -30,7 +34,7 @@ public class CambiarContrasena
 						
 						Statement sentencia1 = conexion.createStatement();
 						sentencia1.executeUpdate(sql);
-						
+					
 						JOptionPane.showMessageDialog(null, "Cambio Exitoso");
 						
 						

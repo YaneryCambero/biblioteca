@@ -390,9 +390,10 @@ public class FrmBibliotecario extends JDialog {
 				String fechaRegistro = txtFechaRegistroAnyo.getText() +"-"+ txtFechaRegistroMes.getText() +"-"+ txtFechaRegistroDia.getText();
 				
 				try {
-					Bibliotecario Bibliotecario = new Bibliotecario(txtNombre.getText(),txtApellido.getText(),txtCalle.getText(),txtSector.getText(),txtCiudad.getText(),fechaNacimiento,txtEmail.getText(),txtTelefono.getText(),fechaRegistro,txtCedula.getText(),cbxCategoria.getSelectedIndex());
+					Bibliotecario Bibliotecario = new Bibliotecario(txtNombre.getText(),txtApellido.getText(),txtCalle.getText(),txtSector.getText(),txtCiudad.getText(),fechaNacimiento,txtEmail.getText(),txtTelefono.getText(),fechaRegistro,txtCedula.getText(),cbxCategoria.getSelectedItem().toString());
 				} catch (SQLException e) {
 					e.printStackTrace();
+					//JOptionPane.showMessageDialog(rootPane, e);
 				}
 			}
 		});

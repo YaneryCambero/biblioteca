@@ -284,7 +284,7 @@ public class FrmPrincipal extends JFrame {
 				JOptionPane.showMessageDialog(null, "Los creadores del sistema son:\n\n Nombre                                   Matricula\n"
 						+ "\n Heriberto Espino                 100040664"
 						+ "\n Wendy Rodriguez               100071795"
-						+ "\n Francisco Moran     "
+						+ "\n Francisco Moran           BE0326"
 						+ "\n Yanery R. Cambero Hez    100159623");
 			}
 		});
