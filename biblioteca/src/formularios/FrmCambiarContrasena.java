@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
@@ -21,10 +22,13 @@ import java.awt.Window.Type;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Toolkit;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseMotionAdapter;
+import java.net.URL;
 import java.awt.event.MouseEvent;
 
 public class FrmCambiarContrasena extends JDialog {
@@ -34,6 +38,13 @@ public class FrmCambiarContrasena extends JDialog {
 	private JPasswordField TxtContrasenaActual;
 	private JPasswordField TxtNuevoContrasena;
 	private JPasswordField TxtConfirmarContrasena;
+	
+	
+	public Image ImagenFondo;
+	public URL Fondo;
+
+
+
 
 	/**
 	 * Launch the application.
@@ -60,7 +71,24 @@ public class FrmCambiarContrasena extends JDialog {
 		setTitle("Cambiar Contrase\u00F1a");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 410, 262);
-		contentPane = new JPanel();
+		//contentPane = new JPanel();
+		
+		contentPane = new JPanel(){
+			
+			
+			public void paintComponent (Graphics g){
+				
+				   g.drawImage(ImagenFondo, 0, 0, getWidth(),getHeight(),this);
+				
+				
+			}			
+			
+		};
+
+
+      	Fondo = this.getClass().getResource("/imagenes/images(13).jpg");
+      	ImagenFondo = new ImageIcon(Fondo).getImage();			
+		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -70,26 +98,31 @@ public class FrmCambiarContrasena extends JDialog {
 		JLabel lblCambiarConatrena = new JLabel("Cambiar contrase\u00F1a");
 		lblCambiarConatrena.setFont(new Font("Segoe Print", Font.BOLD, 25));
 		lblCambiarConatrena.setBounds(67, 11, 274, 33);
+		lblCambiarConatrena.setForeground(getBackground().white);;
 		contentPane.add(lblCambiarConatrena);
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuario.setBounds(10, 69, 148, 14);
+		lblUsuario.setForeground(getBackground().white);;
 		contentPane.add(lblUsuario);
 		
 		JLabel lblContrasena = new JLabel("Contrase\u00F1a Actual:");
 		lblContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasena.setBounds(10, 94, 148, 14);
+		lblContrasena.setForeground(getBackground().white);;
 		contentPane.add(lblContrasena);
 		
 		JLabel lblNuevaContrasena = new JLabel("Nueva Contrase\u00F1a:");
 		lblNuevaContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNuevaContrasena.setBounds(10, 119, 148, 14);
+		lblNuevaContrasena.setForeground(getBackground().white);;
 		contentPane.add(lblNuevaContrasena);
 		
 		JLabel lblComprovarContrasena = new JLabel("Comprobar Contrase\u00F1a:");
 		lblComprovarContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblComprovarContrasena.setBounds(10, 144, 148, 14);
+		lblComprovarContrasena.setForeground(getBackground().white);;
 		contentPane.add(lblComprovarContrasena);
 		
 		TxtUsuario = new JTextField();

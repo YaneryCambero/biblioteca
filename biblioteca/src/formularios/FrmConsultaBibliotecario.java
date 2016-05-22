@@ -21,14 +21,18 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.Dialog.ModalityType;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Toolkit;
 
 public class FrmConsultaBibliotecario extends JDialog {
@@ -39,6 +43,12 @@ public class FrmConsultaBibliotecario extends JDialog {
 	Vector<String> nombreColumnas;
 	Vector<Vector<String>> datosDeFilas;
 	DefaultTableModel modeloTabla;
+	
+	
+	public Image ImagenFondo;
+	public URL Fondo;
+
+	
 
 	/**
 	 * Launch the application.
@@ -65,7 +75,24 @@ public class FrmConsultaBibliotecario extends JDialog {
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 974, 410);
-		contentPane = new JPanel();
+		//contentPane = new JPanel();
+		
+		contentPane = new JPanel(){
+			
+			
+			public void paintComponent (Graphics g){
+				
+				   g.drawImage(ImagenFondo, 0, 0, getWidth(),getHeight(),this);
+				
+				
+			}			
+			
+		};
+
+
+      	Fondo = this.getClass().getResource("/imagenes/images(15).jpg");
+      	ImagenFondo = new ImageIcon(Fondo).getImage();			
+		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -73,12 +100,14 @@ public class FrmConsultaBibliotecario extends JDialog {
 		JLabel lblBibliotecarios = new JLabel("Consulta de Bibliotecarios");
 		lblBibliotecarios.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblBibliotecarios.setBounds(375, 12, 157, 25);
+		lblBibliotecarios.setForeground(getBackground().white);;
 		contentPane.add(lblBibliotecarios);
 		
 		JLabel lblBuscarPor = new JLabel("Buscar por:");
 		lblBuscarPor.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblBuscarPor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblBuscarPor.setBounds(293, 56, 77, 14);
+		lblBuscarPor.setForeground(getBackground().white);;
 		contentPane.add(lblBuscarPor);
 		
 		JComboBox cbxBuscarPor = new JComboBox();
@@ -116,10 +145,12 @@ public class FrmConsultaBibliotecario extends JDialog {
 		
 		JLabel lblTotalDeRegistros = new JLabel("Total de registros:");
 		lblTotalDeRegistros.setBounds(12, 344, 103, 16);
+		lblTotalDeRegistros.setForeground(getBackground().white);;
 		contentPane.add(lblTotalDeRegistros);
 		
 		JLabel lblCantidadRegistrada = new JLabel("0");
 		lblCantidadRegistrada.setBounds(123, 344, 55, 16);
+		lblCantidadRegistrada.setForeground(getBackground().white);;
 		contentPane.add(lblCantidadRegistrada);
 		
 		JButton btnBuscar = new JButton("Buscar");
@@ -157,6 +188,7 @@ public class FrmConsultaBibliotecario extends JDialog {
 		JLabel lblCriterio = new JLabel("Informacion a buscar:");
 		lblCriterio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCriterio.setBounds(245, 91, 130, 16);
+		lblCriterio.setForeground(getBackground().white);;
 		contentPane.add(lblCriterio);
 		
 		JButton btnNewButton = new JButton("Nuevo");

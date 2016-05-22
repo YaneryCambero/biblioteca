@@ -3,6 +3,8 @@ package formularios;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.ScrollPane;
 
 import javax.swing.JFrame;
@@ -22,7 +24,10 @@ import javax.swing.JScrollPane;
 import java.awt.Dialog.ModalityType;
 import javax.swing.JTable;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -39,6 +44,12 @@ public class FrmConsultaLector extends JDialog {
 	private JTextField txtBuscarPor;
 	private JTable table;
 	DefaultTableModel modeloTabla;
+	
+	
+	public Image ImagenFondo;
+	public URL Fondo;
+
+
 
 	/**
 	 * Launch the application.
@@ -65,7 +76,25 @@ public class FrmConsultaLector extends JDialog {
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 974, 410);
-		contentPane = new JPanel();
+		//contentPane = new JPanel();
+		
+		contentPane = new JPanel(){
+			
+			
+			public void paintComponent (Graphics g){
+				
+				   g.drawImage(ImagenFondo, 0, 0, getWidth(),getHeight(),this);
+				
+				
+			}			
+			
+		};
+
+
+      	Fondo = this.getClass().getResource("/imagenes/images(16).jpg");
+      	ImagenFondo = new ImageIcon(Fondo).getImage();			
+		
+		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

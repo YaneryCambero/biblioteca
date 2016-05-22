@@ -18,17 +18,22 @@ public class login
 	
 	public login(String usu, String pass)
 	{
+		
+
 		sql = "SELECT * FROM login where usuario ='"+usu+"' and contrasena ='"+pass+"'";
 		
+	
 		try {
 						
 				Statement sentencia = conectado.createStatement();
 				ResultSet resultado = sentencia.executeQuery(sql);
 				
+				
 				if(resultado.next())
 				{
 					FrmPrincipal principal = new FrmPrincipal();
 					principal.setVisible(true);
+					
 				}else
 				 {
 					JOptionPane.showMessageDialog(null, "usuario no encontrado");

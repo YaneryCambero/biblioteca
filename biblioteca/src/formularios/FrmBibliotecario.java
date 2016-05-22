@@ -17,10 +17,14 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Dialog.ModalityType;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
@@ -44,6 +48,14 @@ public class FrmBibliotecario extends JDialog {
 	private JTextField txtSector;
 	private JTextField txtCiudad;
 
+	
+	public Image ImagenFondo;
+	public URL Fondo;
+
+
+
+
+	
 	/**
 	 * Launch the application.
 	 */
@@ -69,7 +81,24 @@ public class FrmBibliotecario extends JDialog {
 		setTitle("Registro Bibliotecario");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 430, 415);
-		contentPane = new JPanel();
+		//contentPane = new JPanel();
+		
+		contentPane = new JPanel(){
+			
+			
+			public void paintComponent (Graphics g){
+				
+				   g.drawImage(ImagenFondo, 0, 0, getWidth(),getHeight(),this);
+				
+				
+			}			
+			
+		};
+
+
+      	Fondo = this.getClass().getResource("/imagenes/images (11).jpg");
+      	ImagenFondo = new ImageIcon(Fondo).getImage();
+      	
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -112,41 +141,49 @@ public class FrmBibliotecario extends JDialog {
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombre.setBounds(10, 42, 111, 14);
+		lblNombre.setForeground(getBackground().black.darker());;
 		contentPane.add(lblNombre);
 		
 		JLabel lblApellios = new JLabel("Apellidos:");
 		lblApellios.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblApellios.setBounds(10, 67, 111, 14);
+		lblApellios.setForeground(getBackground().black.darker());;
 		contentPane.add(lblApellios);
 		
 		JLabel lblDireccion = new JLabel("Calle:");
 		lblDireccion.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDireccion.setBounds(10, 183, 111, 14);
+		lblDireccion.setForeground(getBackground().black.darker());;
 		contentPane.add(lblDireccion);
 		
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmail.setBounds(10, 297, 111, 14);
+		lblEmail.setForeground(getBackground().black.darker());;
 		contentPane.add(lblEmail);
 		
 		JLabel lblTelefono = new JLabel("Telefono:");
 		lblTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelefono.setBounds(10, 149, 111, 14);
+		lblTelefono.setForeground(getBackground().black.darker());;
 		contentPane.add(lblTelefono);
 		
 		JLabel lblFechaDeRegistro = new JLabel("Fecha de registro:");
 		lblFechaDeRegistro.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblFechaDeRegistro.setBounds(10, 269, 111, 14);
+		lblFechaDeRegistro.setForeground(getBackground().black.darker());;
 		contentPane.add(lblFechaDeRegistro);
 		
 		JLabel lblCategoria = new JLabel("Categoria:");
 		lblCategoria.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCategoria.setBounds(10, 319, 111, 14);
+		lblCategoria.setForeground(getBackground().black.darker());;
 		contentPane.add(lblCategoria);
 		
 		JLabel lblCedula = new JLabel("Cedula:");
 		lblCedula.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCedula.setBounds(10, 121, 111, 14);
+		lblCedula.setForeground(getBackground().black.darker());;
 		contentPane.add(lblCedula);
 		
 		try {
@@ -226,15 +263,18 @@ public class FrmBibliotecario extends JDialog {
 		JLabel lblSector = new JLabel("Sector:");
 		lblSector.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSector.setBounds(75, 208, 46, 14);
+		lblSector.setForeground(getBackground().black.darker());;
 		contentPane.add(lblSector);
 		
 		JLabel lblCiudad = new JLabel("Ciudad:");
 		lblCiudad.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCiudad.setBounds(75, 233, 46, 14);
+		lblCiudad.setForeground(getBackground().black.darker());;
 		contentPane.add(lblCiudad);
 		
 		txtSector = new JTextField();
 		txtSector.setBounds(139, 204, 163, 20);
+		
 		contentPane.add(txtSector);
 		txtSector.setColumns(10);
 		
