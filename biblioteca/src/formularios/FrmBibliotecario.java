@@ -391,6 +391,21 @@ public class FrmBibliotecario extends JDialog {
 				
 				try {
 					Bibliotecario Bibliotecario = new Bibliotecario(txtNombre.getText(),txtApellido.getText(),txtCalle.getText(),txtSector.getText(),txtCiudad.getText(),fechaNacimiento,txtEmail.getText(),txtTelefono.getText(),fechaRegistro,txtCedula.getText(),cbxCategoria.getSelectedItem().toString());
+					
+					txtNombre.setText("");
+					txtApellido.setText("");
+					txtCedula.setText("");
+					txtCalle.setText("");
+					txtEmail.setText("");
+					txtFechaNacimientoAnyo.setText("");
+					txtFechaNacimientoMes.setText("");
+					txtFechaNacimientoDia.setText("");
+					txtFechaRegistroAnyo.setText("");
+					txtFechaRegistroMes.setText("");
+					txtFechaRegistroDia.setText("");
+					txtTelefono.setText("");
+					cbxCategoria.setSelectedIndex(0);
+					
 				} catch (SQLException e) {
 					e.printStackTrace();
 					//JOptionPane.showMessageDialog(rootPane, e);

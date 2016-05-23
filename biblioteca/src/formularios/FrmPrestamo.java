@@ -146,7 +146,7 @@ public class FrmPrestamo extends JDialog {
 			    try {
 					control = Prestamo.buscarLector(txtCodigo.getText());
 				} catch (SQLException e1) {
-					JOptionPane.showMessageDialog(rootPane, e1);
+					JOptionPane.showConfirmDialog(null, e1, "error",JOptionPane.DEFAULT_OPTION);
 				}
 			    
 			    if(control){

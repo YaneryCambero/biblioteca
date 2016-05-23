@@ -98,7 +98,7 @@ public class FrmLogin extends JDialog {
 				
 				if(usuario.equals("")||contrasena.equals(""))
 				{
-					JOptionPane.showMessageDialog(null, "campo vacio por favor llenar campo");
+					JOptionPane.showConfirmDialog(null, "Por favor llenar campos","Campos vacios",JOptionPane.DEFAULT_OPTION);
 				}else
 				 {
 					FrmLogin.this.dispose();

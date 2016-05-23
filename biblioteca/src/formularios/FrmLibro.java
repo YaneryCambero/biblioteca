@@ -223,7 +223,7 @@ public class FrmLibro extends JDialog {
 					Libro Libro = new Libro(txtTitulo.getText(), cbxAutor.getSelectedItem().toString(), txtEditor.getText(), cbxGenero.getSelectedItem().toString(), cbxSubGenero.getSelectedItem().toString(), cbxIdioma.getSelectedItem().toString(), estado, cbxCategoria.getSelectedItem().toString(),txtPublicacion.getText(), txtEditorial.getText(), numeroPagina,cbxCondicionesFisicas.getSelectedItem().toString(),Cantidad, txtEdicion.getText());
 					
 				} catch (Exception e2) {
-					JOptionPane.showMessageDialog(FrmLibro.this, e2);
+					JOptionPane.showConfirmDialog(null, e2,"Error",JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});

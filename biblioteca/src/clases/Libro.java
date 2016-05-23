@@ -45,10 +45,10 @@ public class Libro {
 				PreparedStatement sentencia1 = conexion.prepareStatement(sql1);
 				sentencia1.executeUpdate();
 				
-				JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
+				JOptionPane.showConfirmDialog(null, "Datos Guardados Correctamente","Confirmacion de guardado",JOptionPane.DEFAULT_OPTION);
 				
 		}else{
-			JOptionPane.showMessageDialog(null, "El libro existe........ favor verificar");
+			JOptionPane.showConfirmDialog(null, "El libro existe........ favor verificar","Confirmacion libro existe", JOptionPane.DEFAULT_OPTION);
 		} 	
 	}
 	

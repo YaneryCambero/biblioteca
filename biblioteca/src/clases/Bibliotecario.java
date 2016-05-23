@@ -10,6 +10,8 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import formularios.FrmBibliotecario;
+
 
 public class Bibliotecario {
 	BaseDeDatos conectar = new BaseDeDatos();
@@ -31,10 +33,11 @@ public class Bibliotecario {
 				        PreparedStatement sentencia1 = conexion.prepareStatement(sql1);
 						sentencia1.executeUpdate();
 						
-						JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
+						
+						JOptionPane.showConfirmDialog(null, "Datos guardados con exito","Confirmacion de guardado", JOptionPane.DEFAULT_OPTION);
 						
 				}else{
-					JOptionPane.showMessageDialog(null, "Bibliotecario existe....... favor de verificar");
+					JOptionPane.showConfirmDialog(null, "Bibliotecario existe....... favor de verificar","Confirmacion usuario existe",JOptionPane.DEFAULT_OPTION);
 				}	
 					
 	}
