@@ -25,6 +25,8 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
+
 import java.awt.ScrollPane;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -47,12 +49,14 @@ public class FrmPrestamo extends JDialog {
 	private JTextField txtEmail;
 	private static JTextField txtFechaPrestamo;
 	private JTextField txtHoraPrestamo;
-	private JTextField textField_10;
+	private JTextField txtTituloLibro;
 	private JTextField txtEstado;
 	private JTextField txtPrestadoPor;
 	private JTextField txtHoraEntrega;
 	private boolean control;
 	private ResultSet datosDeFilas;
+	Prestamo prestamoLibro;
+	private DefaultListModel modeloLista=new DefaultListModel();
 
 	/**
 	 * Launch the application.
@@ -142,6 +146,7 @@ public class FrmPrestamo extends JDialog {
 		btnBuscar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Prestamo Prestamo = new Prestamo();
+				Calendar fecha = Calendar.getInstance();
 				
 			    try {
 					control = Prestamo.buscarLector(txtCodigo.getText());
@@ -151,7 +156,7 @@ public class FrmPrestamo extends JDialog {
 			    
 			    if(control){
 			    	try {
-						datosDeFilas = Prestamo.obtenerDatosFilas();
+						datosDeFilas = Prestamo.obtenerDatosLector();
 			
 						txtNombre.setText(datosDeFilas.getString(2));
 						txtApellido.setText(datosDeFilas.getString(3));
@@ -217,10 +222,6 @@ public class FrmPrestamo extends JDialog {
 		JButton btnNuevo = new JButton("Nuevo");
 		btnNuevo.setBounds(137, 468, 89, 23);
 		contentPane.add(btnNuevo);
-		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(240, 468, 89, 23);
-		contentPane.add(btnGuardar);
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {
@@ -298,30 +299,56 @@ public class FrmPrestamo extends JDialog {
 		panel_2.setLayout(null);
 		
 		JList JlistContenidoBusqueda = new JList();
-		JlistContenidoBusqueda.setBounds(88, 57, 110, 78);
+		JlistContenidoBusqueda.setBounds(22, 57, 176, 78);
 		panel_2.add(JlistContenidoBusqueda);
 		
 		
 		
 		JScrollPane scrollPaneContenidoBusqueda = new JScrollPane();
-		scrollPaneContenidoBusqueda.setBounds(88, 57, 112, 80);
+		scrollPaneContenidoBusqueda.setBounds(22, 57, 178, 80);
 		panel_2.add(scrollPaneContenidoBusqueda);
 		
-		textField_10 = new JTextField();
-		textField_10.setBounds(208, 8, 140, 20);
-		panel_2.add(textField_10);
-		textField_10.setColumns(10);
+		txtTituloLibro = new JTextField();
+		txtTituloLibro.setBounds(208, 8, 140, 20);
+		panel_2.add(txtTituloLibro);
+		txtTituloLibro.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					prestamoLibro = new Prestamo();
+					control = prestamoLibro.buscarLibros(txtTituloLibro.getText());
+					
+					if(control){
+						datosDeFilas = prestamoLibro.obtenerDatosLibros();
+						
+						modeloLista.removeAllElements();
+						JlistContenidoBusqueda.setModel(modeloLista);
+						
+						do{
+							
+							modeloLista.addElement(datosDeFilas.getString("titulo"));
+							
+						}while(datosDeFilas.next());
+						JlistContenidoBusqueda.setModel(modeloLista);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		btnBuscar.setBounds(358, 7, 93, 23);
 		panel_2.add(btnBuscar);
 		
 		JList JlistElementosSeleccionados = new JList();
-		JlistElementosSeleccionados.setBounds(358, 57, 110, 78);
+		JlistElementosSeleccionados.setBounds(358, 57, 178, 78);
 		panel_2.add(JlistElementosSeleccionados);
 		
 		JScrollPane scrollPaneElementosSeleccionados = new JScrollPane();
-		scrollPaneElementosSeleccionados.setBounds(358, 57, 112, 80);
+		scrollPaneElementosSeleccionados.setBounds(358, 57, 178, 80);
 		panel_2.add(scrollPaneElementosSeleccionados);
 		scrollPaneElementosSeleccionados.setBackground(Color.WHITE);
 		
@@ -330,6 +357,14 @@ public class FrmPrestamo extends JDialog {
 		panel_2.add(btnAgregar);
 		
 		JButton btnQuitarLibro = new JButton("Quitar Libro");
+		btnQuitarLibro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DefaultListModel borrarLista = new DefaultListModel();
+				borrarLista.removeAllElements();
+				
+				JlistElementosSeleccionados.setModel(borrarLista);
+			}
+		});
 		btnQuitarLibro.setBounds(220, 83, 112, 23);
 		panel_2.add(btnQuitarLibro);
 		
@@ -338,10 +373,19 @@ public class FrmPrestamo extends JDialog {
 		panel_2.add(lblTituloLibro);
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JlistElementosSeleccionados.setListData(JlistContenidoBusqueda.getSelectedValues());
+				JlistElementosSeleccionados.setSelectedIndex(0);
 			}
 		});
 		
-		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnGuardar.setBounds(240, 468, 89, 23);
+		contentPane.add(btnGuardar);
 		
 	}
 }

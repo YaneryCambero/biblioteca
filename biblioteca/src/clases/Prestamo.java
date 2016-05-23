@@ -14,31 +14,53 @@ import javax.xml.ws.FaultAction;
 public class Prestamo {	
 	BaseDeDatos conectar = new BaseDeDatos();
 	Connection conexion = conectar.conexion();
-	String sql="";
 	ResultSetMetaData metaDatos;
-	ResultSet resultado;
 	boolean control = false;
+	private ResultSet resultadoBuscarLector;
+	private ResultSet resultadoBuscarLibros;
 	
 	public boolean buscarLector(String codigo) throws SQLException{
-		sql = "SELECT * FROM lector WHERE id = '"+codigo+"'";
+		String sqlBuscarLector = "SELECT * FROM lector WHERE id = '"+codigo+"'";
 		
-		Statement sentencia = conexion.createStatement();
-		resultado = sentencia.executeQuery(sql);
+		Statement sentenciaBuscarLector = conexion.createStatement();
+		resultadoBuscarLector = sentenciaBuscarLector.executeQuery(sqlBuscarLector);
 		
-		if(resultado.next())
+		if(resultadoBuscarLector.next())
 		{
 		     control = true;
 		}else
 		 {
-				JOptionPane.showMessageDialog(null, "No hay datos");
+			 JOptionPane.showConfirmDialog(null, "Lector no encontrado","No hay datos",JOptionPane.DEFAULT_OPTION);
 		 }
 		
 		return control;
 	}
-
-	public ResultSet obtenerDatosFilas() throws SQLException{
 	
-		return resultado;
+	public boolean buscarLibros(String titulo) throws SQLException{
+    String sqlBuscarLibros = "SELECT * FROM libros WHERE titulo like '"+ titulo +"%'";
+		
+		Statement sentenciaBuscarLibros = conexion.createStatement();
+		resultadoBuscarLibros = sentenciaBuscarLibros.executeQuery(sqlBuscarLibros);
+		
+		if(resultadoBuscarLibros.next())
+		{
+			control = true;
+		     
+		}else{
+			JOptionPane.showConfirmDialog(null, "Nombre no encontrado","No hay Datos",JOptionPane.DEFAULT_OPTION);
+		}
+		
+		return control;
+	}
+	
+	public ResultSet obtenerDatosLibros(){
+		
+		return resultadoBuscarLibros;
+	}
+
+	public ResultSet obtenerDatosLector(){
+	
+		return resultadoBuscarLector;
 	}
 
 }
