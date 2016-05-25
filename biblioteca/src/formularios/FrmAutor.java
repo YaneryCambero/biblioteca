@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -110,7 +111,7 @@ public class FrmAutor extends JDialog {
 				try {
 					Autor Autor = new Autor(txtNombre.getText(), txtApellido.getText(), txtNacionalidad.getText());
 				} catch (SQLException e1) {
-					e1.printStackTrace();
+					JOptionPane.showConfirmDialog(null, e,"Error",JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});

@@ -34,17 +34,17 @@ public class CambiarContrasena
 						
 						Statement sentencia1 = conexion.createStatement();
 						sentencia1.executeUpdate(sql);
-					
-						JOptionPane.showMessageDialog(null, "Cambio Exitoso");
+						
+						JOptionPane.showConfirmDialog(null, "se han guardado los cambios","Cambio Exitoso",JOptionPane.DEFAULT_OPTION);
 						
 						
 					}else
 					 {
-						JOptionPane.showMessageDialog(null, "contrasena no concuerdan");
+						JOptionPane.showConfirmDialog(null, "verifique las contrasena", "contrasena no concuerdan", JOptionPane.DEFAULT_OPTION);
 					 }
 				}else
 				 {
-					JOptionPane.showMessageDialog(null, "usuario y contrasena no encontrado");
+					JOptionPane.showConfirmDialog(null, "verifique los datos subministrados","usuario y contrasena no encontrado",JOptionPane.DEFAULT_OPTION);
 				 }
 			
 		} catch (SQLException e) {

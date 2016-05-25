@@ -56,31 +56,31 @@ public class FrmConsultaAutor extends JFrame {
 	 */
 	public FrmConsultaAutor() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 597, 334);
+		setBounds(100, 100, 597, 373);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblConsultaAutor = new JLabel("Consulta Autor");
-		lblConsultaAutor.setBounds(140, 11, 102, 14);
+		lblConsultaAutor.setBounds(228, 11, 102, 14);
 		contentPane.add(lblConsultaAutor);
 		
 		JLabel lblBuscarPor = new JLabel("Buscar por");
-		lblBuscarPor.setBounds(60, 54, 71, 14);
+		lblBuscarPor.setBounds(163, 64, 71, 14);
 		contentPane.add(lblBuscarPor);
 		
 		JLabel lblCantidadRegistrada = new JLabel("0");
-		lblCantidadRegistrada.setBounds(130, 268, 55, 16);
+		lblCantidadRegistrada.setBounds(130, 306, 55, 16);
 		contentPane.add(lblCantidadRegistrada);
 		
 		JComboBox cbxBuscarPor = new JComboBox();
 		cbxBuscarPor.setModel(new DefaultComboBoxModel(new String[] {"Codigo", "Nombre", "Apellido"}));
-		cbxBuscarPor.setBounds(140, 48, 87, 20);
+		cbxBuscarPor.setBounds(243, 58, 87, 20);
 		contentPane.add(cbxBuscarPor);
 		
 		txtBuscarPor = new JTextField();
-		txtBuscarPor.setBounds(140, 80, 114, 20);
+		txtBuscarPor.setBounds(216, 91, 114, 20);
 		contentPane.add(txtBuscarPor);
 		txtBuscarPor.setColumns(10);
 		
@@ -88,7 +88,7 @@ public class FrmConsultaAutor extends JFrame {
 		table.setBounds(91, 200, 252, -73);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 112, 559, 151);
+		scrollPane.setBounds(10, 142, 559, 151);
 		scrollPane.setBorder(new LineBorder(Color.BLACK));
 		scrollPane.setBackground(Color.BLUE);
 		contentPane.add(scrollPane);
@@ -116,11 +116,11 @@ public class FrmConsultaAutor extends JFrame {
 				table.setModel(modeloTabla);
 			}
 		});
-		btnBuscar.setBounds(271, 37, 98, 26);
+		btnBuscar.setBounds(379, 91, 98, 26);
 		contentPane.add(btnBuscar);
 		
 		JButton btnNuevo = new JButton("Nuevo");
-		btnNuevo.setBounds(379, 37, 98, 26);
+		btnNuevo.setBounds(379, 5, 98, 26);
 		contentPane.add(btnNuevo);
 		
 		JButton btnSalir = new JButton("Salir");
@@ -129,15 +129,15 @@ public class FrmConsultaAutor extends JFrame {
 				FrmConsultaAutor.this.dispose();
 			}
 		});
-		btnSalir.setBounds(379, 74, 98, 26);
+		btnSalir.setBounds(381, 48, 98, 26);
 		contentPane.add(btnSalir);
 		
 		JLabel lblInformacionABuscar = new JLabel("Informacion a Buscar");
-		lblInformacionABuscar.setBounds(10, 82, 131, 16);
+		lblInformacionABuscar.setBounds(86, 93, 131, 16);
 		contentPane.add(lblInformacionABuscar);
 		
 		JLabel lblTotalDeRegistro = new JLabel("Total de registro");
-		lblTotalDeRegistro.setBounds(10, 268, 108, 16);
+		lblTotalDeRegistro.setBounds(10, 306, 108, 16);
 		contentPane.add(lblTotalDeRegistro);
 		
 		
