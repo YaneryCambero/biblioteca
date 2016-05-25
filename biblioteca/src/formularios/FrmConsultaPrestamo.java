@@ -29,6 +29,9 @@ import java.util.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Font;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmConsultaPrestamo extends JDialog {
 
@@ -70,7 +73,8 @@ public class FrmConsultaPrestamo extends JDialog {
 		contentPane.setLayout(null);
 		
 		JLabel lblPrestamos = new JLabel("Consulta de prestamos");
-		lblPrestamos.setBounds(386, 12, 136, 20);
+		lblPrestamos.setFont(new Font("Segoe Print", Font.BOLD, 20));
+		lblPrestamos.setBounds(284, 12, 238, 20);
 		contentPane.add(lblPrestamos);
 		
 		JLabel lblBuscarPor = new JLabel("Buscar por:");
@@ -153,6 +157,7 @@ public class FrmConsultaPrestamo extends JDialog {
 		txtBuscarPor.setBounds(371, 80, 178, 20);
 		contentPane.add(txtBuscarPor);
 		txtBuscarPor.setColumns(10);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{cbxBuscarPor, txtBuscarPor, btnBuscar, btnSalir, btnNewButton}));
 	}
 
 }

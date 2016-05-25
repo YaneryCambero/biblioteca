@@ -25,6 +25,10 @@ import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
+import java.awt.Toolkit;
+import java.awt.Font;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmConsultaAutor extends JFrame {
 
@@ -55,6 +59,8 @@ public class FrmConsultaAutor extends JFrame {
 	 * Create the frame.
 	 */
 	public FrmConsultaAutor() {
+		setTitle("Autor");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmConsultaAutor.class.getResource("/imagenes/Line Chart.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 597, 373);
 		contentPane = new JPanel();
@@ -63,7 +69,8 @@ public class FrmConsultaAutor extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblConsultaAutor = new JLabel("Consulta Autor");
-		lblConsultaAutor.setBounds(228, 11, 102, 14);
+		lblConsultaAutor.setFont(new Font("Segoe Print", Font.BOLD, 20));
+		lblConsultaAutor.setBounds(160, 11, 170, 20);
 		contentPane.add(lblConsultaAutor);
 		
 		JLabel lblBuscarPor = new JLabel("Buscar por");
@@ -139,6 +146,7 @@ public class FrmConsultaAutor extends JFrame {
 		JLabel lblTotalDeRegistro = new JLabel("Total de registro");
 		lblTotalDeRegistro.setBounds(10, 306, 108, 16);
 		contentPane.add(lblTotalDeRegistro);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{cbxBuscarPor, txtBuscarPor, btnBuscar, btnNuevo, btnSalir}));
 		
 		
 	}

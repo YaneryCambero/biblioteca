@@ -147,7 +147,7 @@ public class FrmCambiarContrasena extends JDialog {
 		});
 		btnSalir.setBounds(306, 194, 64, 23);
 		contentPane.add(btnSalir);
-		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{TxtUsuario, TxtContrasenaActual, TxtNuevoContrasena, TxtConfirmarContrasena}));
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, lblCambiarConatrena, lblUsuario, lblContrasena, lblNuevaContrasena, lblComprovarContrasena, TxtUsuario, TxtContrasenaActual, TxtNuevoContrasena, TxtConfirmarContrasena, btnNuevo, btnGuardar, btnSalir}));
+		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{TxtUsuario, TxtContrasenaActual, TxtNuevoContrasena, TxtConfirmarContrasena, btnGuardar, btnNuevo, btnSalir}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{TxtUsuario, TxtContrasenaActual, TxtNuevoContrasena, TxtConfirmarContrasena, btnGuardar, btnNuevo, btnSalir}));
 	}
 }

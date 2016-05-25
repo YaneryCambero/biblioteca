@@ -30,6 +30,8 @@ import javax.swing.JFormattedTextField.AbstractFormatterFactory;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 
 
@@ -71,7 +73,7 @@ public class FrmBibliotecario extends JDialog {
 	 * Create the frame.
 	 */
 	public FrmBibliotecario() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmBibliotecario.class.getResource("/imagenes/PNG-32/Profile.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmBibliotecario.class.getResource("/imagenes/Profile.png")));
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setTitle("Registro Bibliotecario");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -424,6 +426,7 @@ public class FrmBibliotecario extends JDialog {
 		});
 		btnSalir.setBounds(261, 343, 89, 23);
 		contentPane.add(btnSalir);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtNombre, txtApellido, txtFechaNacimientoAnyo, txtFechaNacimientoMes, txtFechaNacimientoDia, txtCedula, txtTelefono, txtCalle, txtSector, txtCiudad, txtFechaRegistroAnyo, txtFechaRegistroMes, txtFechaRegistroDia, txtEmail, cbxCategoria, btnGuardar, btnNuevo, btnSalir}));
 		
 		
 		

@@ -28,6 +28,8 @@ import java.awt.Font;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dialog.ModalityType;
 import javax.swing.SwingConstants;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmLogin extends JDialog {
 
@@ -134,6 +136,7 @@ public class FrmLogin extends JDialog {
 		});
 		btnCancelar.setBounds(197, 115, 98, 26);
 		contentPane.add(btnCancelar);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{TxtUsuario, TxtContrasena, btnEntrar, btnCancelar}));
 		
 	}
 }

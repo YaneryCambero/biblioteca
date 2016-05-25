@@ -35,6 +35,9 @@ import java.sql.Wrapper;
 import java.util.Calendar;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmPrestamo extends JDialog {
 
@@ -101,7 +104,8 @@ public class FrmPrestamo extends JDialog {
 		panel.add(lblCodigoLector);
 		
 		JLabel lblNewLabel = new JLabel("Informacion Lector");
-		lblNewLabel.setBounds(242, 4, 124, 14);
+		lblNewLabel.setFont(new Font("Segoe Print", Font.BOLD, 12));
+		lblNewLabel.setBounds(221, 7, 124, 14);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
@@ -226,11 +230,12 @@ public class FrmPrestamo extends JDialog {
 		panel_1.setLayout(null);
 		
 		JLabel lblInformacionDelPrestamo = new JLabel("Informacion del prestamo");
-		lblInformacionDelPrestamo.setBounds(225, 12, 149, 14);
+		lblInformacionDelPrestamo.setFont(new Font("Segoe Print", Font.BOLD, 12));
+		lblInformacionDelPrestamo.setBounds(221, 12, 169, 14);
 		panel_1.add(lblInformacionDelPrestamo);
 		
 		JLabel lblFechaPrestamo = new JLabel("Fecha Prestamo:");
-		lblFechaPrestamo.setBounds(82, 45, 93, 14);
+		lblFechaPrestamo.setBounds(69, 45, 106, 14);
 		panel_1.add(lblFechaPrestamo);
 		lblFechaPrestamo.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -255,7 +260,7 @@ public class FrmPrestamo extends JDialog {
 		lblEstaddo.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		JLabel lblPrestadoPor = new JLabel("Id Bibliotecario:");
-		lblPrestadoPor.setBounds(292, 64, 86, 14);
+		lblPrestadoPor.setBounds(279, 64, 99, 14);
 		panel_1.add(lblPrestadoPor);
 		lblPrestadoPor.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -421,6 +426,7 @@ public class FrmPrestamo extends JDialog {
 		contentPane.add(btnSalir);
 		btnGuardar.setBounds(240, 468, 89, 23);
 		contentPane.add(btnGuardar);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtCodigo, btnBuscar_1, txtFechaPrestamo, txtHoraPrestamo, txtEstado, txtIdBibliotecario, txtHoraEntrega, txtTituloLibro, btnBuscar, JlistElementosSeleccionados, btnAgregar, btnGuardar, btnNuevo, btnSalir}));
 		
 	}
 }

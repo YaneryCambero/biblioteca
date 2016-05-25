@@ -27,6 +27,7 @@ import clases.Lector;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Toolkit;
 
 public class FrmLector extends JDialog {
 
@@ -64,6 +65,8 @@ public class FrmLector extends JDialog {
 	 * Create the frame.
 	 */
 	public FrmLector() {
+		setTitle("Lector");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmLector.class.getResource("/imagenes/Profile.png")));
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 430, 416);

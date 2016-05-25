@@ -30,6 +30,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Toolkit;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmConsultaBibliotecario extends JDialog {
 
@@ -71,8 +73,8 @@ public class FrmConsultaBibliotecario extends JDialog {
 		contentPane.setLayout(null);
 		
 		JLabel lblBibliotecarios = new JLabel("Consulta de Bibliotecarios");
-		lblBibliotecarios.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblBibliotecarios.setBounds(375, 12, 157, 25);
+		lblBibliotecarios.setFont(new Font("Segoe Print", Font.BOLD, 20));
+		lblBibliotecarios.setBounds(276, 12, 256, 25);
 		contentPane.add(lblBibliotecarios);
 		
 		JLabel lblBuscarPor = new JLabel("Buscar por:");
@@ -169,6 +171,7 @@ public class FrmConsultaBibliotecario extends JDialog {
 		});
 		btnNewButton.setBounds(620, 14, 89, 26);
 		contentPane.add(btnNewButton);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{cbxBuscarPor, txtBuscarPor, btnBuscar, btnNewButton, btnSalir}));
 		
 		
 	}

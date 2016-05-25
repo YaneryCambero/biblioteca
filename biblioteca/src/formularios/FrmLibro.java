@@ -23,6 +23,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
+import java.awt.Toolkit;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmLibro extends JDialog {
 
@@ -56,6 +59,8 @@ public class FrmLibro extends JDialog {
 	 * Create the frame.
 	 */
 	public FrmLibro() {
+		setTitle("Libros");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmLibro.class.getResource("/imagenes/icono_dduv_libros.png")));
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 628, 350);
@@ -64,9 +69,9 @@ public class FrmLibro extends JDialog {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblLibro = new JLabel("Libros");
+		JLabel lblLibro = new JLabel("Registro de Libros");
 		lblLibro.setFont(new Font("Segoe Print", Font.BOLD, 20));
-		lblLibro.setBounds(296, 11, 76, 20);
+		lblLibro.setBounds(205, 0, 187, 40);
 		contentPane.add(lblLibro);
 		
 		JLabel lblTitulo = new JLabel("Titulo:");
@@ -101,7 +106,7 @@ public class FrmLibro extends JDialog {
 		
 		JLabel lblCondicionesFicicas = new JLabel("Condiciones fisicas:");
 		lblCondicionesFicicas.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCondicionesFicicas.setBounds(10, 189, 104, 14);
+		lblCondicionesFicicas.setBounds(0, 189, 114, 14);
 		contentPane.add(lblCondicionesFicicas);
 		
 		JLabel lblCategoria = new JLabel("Categoria:");
@@ -278,6 +283,7 @@ public class FrmLibro extends JDialog {
 		
 		btnNuevo.setBounds(142, 278, 89, 23);
 		contentPane.add(btnNuevo);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtTitulo, cbxAutor, txtEditor, cbxGenero, cbxSubGenero, cbxIdioma, cbxCondicionesFisicas, cbxCategoria, txtPublicacion, txtEditorial, txtNumeroDePaginas, txtCantidad, txtEdicion, btnGuardar, btnNuevo, btnSalir}));
 		
 		
 		

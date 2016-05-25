@@ -19,6 +19,9 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmHistorialPrestamo extends JDialog {
 
@@ -46,6 +49,8 @@ public class FrmHistorialPrestamo extends JDialog {
 	 * Create the frame.
 	 */
 	public FrmHistorialPrestamo() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmHistorialPrestamo.class.getResource("/imagenes/Line Chart.png")));
+		setTitle("Prestamo");
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 974, 410);
@@ -104,5 +109,6 @@ public class FrmHistorialPrestamo extends JDialog {
 		});
 		btnNuevo.setBounds(604, 14, 89, 23);
 		contentPane.add(btnNuevo);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtCodigoPrestamo, btnBuscar, btnSalir, btnNuevo}));
 	}
 }

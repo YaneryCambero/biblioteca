@@ -29,6 +29,9 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmConsultaLibros extends JDialog {
 
@@ -75,7 +78,8 @@ public class FrmConsultaLibros extends JDialog {
 		contentPane.add(cbxBuscarPor);
 		
 		JLabel lblLibros = new JLabel("Consulta de libros");
-		lblLibros.setBounds(396, 16, 119, 14);
+		lblLibros.setFont(new Font("Segoe Print", Font.BOLD, 20));
+		lblLibros.setBounds(313, 16, 202, 24);
 		contentPane.add(lblLibros);
 		
 		JLabel lblBuscarPor = new JLabel("Buscar por:");
@@ -154,6 +158,7 @@ public class FrmConsultaLibros extends JDialog {
 		txtBuscarPor.setBounds(363, 85, 186, 20);
 		contentPane.add(txtBuscarPor);
 		txtBuscarPor.setColumns(10);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{cbxBuscarPor, txtBuscarPor, btnBuscar, btnNuevo, btnSalir}));
 		
 		
 	}

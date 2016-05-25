@@ -23,6 +23,9 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmAutor extends JDialog {
 
@@ -51,6 +54,8 @@ public class FrmAutor extends JDialog {
 	 * Create the frame.
 	 */
 	public FrmAutor() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmAutor.class.getResource("/imagenes/Profile.png")));
+		setTitle("Autor");
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 249);
@@ -131,5 +136,6 @@ public class FrmAutor extends JDialog {
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBounds(270, 44, 133, 97);
 		contentPane.add(panel);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtNombre, txtApellido, txtNacionalidad, btnGuardar, btnNuevo, btnSalir}));
 	}
 }

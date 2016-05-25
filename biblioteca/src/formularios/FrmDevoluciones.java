@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class FrmDevoluciones extends JDialog {
 
@@ -48,6 +49,8 @@ public class FrmDevoluciones extends JDialog {
 	 * Create the frame.
 	 */
 	public FrmDevoluciones() {
+		setTitle("Devoluciones");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmDevoluciones.class.getResource("/imagenes/Line Chart.png")));
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 970, 434);
@@ -56,9 +59,9 @@ public class FrmDevoluciones extends JDialog {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblDevoluciones = new JLabel("Devoluciones");
+		JLabel lblDevoluciones = new JLabel("Consulta Devoluciones");
 		lblDevoluciones.setFont(new Font("Segoe Print", Font.BOLD, 20));
-		lblDevoluciones.setBounds(385, 11, 138, 23);
+		lblDevoluciones.setBounds(277, 11, 246, 23);
 		contentPane.add(lblDevoluciones);
 		
 		JLabel lblNewLabel = new JLabel("Total de registros");
@@ -91,6 +94,10 @@ public class FrmDevoluciones extends JDialog {
 		contentPane.add(scrollPane);
 		
 		JButton btnDevolverAlEstante = new JButton("Buscar");
+		btnDevolverAlEstante.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnDevolverAlEstante.setBounds(548, 96, 89, 23);
 		contentPane.add(btnDevolverAlEstante);
 		

@@ -27,6 +27,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Dialog.ModalityType;
 import java.awt.Toolkit;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmCrearCuentaUsuario extends JDialog {
 
@@ -143,6 +145,7 @@ public class FrmCrearCuentaUsuario extends JDialog {
 		TxtConfirmarContrasena = new JPasswordField();
 		TxtConfirmarContrasena.setBounds(150, 105, 181, 20);
 		contentPane.add(TxtConfirmarContrasena);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{TxtUsuario, TxtContrasena, TxtConfirmarContrasena, cbxAdmin, btnGuardar, btnNuevo, btnSalir}));
 		
 		
 	}

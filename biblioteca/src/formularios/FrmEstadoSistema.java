@@ -18,6 +18,9 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class FrmEstadoSistema extends JDialog {
 
@@ -43,6 +46,8 @@ public class FrmEstadoSistema extends JDialog {
 	 * Create the frame.
 	 */
 	public FrmEstadoSistema() {
+		setTitle("Estado del Sistema");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmEstadoSistema.class.getResource("/imagenes/Loading.png")));
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -121,6 +126,7 @@ public class FrmEstadoSistema extends JDialog {
 		});
 		btnSalir.setBounds(229, 188, 89, 23);
 		contentPane.add(btnSalir);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnActualizar, btnSalir}));
 	}
 
 }

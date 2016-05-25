@@ -245,6 +245,17 @@ public class FrmPrincipal extends JFrame {
 				devoluciones.setVisible(true);
 			}
 		});
+		
+		JMenuItem mntmAutor_1 = new JMenuItem("Autor");
+		mntmAutor_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrmConsultaAutor autor = new FrmConsultaAutor();
+				autor.setAlwaysOnTop(true);
+				autor.setLocationRelativeTo(null);
+				autor.setVisible(true);
+			}
+		});
+		mnConsultas.add(mntmAutor_1);
 		mnConsultas.add(mntmDevoluciones);
 		
 		JMenuItem mntmHistorialPrestamo = new JMenuItem("Historial Prestamo");
