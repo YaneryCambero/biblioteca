@@ -260,7 +260,6 @@ public class FrmPrincipal extends JFrame {
 		mnConsultas.add(mntmDevoluciones);
 		
 		JMenuItem mntmHistorialPrestamo = new JMenuItem("Historial Prestamo");
-		mntmHistorialPrestamo.setEnabled(false);
 		mntmHistorialPrestamo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				FrmHistorialPrestamo historialPrestamo = new FrmHistorialPrestamo();

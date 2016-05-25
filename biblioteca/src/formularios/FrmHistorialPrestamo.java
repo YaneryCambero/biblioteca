@@ -106,35 +106,23 @@ public class FrmHistorialPrestamo extends JDialog {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				historialPrestamo consultaHistorial;
-				modeloTabla = new DefaultTableModel();
-				table.setModel(modeloTabla);
-				
-				modeloTabla.setColumnIdentifiers(new Object[]{"Id","Fecha","Hora Prestamo","Hora Entrega","Id Libro","Id Lector"});
 				
 				int control = 0;
 				
 				try {
-					int id_bibliotecario = Integer.parseInt(txtCodigoBibliotecario.getText());
-					consultaHistorial = new historialPrestamo(id_bibliotecario);
-					//nombreColumnas = consultaHistorial.obtenerNombreDeColumnas();
-					//datosDeFilas = consultaHistorial.obtenerDatosFilas();
-					
-					ResultSet rs = consultaHistorial.obtenerResultados();
-					
-					while(rs.next()){
-						System.out.println(rs.getDate(2));
-						//modeloTabla.addRow(new Object[]{rs.getInt(1),rs.getString(2)});
-					}
-					
+					consultaHistorial = new historialPrestamo(Integer.parseInt(txtCodigoBibliotecario.getText()));
+					nombreColumnas = consultaHistorial.obtenerNombreDeColumnas();
+					datosDeFilas = consultaHistorial.obtenerDatosFilas();
 				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(FrmHistorialPrestamo.this, "Error base de datos : datos no encontrado");
+					JOptionPane.showMessageDialog(FrmHistorialPrestamo.this, "datos no encontrado");
 					control = 1;
 				}
 				if(control == 0){
-					//lblCantidadRegistrada.setText(String.valueOf(datosDeFilas.size()));	
+					lblCantidadRegistrada.setText(String.valueOf(datosDeFilas.size()));	
 				}
 				
-				
+				modeloTabla = new DefaultTableModel(datosDeFilas, nombreColumnas);
+				table.setModel(modeloTabla);
 			}
 		});
 		btnBuscar.setBounds(604, 70, 89, 23);
