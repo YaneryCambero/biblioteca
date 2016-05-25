@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
 
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -36,6 +38,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Dialog.ModalityType;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -293,11 +296,15 @@ public class FrmPrincipal extends JFrame {
 		JMenuItem mntmInformacionDelSistema = new JMenuItem("Informacion del sistema");
 		mntmInformacionDelSistema.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Los creadores del sistema son:\n\n Nombre                                   Matricula\n"
-						+ "\n Heriberto Espino                 100040664"
-						+ "\n Wendy Rodriguez               100071795"
-						+ "\n Francisco Moran           BE0326"
-						+ "\n Yanery R. Cambero Hez    100159623");
+				Object[][] rows = {{"Heriberto Espino","100040664"},
+								   {"Wendy Rodriguez","100071795"},
+								   {"Francisco Moran","BE0326"},
+								   {"Yanery R. Cambero","100159623"}};
+					Object[] cols = {"Nombre", "Matricula" };
+					JTable table = new JTable(rows, cols);
+					JScrollPane scrollPane = new JScrollPane(table);
+					scrollPane.setPreferredSize(new Dimension(300,100));
+					JOptionPane.showMessageDialog(FrmPrincipal.this, scrollPane,"Los Creadores del Sistema:",JOptionPane.DEFAULT_OPTION);
 			}
 		});
 		mnAyuda.add(mntmInformacionDelSistema);
