@@ -20,31 +20,46 @@ public class Prestamo {
 	private ResultSet resultadoBuscarLector;
 	private ResultSet resultadoBuscarLibros;
 	private String sql;
-	private int id;
+	private int idLibros;
+	private int cantidadlibros;
 	
 	public void crearPrestamo(String fecha, String horaPrestamo, String horaEntrega, String estado, int id_bibliotecario, String titulo, int id_lector) throws SQLException{
-		sql = "SELECT id FROM libros where titulo = '"+titulo+"'";
+		sql = "SELECT id, cantidad FROM libros where titulo = '"+titulo+"'";
 		
 		Statement sentencia = conexion.createStatement();
 		ResultSet resultado = sentencia.executeQuery(sql);
 		
 		if(resultado.next()){
-				id = resultado.getInt(1);
+				idLibros = resultado.getInt(1);
+				cantidadlibros = resultado.getInt(2);
+				
 		}else{
 			throw new SQLException("autor no encontrado");
 		}
 		
-		sql ="SELECT * FROM libros where id_bibliotecario = '"+id_bibliotecario+"' AND id_libro = '"+id+"' AND id_lector = '"+id_lector+"'";
+		if(cantidadlibros<1){
+			throw new SQLException("cantidad libros 0");
+		}
+		
+		
+		sql ="SELECT * FROM libros where id_bibliotecario = '"+id_bibliotecario+"' AND id_libro = '"+idLibros+"' AND id_lector = '"+id_lector+"'";
 		
 		Statement sentencia1 = conexion.createStatement();
 		ResultSet resultado1 = sentencia1.executeQuery(sql);
 		
 		if(!resultado.next())
 		{
-			String sql1 = "INSERT INTO libros ( fecha, horaPrestamo, horaEntrega, estado, id_bibliotecario, id_libro, id_lector) VALUES ('"+fecha+"', '"+horaPrestamo+"', '"+horaEntrega+"', '"+estado+"', '"+id_bibliotecario+"', '"+id+"', '"+id_lector+"')";
+			String sql1 = "INSERT INTO libros ( fecha, horaPrestamo, horaEntrega, estado, id_bibliotecario, id_libro, id_lector) VALUES ('"+fecha+"', '"+horaPrestamo+"', '"+horaEntrega+"', '"+estado+"', '"+id_bibliotecario+"', '"+idLibros+"', '"+id_lector+"')";
 				
 				PreparedStatement sentencia2 = conexion.prepareStatement(sql1);
 				sentencia2.executeUpdate();
+				sentencia2.close();
+				
+			sql1 = "UPDATE libros SET cantidad = '"+(cantidadlibros - 1)+"' WHERE id = '"+idLibros+"'";
+			
+			PreparedStatement ps = conexion.prepareStatement(sql1);
+			ps.executeUpdate();
+			ps.close();
 				
 				JOptionPane.showConfirmDialog(null, "Datos Guardados Correctamente","Confirmacion de guardado",JOptionPane.DEFAULT_OPTION);
 				

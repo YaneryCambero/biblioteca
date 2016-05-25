@@ -411,7 +411,7 @@ public class FrmBibliotecario extends JDialog {
 					cbxCategoria.setSelectedIndex(0);
 					
 				} catch (SQLException e) {
-					
+					JOptionPane.showConfirmDialog(null, e,"Error",JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});

@@ -110,7 +110,6 @@ public class FrmEstadoSistema extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				FrmEstadoSistema.this.dispose();
-			//	JOptionPane.showMessageDialog(null, "Sistema Actualizado");
 				FrmEstadoSistema.this.setVisible(true);
 			
 			}

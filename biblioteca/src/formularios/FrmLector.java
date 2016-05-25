@@ -196,7 +196,7 @@ public class FrmLector extends JDialog {
 				
 				}catch (SQLException e)
 				{
-				   e.printStackTrace();	
+				   JOptionPane.showConfirmDialog(null, e,"Error",JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});

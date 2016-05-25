@@ -378,7 +378,7 @@ public class FrmPrestamo extends JDialog {
 					crearPrestamo.crearPrestamo(txtFechaPrestamo.getText(), txtHoraPrestamo.getText(), txtHoraEntrega.getText(), txtEstado.getText(),Integer.parseInt(txtIdBibliotecario.getText()), JlistElementosSeleccionados.getSelectedValue().toString(), Integer.parseInt(txtCodigo.getText()));
 					
 				} catch (SQLException e) {
-					
+					JOptionPane.showConfirmDialog(null, e, "Error",JOptionPane.DEFAULT_OPTION);
 				}
 				
 			}
