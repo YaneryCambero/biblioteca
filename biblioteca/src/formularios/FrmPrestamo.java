@@ -51,7 +51,7 @@ public class FrmPrestamo extends JDialog {
 	private JTextField txtHoraPrestamo;
 	private JTextField txtTituloLibro;
 	private JTextField txtEstado;
-	private JTextField txtPrestadoPor;
+	private JTextField txtIdBibliotecario;
 	private JTextField txtHoraEntrega;
 	private boolean control;
 	private ResultSet datosDeFilas;
@@ -219,19 +219,6 @@ public class FrmPrestamo extends JDialog {
 		txtEmail.setEditable(false);
 		txtEmail.setColumns(10);
 		
-		JButton btnNuevo = new JButton("Nuevo");
-		btnNuevo.setBounds(137, 468, 89, 23);
-		contentPane.add(btnNuevo);
-		
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				FrmPrestamo.this.dispose();
-			}
-		});
-		btnSalir.setBounds(350, 468, 89, 23);
-		contentPane.add(btnSalir);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBounds(10, 175, 571, 123);
@@ -242,12 +229,12 @@ public class FrmPrestamo extends JDialog {
 		lblInformacionDelPrestamo.setBounds(225, 12, 149, 14);
 		panel_1.add(lblInformacionDelPrestamo);
 		
-		JLabel lblFechaPrestamo = new JLabel("Fecha Prestamo");
+		JLabel lblFechaPrestamo = new JLabel("Fecha Prestamo:");
 		lblFechaPrestamo.setBounds(82, 45, 93, 14);
 		panel_1.add(lblFechaPrestamo);
 		lblFechaPrestamo.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		JLabel lblHoraPrestamo = new JLabel("Hora Prestamo");
+		JLabel lblHoraPrestamo = new JLabel("Hora Prestamo:");
 		lblHoraPrestamo.setBounds(82, 69, 93, 14);
 		panel_1.add(lblHoraPrestamo);
 		lblHoraPrestamo.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -262,17 +249,17 @@ public class FrmPrestamo extends JDialog {
 		panel_1.add(txtFechaPrestamo);
 		txtFechaPrestamo.setColumns(10);
 		
-		JLabel lblEstaddo = new JLabel("Estado");
+		JLabel lblEstaddo = new JLabel("Estado:");
 		lblEstaddo.setBounds(292, 42, 86, 14);
 		panel_1.add(lblEstaddo);
 		lblEstaddo.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		JLabel lblPrestadoPor = new JLabel("Prestado Por");
+		JLabel lblPrestadoPor = new JLabel("Id Bibliotecario:");
 		lblPrestadoPor.setBounds(292, 64, 86, 14);
 		panel_1.add(lblPrestadoPor);
 		lblPrestadoPor.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		JLabel lblHoraEntrega = new JLabel("Hora Entrega");
+		JLabel lblHoraEntrega = new JLabel("Hora Entrega:");
 		lblHoraEntrega.setBounds(292, 92, 86, 14);
 		panel_1.add(lblHoraEntrega);
 		lblHoraEntrega.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -282,10 +269,10 @@ public class FrmPrestamo extends JDialog {
 		panel_1.add(txtEstado);
 		txtEstado.setColumns(10);
 		
-		txtPrestadoPor = new JTextField();
-		txtPrestadoPor.setBounds(396, 63, 86, 20);
-		panel_1.add(txtPrestadoPor);
-		txtPrestadoPor.setColumns(10);
+		txtIdBibliotecario = new JTextField();
+		txtIdBibliotecario.setBounds(396, 63, 86, 20);
+		panel_1.add(txtIdBibliotecario);
+		txtIdBibliotecario.setColumns(10);
 		
 		txtHoraEntrega = new JTextField();
 		txtHoraEntrega.setBounds(396, 90, 86, 20);
@@ -381,9 +368,57 @@ public class FrmPrestamo extends JDialog {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Prestamo crearPrestamo = new Prestamo();
+				try {
+					crearPrestamo.crearPrestamo(txtFechaPrestamo.getText(), txtHoraPrestamo.getText(), txtHoraEntrega.getText(), txtEstado.getText(),Integer.parseInt(txtIdBibliotecario.getText()), JlistElementosSeleccionados.getSelectedValue().toString(), Integer.parseInt(txtCodigo.getText()));
+
+				} catch (SQLException e) {
+					JOptionPane.showConfirmDialog(null, e,"Error",JOptionPane.DEFAULT_OPTION);
+				}
 				
 			}
 		});
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrmPrestamo.this.dispose();
+			}
+		});
+		
+		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtCodigo.setText("");
+				txtNombre.setText("");
+				txtApellido.setText("");
+				txtTelefono.setText("");
+				txtCategoria.setText("");
+				txtCedula.setText("");
+				txtDireccion.setText("");
+				txtEmail.setText("");
+				
+				txtFechaPrestamo.setText("");
+				txtHoraPrestamo.setText("");
+				txtEstado.setText("");
+				txtIdBibliotecario.setText("");
+				txtHoraEntrega.setText("");
+				
+				txtTituloLibro.setText("");
+				
+				DefaultListModel borrarLista = new DefaultListModel();
+				borrarLista.removeAllElements();
+				
+				JlistElementosSeleccionados.setModel(borrarLista);
+				JlistContenidoBusqueda.setModel(borrarLista);
+				
+				txtCodigo.requestFocus();
+			}
+		});
+		btnNuevo.setBounds(137, 468, 89, 23);
+		contentPane.add(btnNuevo);
+		btnSalir.setBounds(350, 468, 89, 23);
+		contentPane.add(btnSalir);
 		btnGuardar.setBounds(240, 468, 89, 23);
 		contentPane.add(btnGuardar);
 		
