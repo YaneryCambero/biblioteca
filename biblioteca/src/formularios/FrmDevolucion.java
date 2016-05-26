@@ -30,6 +30,8 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class FrmDevolucion extends JDialog {
 
@@ -74,7 +76,7 @@ public class FrmDevolucion extends JDialog {
 		contentPane.setLayout(null);
 		
 		txtBuscar = new JTextField();
-		txtBuscar.setBounds(259, 68, 293, 20);
+		txtBuscar.setBounds(328, 68, 293, 20);
 		contentPane.add(txtBuscar);
 		txtBuscar.setColumns(10);
 		
@@ -126,7 +128,7 @@ public class FrmDevolucion extends JDialog {
 				}
 			}
 		});
-		btnBuscar.setBounds(594, 65, 89, 23);
+		btnBuscar.setBounds(633, 67, 89, 23);
 		contentPane.add(btnBuscar);
 		
 		txtCodigo = new JTextField();
@@ -199,7 +201,7 @@ public class FrmDevolucion extends JDialog {
 				}
 			}
 		});
-		btnGuardar.setBounds(411, 367, 89, 23);
+		btnGuardar.setBounds(443, 367, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnSalir = new JButton("Salir");
@@ -208,8 +210,17 @@ public class FrmDevolucion extends JDialog {
 				FrmDevolucion.this.dispose();
 			}
 		});
-		btnSalir.setBounds(545, 367, 89, 23);
+		btnSalir.setBounds(633, 367, 89, 23);
 		contentPane.add(btnSalir);
+		
+		JLabel lblIdBibliotecario = new JLabel("Id Bibliotecario:");
+		lblIdBibliotecario.setBounds(221, 70, 89, 16);
+		contentPane.add(lblIdBibliotecario);
+		
+		JLabel lblNewLabel = new JLabel("Devolucion");
+		lblNewLabel.setFont(new Font("Segoe Print", Font.BOLD, 20));
+		lblNewLabel.setBounds(411, 12, 121, 32);
+		contentPane.add(lblNewLabel);
 		
 
 	}
