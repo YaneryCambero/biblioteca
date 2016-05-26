@@ -270,6 +270,8 @@ public class FrmPrestamo extends JDialog {
 		lblHoraEntrega.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		txtEstado = new JTextField();
+		txtEstado.setText("1");
+		txtEstado.setEditable(false);
 		txtEstado.setBounds(396, 38, 86, 20);
 		panel_1.add(txtEstado);
 		txtEstado.setColumns(10);
@@ -375,7 +377,7 @@ public class FrmPrestamo extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				Prestamo crearPrestamo = new Prestamo();
 				try {
-					crearPrestamo.crearPrestamo(txtFechaPrestamo.getText(), txtHoraPrestamo.getText(), txtHoraEntrega.getText(), txtEstado.getText(),Integer.parseInt(txtIdBibliotecario.getText()), JlistElementosSeleccionados.getSelectedValue().toString(), Integer.parseInt(txtCodigo.getText()));
+					crearPrestamo.crearPrestamo(txtFechaPrestamo.getText(), txtHoraPrestamo.getText(), txtHoraEntrega.getText(), Integer.parseInt(txtEstado.getText()),Integer.parseInt(txtIdBibliotecario.getText()), JlistElementosSeleccionados.getSelectedValue().toString(), Integer.parseInt(txtCodigo.getText()));
 					
 				} catch (SQLException e) {
 					JOptionPane.showConfirmDialog(null, e, "Error",JOptionPane.DEFAULT_OPTION);

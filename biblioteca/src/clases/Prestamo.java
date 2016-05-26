@@ -23,7 +23,7 @@ public class Prestamo {
 	private int idLibros;
 	private int cantidadlibros;
 	
-	public void crearPrestamo(String fecha, String horaPrestamo, String horaEntrega, String estado, int id_bibliotecario, String titulo, int id_lector) throws SQLException{
+	public void crearPrestamo(String fecha, String horaPrestamo, String horaEntrega, int estado, int id_bibliotecario, String titulo, int id_lector) throws SQLException{
 		sql = "SELECT id, cantidad FROM libros where titulo = '"+titulo+"'";
 		
 		Statement sentencia = conexion.createStatement();
@@ -42,14 +42,14 @@ public class Prestamo {
 		}
 		
 		
-		sql ="SELECT * FROM libros where id_bibliotecario = '"+id_bibliotecario+"' AND id_libro = '"+idLibros+"' AND id_lector = '"+id_lector+"'";
+		sql ="SELECT * FROM prestamo where id_bibliotecario = '"+id_bibliotecario+"' AND id_libro = '"+idLibros+"' AND id_lector = '"+id_lector+"'";
 		
 		Statement sentencia1 = conexion.createStatement();
 		ResultSet resultado1 = sentencia1.executeQuery(sql);
 		
 		if(!resultado.next())
 		{
-			String sql1 = "INSERT INTO libros ( fecha, horaPrestamo, horaEntrega, estado, id_bibliotecario, id_libro, id_lector) VALUES ('"+fecha+"', '"+horaPrestamo+"', '"+horaEntrega+"', '"+estado+"', '"+id_bibliotecario+"', '"+idLibros+"', '"+id_lector+"')";
+			String sql1 = "INSERT INTO prestamo ( fecha, horaPrestamo, horaEntrega, estado, id_bibliotecario, id_libro, id_lector) VALUES ('"+fecha+"', '"+horaPrestamo+"', '"+horaEntrega+"', '"+estado+"', '"+id_bibliotecario+"', '"+idLibros+"', '"+id_lector+"')";
 				
 				PreparedStatement sentencia2 = conexion.prepareStatement(sql1);
 				sentencia2.executeUpdate();

@@ -192,6 +192,17 @@ public class FrmPrincipal extends JFrame {
 		});
 		mnNewMenu.add(mntmLector);
 		
+		JMenuItem mntmDevolucion = new JMenuItem("Devolucion");
+		mntmDevolucion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrmDevolucion Devolucion = new FrmDevolucion();
+				Devolucion.setAlwaysOnTop(true);
+				Devolucion.setLocationRelativeTo(null);
+				Devolucion.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmDevolucion);
+		
 		JMenu mnConsultas = new JMenu("Consultas");
 		menuBar.add(mnConsultas);
 		
