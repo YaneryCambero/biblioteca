@@ -44,6 +44,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
 
+@SuppressWarnings({ "unused", "serial" })
 public class FrmPrincipal extends JFrame {
 
 	private JPanel contentPane;

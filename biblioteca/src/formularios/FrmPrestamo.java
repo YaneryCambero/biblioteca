@@ -39,6 +39,7 @@ import java.awt.Font;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 
+@SuppressWarnings({ "unused", "serial" })
 public class FrmPrestamo extends JDialog {
 
 	private JPanel contentPane;
@@ -59,6 +60,7 @@ public class FrmPrestamo extends JDialog {
 	private boolean control;
 	private ResultSet datosDeFilas;
 	Prestamo prestamoLibro;
+	@SuppressWarnings("rawtypes")
 	private DefaultListModel modeloLista=new DefaultListModel();
 
 	/**
@@ -292,6 +294,7 @@ public class FrmPrestamo extends JDialog {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
+		@SuppressWarnings("rawtypes")
 		JList JlistContenidoBusqueda = new JList();
 		JlistContenidoBusqueda.setBounds(22, 57, 176, 78);
 		panel_2.add(JlistContenidoBusqueda);
@@ -309,6 +312,7 @@ public class FrmPrestamo extends JDialog {
 		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
+			@SuppressWarnings("unchecked")
 			public void actionPerformed(ActionEvent arg0) {
 				
 				try {
@@ -337,6 +341,7 @@ public class FrmPrestamo extends JDialog {
 		btnBuscar.setBounds(358, 7, 93, 23);
 		panel_2.add(btnBuscar);
 		
+		@SuppressWarnings("rawtypes")
 		JList JlistElementosSeleccionados = new JList();
 		JlistElementosSeleccionados.setBounds(358, 57, 178, 78);
 		panel_2.add(JlistElementosSeleccionados);
@@ -352,7 +357,9 @@ public class FrmPrestamo extends JDialog {
 		
 		JButton btnQuitarLibro = new JButton("Quitar Libro");
 		btnQuitarLibro.addActionListener(new ActionListener() {
+			@SuppressWarnings("unchecked")
 			public void actionPerformed(ActionEvent arg0) {
+				@SuppressWarnings("rawtypes")
 				DefaultListModel borrarLista = new DefaultListModel();
 				borrarLista.removeAllElements();
 				
@@ -366,6 +373,7 @@ public class FrmPrestamo extends JDialog {
 		lblTituloLibro.setBounds(129, 11, 69, 14);
 		panel_2.add(lblTituloLibro);
 		btnAgregar.addActionListener(new ActionListener() {
+			@SuppressWarnings({ "deprecation", "unchecked" })
 			public void actionPerformed(ActionEvent e) {
 				JlistElementosSeleccionados.setListData(JlistContenidoBusqueda.getSelectedValues());
 				JlistElementosSeleccionados.setSelectedIndex(0);
@@ -395,6 +403,7 @@ public class FrmPrestamo extends JDialog {
 		
 		JButton btnNuevo = new JButton("Nuevo");
 		btnNuevo.addActionListener(new ActionListener() {
+			@SuppressWarnings("unchecked")
 			public void actionPerformed(ActionEvent arg0) {
 				txtCodigo.setText("");
 				txtNombre.setText("");
@@ -413,6 +422,7 @@ public class FrmPrestamo extends JDialog {
 				
 				txtTituloLibro.setText("");
 				
+				@SuppressWarnings("rawtypes")
 				DefaultListModel borrarLista = new DefaultListModel();
 				borrarLista.removeAllElements();
 				
