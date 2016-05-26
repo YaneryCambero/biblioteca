@@ -132,6 +132,7 @@ public class FrmDevolucion extends JDialog {
 		contentPane.add(btnBuscar);
 		
 		txtCodigo = new JTextField();
+		txtCodigo.setVisible(false);
 		txtCodigo.setEditable(false);
 		txtCodigo.setBounds(10, 115, 86, 20);
 		contentPane.add(txtCodigo);

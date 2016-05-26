@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
@@ -27,7 +29,10 @@ public class FrmDevoluciones extends JDialog {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField textField;
+	private JTextField txtBuscar;
+	private Vector<Vector<String>> datosDeFilas = new Vector<Vector<String>>();
+	private Vector<String> nombreColumnas = new Vector<String>();
+	private DefaultTableModel modeloTabla;
 
 	/**
 	 * Launch the application.
@@ -82,10 +87,10 @@ public class FrmDevoluciones extends JDialog {
 		lblInformacionABuscar.setBounds(223, 103, 167, 14);
 		contentPane.add(lblInformacionABuscar);
 		
-		textField = new JTextField();
-		textField.setBounds(409, 97, 114, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtBuscar = new JTextField();
+		txtBuscar.setBounds(409, 97, 114, 20);
+		contentPane.add(txtBuscar);
+		txtBuscar.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(12, 133, 934, 199);
@@ -93,9 +98,15 @@ public class FrmDevoluciones extends JDialog {
 		scrollPane.setBackground(Color.BLUE);
 		contentPane.add(scrollPane);
 		
+		JComboBox cbxBuscarPor = new JComboBox();
+		cbxBuscarPor.setModel(new DefaultComboBoxModel(new String[] {"Fecha", "Codigo"}));
+		cbxBuscarPor.setBounds(410, 66, 113, 20);
+		contentPane.add(cbxBuscarPor);
+		
 		JButton btnDevolverAlEstante = new JButton("Buscar");
 		btnDevolverAlEstante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		btnDevolverAlEstante.setBounds(548, 96, 89, 23);
@@ -115,12 +126,21 @@ public class FrmDevoluciones extends JDialog {
 		scrollPane.add(table);
 		
 		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtBuscar.setText("");
+				cbxBuscarPor.setSelectedIndex(0);
+				
+				datosDeFilas.removeAllElements();
+				nombreColumnas.removeAllElements();
+				modeloTabla = new DefaultTableModel(datosDeFilas, nombreColumnas);
+				table.setModel(modeloTabla);
+				
+			}
+		});
 		btnNuevo.setBounds(548, 31, 89, 23);
 		contentPane.add(btnNuevo);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Fecha", "Codigo"}));
-		comboBox.setBounds(410, 66, 113, 20);
-		contentPane.add(comboBox);
+		
 	}
 }
