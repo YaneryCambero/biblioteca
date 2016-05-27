@@ -252,7 +252,6 @@ public class FrmPrincipal extends JFrame {
 		mnConsultas.add(mntmUsuarioss);
 		
 		JMenuItem mntmDevoluciones = new JMenuItem("Devoluciones");
-		mntmDevoluciones.setEnabled(false);
 		mntmDevoluciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				FrmDevoluciones devoluciones = new FrmDevoluciones();

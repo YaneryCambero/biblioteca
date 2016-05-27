@@ -43,7 +43,6 @@ public class Devolucion {
 		try {
 			resultado.beforeFirst();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return resultado;

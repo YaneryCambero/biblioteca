@@ -9,7 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+
+import clases.Devoluciones;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -21,6 +25,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
@@ -28,11 +35,14 @@ import java.awt.Toolkit;
 public class FrmDevoluciones extends JDialog {
 
 	private JPanel contentPane;
-	private JTable table;
-	private JTextField txtBuscar;
+	private ResultSet resultado;
+	private ResultSetMetaData metaDatos;
+	private int cantidadColumnas;
 	private Vector<Vector<String>> datosDeFilas = new Vector<Vector<String>>();
 	private Vector<String> nombreColumnas = new Vector<String>();
 	private DefaultTableModel modeloTabla;
+	private JTextField txtBuscar;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -69,47 +79,83 @@ public class FrmDevoluciones extends JDialog {
 		lblDevoluciones.setBounds(277, 11, 246, 23);
 		contentPane.add(lblDevoluciones);
 		
-		JLabel lblNewLabel = new JLabel("Total de registros");
-		lblNewLabel.setBounds(12, 349, 94, 14);
+		JLabel lblNewLabel = new JLabel("Total de registros:");
+		lblNewLabel.setBounds(12, 349, 113, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel("0");
-		label.setBounds(117, 349, 33, 14);
+		label.setBounds(137, 349, 33, 14);
 		contentPane.add(label);
 		
 		JLabel lblBuscarPor = new JLabel("Buscar Por:");
 		lblBuscarPor.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblBuscarPor.setBounds(277, 69, 113, 14);
+		lblBuscarPor.setBounds(242, 55, 113, 14);
 		contentPane.add(lblBuscarPor);
 		
 		JLabel lblInformacionABuscar = new JLabel("Informacion a Buscar:");
 		lblInformacionABuscar.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblInformacionABuscar.setBounds(223, 103, 167, 14);
+		lblInformacionABuscar.setBounds(188, 89, 167, 14);
 		contentPane.add(lblInformacionABuscar);
 		
 		txtBuscar = new JTextField();
-		txtBuscar.setBounds(409, 97, 114, 20);
+		txtBuscar.setBounds(373, 86, 150, 20);
 		contentPane.add(txtBuscar);
 		txtBuscar.setColumns(10);
 		
-		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(12, 133, 934, 199);
-		scrollPane.setBorder(new LineBorder(Color.BLACK));
-		scrollPane.setBackground(Color.BLUE);
-		contentPane.add(scrollPane);
-		
 		JComboBox cbxBuscarPor = new JComboBox();
-		cbxBuscarPor.setModel(new DefaultComboBoxModel(new String[] {"Fecha", "Codigo"}));
-		cbxBuscarPor.setBounds(410, 66, 113, 20);
+		cbxBuscarPor.setModel(new DefaultComboBoxModel(new String[] {"Fecha Prestamo", "Codigo Prestamo"}));
+		cbxBuscarPor.setBounds(373, 52, 150, 20);
 		contentPane.add(cbxBuscarPor);
 		
 		JButton btnDevolverAlEstante = new JButton("Buscar");
 		btnDevolverAlEstante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				try {
+					Devoluciones consulta = new Devoluciones();
+					consulta.buscarDatos(cbxBuscarPor.getSelectedIndex(), txtBuscar.getText());
+					
+					resultado = consulta.obtenerDatos();
+					
+					datosDeFilas.removeAllElements();
+					nombreColumnas.removeAllElements();
+					txtBuscar.setText("");
+					
+					
+					if(resultado.next())
+					{
+					     metaDatos = resultado.getMetaData();
+					     
+					     cantidadColumnas = metaDatos.getColumnCount();
+							for(int i =1; i <= cantidadColumnas; i++)
+							{
+								 nombreColumnas.add(metaDatos.getColumnName(i));
+							}
+							
+							resultado.beforeFirst();
+							while(resultado.next())
+							{
+								Vector<String> temporal = new Vector<>();
+								datosDeFilas.add(temporal);
+								for(int i = 1; i<= cantidadColumnas;i++ )
+								{
+								  temporal.add(resultado.getObject(i).toString());
+								}
+							}
+					}else
+					 {
+							JOptionPane.showConfirmDialog(null, "Verifique solicitud","No hay datos",JOptionPane.DEFAULT_OPTION);
+					 }
+					
+					modeloTabla = new DefaultTableModel(datosDeFilas, nombreColumnas);
+					table.setModel(modeloTabla);
+					
+				} catch (SQLException e1) {
+					JOptionPane.showConfirmDialog(null, e1,"Error",JOptionPane.DEFAULT_OPTION);
+				}
 			}
 		});
-		btnDevolverAlEstante.setBounds(548, 96, 89, 23);
+		btnDevolverAlEstante.setBounds(548, 84, 89, 23);
 		contentPane.add(btnDevolverAlEstante);
 		
 		JButton btnSalir = new JButton("Salir");
@@ -118,12 +164,8 @@ public class FrmDevoluciones extends JDialog {
 				FrmDevoluciones.this.dispose();
 			}
 		});
-		btnSalir.setBounds(548, 65, 89, 23);
+		btnSalir.setBounds(548, 49, 89, 23);
 		contentPane.add(btnSalir);
-		
-		table = new JTable();
-		table.setBounds(20, 238, 387, -132);
-		scrollPane.add(table);
 		
 		JButton btnNuevo = new JButton("Nuevo");
 		btnNuevo.addActionListener(new ActionListener() {
@@ -133,14 +175,22 @@ public class FrmDevoluciones extends JDialog {
 				
 				datosDeFilas.removeAllElements();
 				nombreColumnas.removeAllElements();
+				
 				modeloTabla = new DefaultTableModel(datosDeFilas, nombreColumnas);
 				table.setModel(modeloTabla);
-				
+			
 			}
 		});
-		btnNuevo.setBounds(548, 31, 89, 23);
+		btnNuevo.setBounds(548, 14, 89, 23);
 		contentPane.add(btnNuevo);
 		
+		table = new JTable();
+		table.setBounds(30, 335, 458, -200);
 		
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(12, 120, 935, 200);
+		scrollPane.setBorder(new LineBorder(Color.BLACK));
+		scrollPane.setBackground(Color.BLUE);
+		contentPane.add(scrollPane);
 	}
 }
