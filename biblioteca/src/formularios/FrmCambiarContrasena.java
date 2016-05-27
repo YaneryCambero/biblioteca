@@ -1,32 +1,29 @@
 package formularios;
 
-import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import clases.CambiarContrasena;
 
-import java.awt.Component;
-import java.awt.Window.Type;
-import java.awt.Dialog.ModalExclusionType;
-import java.awt.Toolkit;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseEvent;
-
+@SuppressWarnings("serial")
 public class FrmCambiarContrasena extends JDialog {
 
 	private JPanel contentPane;
@@ -124,6 +121,7 @@ public class FrmCambiarContrasena extends JDialog {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				@SuppressWarnings("unused")
 				CambiarContrasena cambiar = new CambiarContrasena(TxtUsuario.getText(), new String(TxtContrasenaActual.getPassword()), new String(TxtNuevoContrasena.getPassword()), new String(TxtConfirmarContrasena.getPassword()));
 				TxtUsuario.setText("");
 				TxtContrasenaActual.setText("");

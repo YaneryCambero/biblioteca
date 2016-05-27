@@ -1,38 +1,36 @@
 package formularios;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.Vector;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-import clases.ConsultarLector;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 import clases.ConsultarPrestamo;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import java.awt.Dialog.ModalityType;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.Vector;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Font;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
-
+@SuppressWarnings("serial")
 public class FrmConsultaPrestamo extends JDialog {
 
 	private JPanel contentPane;
@@ -61,6 +59,7 @@ public class FrmConsultaPrestamo extends JDialog {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("unchecked")
 	public FrmConsultaPrestamo() {
 		setTitle("Prestamos");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmConsultaPrestamo.class.getResource("/imagenes/Line Chart.png")));
@@ -94,8 +93,9 @@ public class FrmConsultaPrestamo extends JDialog {
 		lblNewLabel.setBounds(229, 82, 124, 16);
 		contentPane.add(lblNewLabel);
 		
+		@SuppressWarnings("rawtypes")
 		JComboBox cbxBuscarPor = new JComboBox();
-		cbxBuscarPor.setModel(new DefaultComboBoxModel(new String[] {"Codigo de prestamo", "Codigo de bibliotecario", "Codigo de libro", "Codigo de lector"}));
+		cbxBuscarPor.setModel(new DefaultComboBoxModel<Object>(new String[] {"Codigo de prestamo", "Codigo de bibliotecario", "Codigo de libro", "Codigo de lector"}));
 		cbxBuscarPor.setBounds(371, 46, 178, 20);
 		contentPane.add(cbxBuscarPor);
 		

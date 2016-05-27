@@ -1,40 +1,36 @@
 package formularios;
 
-import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.text.ParseException;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 import clases.Bibliotecario;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-
-import java.awt.Font;
-import java.awt.Dialog.ModalityType;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.awt.event.ActionEvent;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFormattedTextField.AbstractFormatterFactory;
-import java.awt.Toolkit;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
 
 
-
+@SuppressWarnings("serial")
 public class FrmBibliotecario extends JDialog {
 
 	private JPanel contentPane;
@@ -72,6 +68,7 @@ public class FrmBibliotecario extends JDialog {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public FrmBibliotecario() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmBibliotecario.class.getResource("/imagenes/Profile.png")));
 		setModalityType(ModalityType.APPLICATION_MODAL);
@@ -392,6 +389,7 @@ public class FrmBibliotecario extends JDialog {
 				String fechaRegistro = txtFechaRegistroAnyo.getText() +"-"+ txtFechaRegistroMes.getText() +"-"+ txtFechaRegistroDia.getText();
 				
 				try {
+					@SuppressWarnings("unused")
 					Bibliotecario Bibliotecario = new Bibliotecario(txtNombre.getText(),txtApellido.getText(),txtCalle.getText(),txtSector.getText(),txtCiudad.getText(),fechaNacimiento,txtEmail.getText(),txtTelefono.getText(),fechaRegistro,txtCedula.getText(),cbxCategoria.getSelectedItem().toString());
 					
 					

@@ -1,39 +1,36 @@
 package formularios;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
-import java.awt.ScrollPane;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.Vector;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 import clases.ConsultarLector;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import java.awt.Dialog.ModalityType;
-import javax.swing.JTable;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.event.ActionListener;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.Vector;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import java.awt.Toolkit;
-import java.awt.Font;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
-
+@SuppressWarnings("serial")
 public class FrmConsultaLector extends JDialog {
 
 	private JPanel contentPane;
@@ -83,8 +80,8 @@ public class FrmConsultaLector extends JDialog {
 		lblBuscarPor.setBounds(257, 48, 119, 14);
 		contentPane.add(lblBuscarPor);
 		
-		JComboBox cbxBuscarPor = new JComboBox();
-		cbxBuscarPor.setModel(new DefaultComboBoxModel(new String[] {"Codigo", "Nombre", "Apellido"}));
+		JComboBox<Object> cbxBuscarPor = new JComboBox<Object>();
+		cbxBuscarPor.setModel(new DefaultComboBoxModel<Object>(new String[] {"Codigo", "Nombre", "Apellido"}));
 		cbxBuscarPor.setBounds(394, 45, 193, 20);
 		contentPane.add(cbxBuscarPor);
 		

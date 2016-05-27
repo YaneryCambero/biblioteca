@@ -1,32 +1,30 @@
 package formularios;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-
-import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import clases.Autor;
 
-import java.awt.Color;
-import java.awt.Dialog.ModalityType;
-import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
-
+@SuppressWarnings("serial")
 public class FrmAutor extends JDialog {
 
 	private JPanel contentPane;
@@ -114,6 +112,7 @@ public class FrmAutor extends JDialog {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					@SuppressWarnings("unused")
 					Autor Autor = new Autor(txtNombre.getText(), txtApellido.getText(), txtNacionalidad.getText());
 				} catch (SQLException e1) {
 					JOptionPane.showConfirmDialog(null, e,"Error",JOptionPane.DEFAULT_OPTION);

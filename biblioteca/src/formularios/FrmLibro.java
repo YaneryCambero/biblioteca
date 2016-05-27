@@ -1,32 +1,31 @@
 package formularios;
 
-import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import clases.Libro;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JTextField;
-import java.awt.Dialog.ModalityType;
-import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Font;
-import java.awt.Toolkit;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import clases.Libro;
+
+@SuppressWarnings("serial")
 public class FrmLibro extends JDialog {
 
 	private JPanel contentPane;
@@ -58,6 +57,7 @@ public class FrmLibro extends JDialog {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public FrmLibro() {
 		setTitle("Libros");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmLibro.class.getResource("/imagenes/icono_dduv_libros.png")));
@@ -225,6 +225,7 @@ public class FrmLibro extends JDialog {
 			int Cantidad = Integer.parseInt(txtCantidad.getText());
 			int numeroPagina = Integer.parseInt(txtNumeroDePaginas.getText());
 
+					@SuppressWarnings("unused")
 					Libro Libro = new Libro(txtTitulo.getText(), cbxAutor.getSelectedItem().toString(), txtEditor.getText(), cbxGenero.getSelectedItem().toString(), cbxSubGenero.getSelectedItem().toString(), cbxIdioma.getSelectedItem().toString(), estado, cbxCategoria.getSelectedItem().toString(),txtPublicacion.getText(), txtEditorial.getText(), numeroPagina,cbxCondicionesFisicas.getSelectedItem().toString(),Cantidad, txtEdicion.getText());
 					
 				} catch (Exception e2) {

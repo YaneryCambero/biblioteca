@@ -1,34 +1,31 @@
 package formularios;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 import java.text.ParseException;
 
-import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import clases.Lector;
-import java.awt.Font;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.Toolkit;
 
+@SuppressWarnings("serial")
 public class FrmLector extends JDialog {
 
 	private JPanel contentPane;
@@ -64,6 +61,7 @@ public class FrmLector extends JDialog {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("unchecked")
 	public FrmLector() {
 		setTitle("Lector");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmLector.class.getResource("/imagenes/Profile.png")));
@@ -145,6 +143,7 @@ public class FrmLector extends JDialog {
 		contentPane.add(ftfFechaNacimiento);
 		ftfFechaNacimiento.setColumns(10);*/
 		
+		@SuppressWarnings("rawtypes")
 		JComboBox cbbCategoria = new JComboBox();
 		cbbCategoria.setModel(new DefaultComboBoxModel<Object>(new String[] {"Estudiante", "Profesor"}));
 		cbbCategoria.setBounds(179, 302, 130, 20);
@@ -192,6 +191,7 @@ public class FrmLector extends JDialog {
 				String fechaNacimiento = txtFechaNacimientoAnyo +"-"+ txtFechaNacimientoMes.getText() +"-"+ txtFechaNacimientoDia.getText();
 				try{
 					
+					@SuppressWarnings("unused")
 					Lector Lector = new Lector(txtNombre.getText(), txtApellido.getText(),ftfCedula.getText(), fechaNacimiento, txtTelefono.getText(), txtCalle.getText(), txtSector.getText(), txtCiudad.getText(), txtEmail.getText(), cbbCategoria.getSelectedIndex());
 				
 				}catch (SQLException e)

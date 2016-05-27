@@ -1,35 +1,34 @@
 package formularios;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.Vector;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-import clases.ConsultaAutor;
-import clases.ConsultarBibliotecario;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JTable;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.Vector;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
-import javax.swing.JScrollPane;
-import java.awt.Toolkit;
-import java.awt.Font;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
 
+import clases.ConsultaAutor;
+
+@SuppressWarnings("serial")
 public class FrmConsultaAutor extends JFrame {
 
 	private JPanel contentPane;
@@ -81,8 +80,8 @@ public class FrmConsultaAutor extends JFrame {
 		lblCantidadRegistrada.setBounds(130, 306, 55, 16);
 		contentPane.add(lblCantidadRegistrada);
 		
-		JComboBox cbxBuscarPor = new JComboBox();
-		cbxBuscarPor.setModel(new DefaultComboBoxModel(new String[] {"Codigo", "Nombre", "Apellido"}));
+		JComboBox<Object> cbxBuscarPor = new JComboBox<Object>();
+		cbxBuscarPor.setModel(new DefaultComboBoxModel<Object>(new String[] {"Codigo", "Nombre", "Apellido"}));
 		cbxBuscarPor.setBounds(243, 58, 87, 20);
 		contentPane.add(cbxBuscarPor);
 		

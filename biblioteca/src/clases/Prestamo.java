@@ -6,11 +6,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
 
 import javax.swing.JOptionPane;
-import javax.swing.RootPaneContainer;
-import javax.xml.ws.FaultAction;
 
 public class Prestamo {	
 	BaseDeDatos conectar = new BaseDeDatos();
@@ -45,6 +42,7 @@ public class Prestamo {
 		sql ="SELECT * FROM prestamo where id_bibliotecario = '"+id_bibliotecario+"' AND id_libro = '"+idLibros+"' AND id_lector = '"+id_lector+"'";
 		
 		Statement sentencia1 = conexion.createStatement();
+		@SuppressWarnings("unused")
 		ResultSet resultado1 = sentencia1.executeQuery(sql);
 		
 		if(!resultado.next())

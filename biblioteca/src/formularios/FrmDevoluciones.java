@@ -1,37 +1,35 @@
 package formularios;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import clases.Devoluciones;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JTable;
-import java.awt.Dialog.ModalityType;
-import javax.swing.SwingConstants;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.Vector;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-
+@SuppressWarnings("serial")
 public class FrmDevoluciones extends JDialog {
 
 	private JPanel contentPane;
@@ -63,6 +61,7 @@ public class FrmDevoluciones extends JDialog {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("unchecked")
 	public FrmDevoluciones() {
 		setTitle("Devoluciones");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmDevoluciones.class.getResource("/imagenes/Line Chart.png")));
@@ -102,8 +101,9 @@ public class FrmDevoluciones extends JDialog {
 		contentPane.add(txtBuscar);
 		txtBuscar.setColumns(10);
 		
+		@SuppressWarnings("rawtypes")
 		JComboBox cbxBuscarPor = new JComboBox();
-		cbxBuscarPor.setModel(new DefaultComboBoxModel(new String[] {"Fecha Prestamo", "Codigo Prestamo"}));
+		cbxBuscarPor.setModel(new DefaultComboBoxModel<Object>(new String[] {"Fecha Prestamo", "Codigo Prestamo"}));
 		cbxBuscarPor.setBounds(373, 52, 150, 20);
 		contentPane.add(cbxBuscarPor);
 		

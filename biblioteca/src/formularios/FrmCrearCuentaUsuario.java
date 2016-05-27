@@ -1,35 +1,29 @@
 package formularios;
 
-import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import javax.swing.JTree;
-import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.tree.DefaultTreeModel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import clases.CrearUsuario;
 
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.JRadioButton;
-import javax.swing.JCheckBox;
-import javax.swing.JDialog;
-import javax.swing.JList;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import java.awt.Dialog.ModalityType;
-import java.awt.Toolkit;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
-
+@SuppressWarnings("serial")
 public class FrmCrearCuentaUsuario extends JDialog {
 
 	private JPanel contentPane;
@@ -114,6 +108,7 @@ public class FrmCrearCuentaUsuario extends JDialog {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("unused")
 				CrearUsuario nuevoUsuario = new CrearUsuario(TxtUsuario.getText(), new String(TxtContrasena.getPassword()), new String(TxtConfirmarContrasena.getPassword()), cbxAdmin.isSelected());
 				TxtUsuario.setText("");
 				TxtContrasena.setText("");
