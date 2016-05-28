@@ -358,6 +358,8 @@ public class FrmBibliotecario extends JDialog {
 				txtApellido.setText("");
 				txtCedula.setText("");
 				txtCalle.setText("");
+				txtSector.setText("");
+				txtCiudad.setText("");
 				txtEmail.setText("");
 				txtFechaNacimientoAnyo.setText("");
 				txtFechaNacimientoMes.setText("");
@@ -392,12 +394,14 @@ public class FrmBibliotecario extends JDialog {
 					@SuppressWarnings("unused")
 					Bibliotecario Bibliotecario = new Bibliotecario(txtNombre.getText(),txtApellido.getText(),txtCalle.getText(),txtSector.getText(),txtCiudad.getText(),fechaNacimiento,txtEmail.getText(),txtTelefono.getText(),fechaRegistro,txtCedula.getText(),cbxCategoria.getSelectedItem().toString());
 					
-					
+					JOptionPane.showConfirmDialog(FrmBibliotecario.this, "Datos guardados con exito","Confirmacion de guardado", JOptionPane.DEFAULT_OPTION);
 					
 					txtNombre.setText("");
 					txtApellido.setText("");
 					txtCedula.setText("");
 					txtCalle.setText("");
+					txtSector.setText("");
+					txtCiudad.setText("");
 					txtEmail.setText("");
 					txtFechaNacimientoAnyo.setText("");
 					txtFechaNacimientoMes.setText("");
@@ -409,7 +413,7 @@ public class FrmBibliotecario extends JDialog {
 					cbxCategoria.setSelectedIndex(0);
 					
 				} catch (SQLException e) {
-					JOptionPane.showConfirmDialog(null, e,"Error",JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showConfirmDialog(FrmBibliotecario.this, e,"Error",JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});

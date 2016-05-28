@@ -157,7 +157,7 @@ public class FrmPrestamo extends JDialog {
 			    try {
 					control = Prestamo.buscarLector(txtCodigo.getText());
 				} catch (SQLException e1) {
-					JOptionPane.showConfirmDialog(null, e1, "error",JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showConfirmDialog(FrmPrestamo.this, e1, "error",JOptionPane.DEFAULT_OPTION);
 				}
 			    
 			    if(control){
@@ -325,6 +325,7 @@ public class FrmPrestamo extends JDialog {
 						modeloLista.removeAllElements();
 						JlistContenidoBusqueda.setModel(modeloLista);
 						
+						
 						do{
 							
 							modeloLista.addElement(datosDeFilas.getString("titulo"));
@@ -351,11 +352,11 @@ public class FrmPrestamo extends JDialog {
 		panel_2.add(scrollPaneElementosSeleccionados);
 		scrollPaneElementosSeleccionados.setBackground(Color.WHITE);
 		
-		JButton btnAgregar = new JButton("Agregar Libro");
-		btnAgregar.setBounds(220, 54, 112, 23);
+		JButton btnAgregar = new JButton("Agregar Libro =>");
+		btnAgregar.setBounds(210, 54, 138, 23);
 		panel_2.add(btnAgregar);
 		
-		JButton btnQuitarLibro = new JButton("Quitar Libro");
+		JButton btnQuitarLibro = new JButton("<= Quitar Libro");
 		btnQuitarLibro.addActionListener(new ActionListener() {
 			@SuppressWarnings("unchecked")
 			public void actionPerformed(ActionEvent arg0) {
@@ -366,12 +367,20 @@ public class FrmPrestamo extends JDialog {
 				JlistElementosSeleccionados.setModel(borrarLista);
 			}
 		});
-		btnQuitarLibro.setBounds(220, 83, 112, 23);
+		btnQuitarLibro.setBounds(210, 83, 138, 23);
 		panel_2.add(btnQuitarLibro);
 		
 		JLabel lblTituloLibro = new JLabel("Titulo Libro:");
 		lblTituloLibro.setBounds(129, 11, 69, 14);
 		panel_2.add(lblTituloLibro);
+		
+		JLabel lblLibrosEncontrados = new JLabel("Libros Encontrados");
+		lblLibrosEncontrados.setBounds(54, 37, 112, 16);
+		panel_2.add(lblLibrosEncontrados);
+		
+		JLabel lblLibroSeleccionado = new JLabel("Libro Seleccionado");
+		lblLibroSeleccionado.setBounds(385, 37, 112, 16);
+		panel_2.add(lblLibroSeleccionado);
 		btnAgregar.addActionListener(new ActionListener() {
 			@SuppressWarnings({ "deprecation", "unchecked" })
 			public void actionPerformed(ActionEvent e) {
@@ -386,9 +395,9 @@ public class FrmPrestamo extends JDialog {
 				Prestamo crearPrestamo = new Prestamo();
 				try {
 					crearPrestamo.crearPrestamo(txtFechaPrestamo.getText(), txtHoraPrestamo.getText(), txtHoraEntrega.getText(), Integer.parseInt(txtEstado.getText()),Integer.parseInt(txtIdBibliotecario.getText()), JlistElementosSeleccionados.getSelectedValue().toString(), Integer.parseInt(txtCodigo.getText()));
-					
+					JOptionPane.showConfirmDialog(FrmPrestamo.this, "Datos Guardados Correctamente","Confirmacion de guardado",JOptionPane.DEFAULT_OPTION);
 				} catch (SQLException e) {
-					JOptionPane.showConfirmDialog(null, e, "Error",JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showConfirmDialog(FrmPrestamo.this, e, "Error",JOptionPane.DEFAULT_OPTION);
 				}
 				
 			}

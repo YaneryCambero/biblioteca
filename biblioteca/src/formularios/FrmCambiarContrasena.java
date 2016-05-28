@@ -8,11 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -121,12 +123,18 @@ public class FrmCambiarContrasena extends JDialog {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				@SuppressWarnings("unused")
-				CambiarContrasena cambiar = new CambiarContrasena(TxtUsuario.getText(), new String(TxtContrasenaActual.getPassword()), new String(TxtNuevoContrasena.getPassword()), new String(TxtConfirmarContrasena.getPassword()));
-				TxtUsuario.setText("");
-				TxtContrasenaActual.setText("");
-				TxtNuevoContrasena.setText("");
-				TxtConfirmarContrasena.setText("");
+				try {
+					@SuppressWarnings("unused")
+					CambiarContrasena cambiar = new CambiarContrasena(TxtUsuario.getText(), new String(TxtContrasenaActual.getPassword()), new String(TxtNuevoContrasena.getPassword()), new String(TxtConfirmarContrasena.getPassword()));
+					JOptionPane.showConfirmDialog(FrmCambiarContrasena.this, "se han guardado los cambios","Cambio Exitoso",JOptionPane.DEFAULT_OPTION);
+					TxtUsuario.setText("");
+					TxtContrasenaActual.setText("");
+					TxtNuevoContrasena.setText("");
+					TxtConfirmarContrasena.setText("");
+				} catch (SQLException e2) {
+					JOptionPane.showConfirmDialog(FrmCambiarContrasena.this, e2,"Error",JOptionPane.DEFAULT_OPTION);
+				}
+				
 			}
 		});
 		btnGuardar.setBounds(215, 194, 80, 23);

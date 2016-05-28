@@ -13,11 +13,10 @@ public class CrearUsuario
 	Connection conexion = conectar.conexion();
 	String sql="";
 	
-	public CrearUsuario(String usuario, String contrasena, String confirmarContrasena, boolean permisos)
+	public CrearUsuario (String usuario, String contrasena, String confirmarContrasena, boolean permisos) throws SQLException
 	{
 		sql = "SELECT * FROM login where usuario ='"+usuario+"'";
 		
-		try {
 						
 				Statement sentencia = conexion.createStatement();
 				ResultSet resultado = sentencia.executeQuery(sql);
@@ -30,21 +29,14 @@ public class CrearUsuario
 						Statement sentencia1 = conexion.createStatement();
 						sentencia1.executeUpdate(sql);
 						
-						JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
-						
-						
 					}else
 					 {
-						JOptionPane.showMessageDialog(null, "Contrasena no concuerdan");
+						throw new SQLException("Contrasena no concuerdan");
 					 }
 				}else
 				 {
-					JOptionPane.showMessageDialog(null, " Este usuario ya esta registrado");
+					throw new SQLException("Este usuario ya esta registrado");
 				 }
-			
-		} catch (SQLException e) {
-			// TODO: handle exception
-		}
 	}
 
 }

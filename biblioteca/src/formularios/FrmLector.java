@@ -188,15 +188,30 @@ public class FrmLector extends JDialog {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String fechaNacimiento = txtFechaNacimientoAnyo +"-"+ txtFechaNacimientoMes.getText() +"-"+ txtFechaNacimientoDia.getText();
+				String fechaNacimiento = txtFechaNacimientoAnyo.getText() +"-"+ txtFechaNacimientoMes.getText() +"-"+ txtFechaNacimientoDia.getText();
 				try{
 					
 					@SuppressWarnings("unused")
-					Lector Lector = new Lector(txtNombre.getText(), txtApellido.getText(),ftfCedula.getText(), fechaNacimiento, txtTelefono.getText(), txtCalle.getText(), txtSector.getText(), txtCiudad.getText(), txtEmail.getText(), cbbCategoria.getSelectedIndex());
-				
+					Lector Lector = new Lector(txtNombre.getText(), txtApellido.getText(),txtCedula.getText(), fechaNacimiento, txtTelefono.getText(), txtCalle.getText(), txtSector.getText(), txtCiudad.getText(), txtEmail.getText(), cbbCategoria.getSelectedIndex());
+					JOptionPane.showMessageDialog(FrmLector.this, "Datos Guardados Correctamente"); 
+					
+					txtNombre.setText("");
+					txtApellido.setText("");
+					txtCiudad.setText("");
+					txtCedula.setText("");
+					txtFechaNacimientoAnyo.setText("");
+					txtFechaNacimientoMes.setText("");
+					txtFechaNacimientoDia.setText("");
+					txtCalle.setText("");
+					txtSector.setText("");
+					txtCiudad.setText("");
+					txtTelefono.setText("");
+					txtEmail.setText("");
+					
+					cbbCategoria.setSelectedIndex(0);
 				}catch (SQLException e)
 				{
-				   JOptionPane.showConfirmDialog(null, e,"Error",JOptionPane.DEFAULT_OPTION);
+				   JOptionPane.showConfirmDialog(FrmLector.this, e,"Error",JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});

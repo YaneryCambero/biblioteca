@@ -24,6 +24,8 @@ import javax.swing.border.EmptyBorder;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import clases.Libro;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 @SuppressWarnings("serial")
 public class FrmLibro extends JDialog {
@@ -116,30 +118,48 @@ public class FrmLibro extends JDialog {
 		
 		JLabel lblPublicacion = new JLabel("Publicacion:");
 		lblPublicacion.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPublicacion.setBounds(316, 89, 76, 14);
+		lblPublicacion.setBounds(364, 113, 76, 14);
 		contentPane.add(lblPublicacion);
 		
 		JLabel lblEditorial = new JLabel("Editorial:");
 		lblEditorial.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEditorial.setBounds(330, 114, 62, 14);
+		lblEditorial.setBounds(378, 138, 62, 14);
 		contentPane.add(lblEditorial);
 		
 		JLabel lblNumeroDePaginas = new JLabel("Numero de paginas:");
 		lblNumeroDePaginas.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNumeroDePaginas.setBounds(268, 139, 124, 14);
+		lblNumeroDePaginas.setBounds(316, 163, 124, 14);
 		contentPane.add(lblNumeroDePaginas);
 		
 		JLabel lblCantidad = new JLabel("Cantidad:");
 		lblCantidad.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCantidad.setBounds(327, 164, 65, 14);
+		lblCantidad.setBounds(375, 188, 65, 14);
 		contentPane.add(lblCantidad);
 		
 		JLabel lblEdicion = new JLabel("Edicion:");
 		lblEdicion.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEdicion.setBounds(343, 189, 49, 14);
+		lblEdicion.setBounds(391, 213, 49, 14);
 		contentPane.add(lblEdicion);
 		
 		JComboBox cbxAutor = new JComboBox();
+		cbxAutor.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				try {
+					Libro autores = new Libro();
+					
+					autor = autores.mostrarAutor();
+					
+					cbxAutor.removeAllItems();
+					
+					do{
+						cbxAutor.addItem(autor.getObject(1).toString() +" "+ autor.getObject(2).toString());
+					}while(autor.next());
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, e1);
+				}
+			}
+		});
 		cbxAutor.setBounds(124, 61, 167, 20);
 		contentPane.add(cbxAutor);
 		
@@ -228,8 +248,24 @@ public class FrmLibro extends JDialog {
 					@SuppressWarnings("unused")
 					Libro Libro = new Libro(txtTitulo.getText(), cbxAutor.getSelectedItem().toString(), txtEditor.getText(), cbxGenero.getSelectedItem().toString(), cbxSubGenero.getSelectedItem().toString(), cbxIdioma.getSelectedItem().toString(), estado, cbxCategoria.getSelectedItem().toString(),txtPublicacion.getText(), txtEditorial.getText(), numeroPagina,cbxCondicionesFisicas.getSelectedItem().toString(),Cantidad, txtEdicion.getText());
 					
+					JOptionPane.showConfirmDialog(FrmLibro.this, "Datos Guardados Correctamente","Confirmacion de guardado",JOptionPane.DEFAULT_OPTION);
+					
+					txtTitulo.setText("");
+					cbxAutor.setSelectedIndex(0);
+					txtEditor.setText("");
+					cbxGenero.setSelectedIndex(0);
+					cbxSubGenero.removeAllItems();
+					cbxIdioma.setSelectedIndex(0);
+					cbxCondicionesFisicas.setSelectedIndex(0);
+					cbxCategoria.setSelectedIndex(0);
+					txtPublicacion.setText("");
+					txtEditorial.setText("");
+					txtNumeroDePaginas.setText("");
+					txtCantidad.setText("");
+					txtEdicion.setText("");	
+					
 				} catch (Exception e2) {
-					JOptionPane.showConfirmDialog(null, e2,"Error",JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showConfirmDialog(FrmLibro.this, e2,"Error",JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});
@@ -259,48 +295,46 @@ public class FrmLibro extends JDialog {
 		
 		txtPublicacion = new JTextField();
 		txtPublicacion.setColumns(10);
-		txtPublicacion.setBounds(416, 86, 124, 20);
+		txtPublicacion.setBounds(464, 110, 124, 20);
 		contentPane.add(txtPublicacion);
 		
 		txtEditorial = new JTextField();
 		txtEditorial.setColumns(10);
-		txtEditorial.setBounds(416, 111, 124, 20);
+		txtEditorial.setBounds(464, 135, 124, 20);
 		contentPane.add(txtEditorial);
 		
 		txtNumeroDePaginas = new JTextField();
 		txtNumeroDePaginas.setColumns(10);
-		txtNumeroDePaginas.setBounds(416, 136, 124, 20);
+		txtNumeroDePaginas.setBounds(464, 160, 124, 20);
 		contentPane.add(txtNumeroDePaginas);
 		
 		txtCantidad = new JTextField();
 		txtCantidad.setColumns(10);
-		txtCantidad.setBounds(416, 161, 124, 20);
+		txtCantidad.setBounds(464, 185, 124, 20);
 		contentPane.add(txtCantidad);
 		
 		txtEdicion = new JTextField();
 		txtEdicion.setColumns(10);
-		txtEdicion.setBounds(416, 186, 124, 20);
+		txtEdicion.setBounds(464, 210, 124, 20);
 		contentPane.add(txtEdicion);
 		
 		btnNuevo.setBounds(142, 278, 89, 23);
 		contentPane.add(btnNuevo);
+		
+		JButton btnRegistrarAutor = new JButton("Registrar Autor");
+		btnRegistrarAutor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrmAutor autor = new FrmAutor();
+				autor.setAlwaysOnTop(true);
+				autor.setLocationRelativeTo(null);
+				autor.setVisible(true);
+			}
+		});
+		btnRegistrarAutor.setFont(new Font("Dialog", Font.BOLD, 12));
+		btnRegistrarAutor.setBounds(303, 58, 137, 26);
+		contentPane.add(btnRegistrarAutor);
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtTitulo, cbxAutor, txtEditor, cbxGenero, cbxSubGenero, cbxIdioma, cbxCondicionesFisicas, cbxCategoria, txtPublicacion, txtEditorial, txtNumeroDePaginas, txtCantidad, txtEdicion, btnGuardar, btnNuevo, btnSalir}));
 		
-		
-		
-		
-		
-		try {
-			Libro autores = new Libro();
-			
-			autor = autores.mostrarAutor();
-			
-			do{
-				cbxAutor.addItem(autor.getObject(1).toString() +" "+ autor.getObject(2).toString());
-			}while(autor.next());
-		} catch (SQLException e1) {
-			JOptionPane.showMessageDialog(null, e1);
-		}
 		
 	}
 }

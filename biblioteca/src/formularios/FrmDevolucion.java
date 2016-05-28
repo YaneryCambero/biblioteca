@@ -110,7 +110,7 @@ public class FrmDevolucion extends JDialog {
 							}
 					}else
 					 {
-							JOptionPane.showConfirmDialog(null, "Verifique solicitud","No hay datos",JOptionPane.DEFAULT_OPTION);
+							JOptionPane.showConfirmDialog(FrmDevolucion.this, "Verifique solicitud","No hay datos",JOptionPane.DEFAULT_OPTION);
 					 }
 					
 					
@@ -120,7 +120,7 @@ public class FrmDevolucion extends JDialog {
 					
 					
 				} catch (SQLException e) {
-					JOptionPane.showConfirmDialog(null, e, "Error",JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showConfirmDialog(FrmDevolucion.this, e, "Error",JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});
@@ -179,7 +179,7 @@ public class FrmDevolucion extends JDialog {
 						Devolucion guardar = new Devolucion();
 						guardar.guardarDatos(txtCodigo.getText());
 						
-						JOptionPane.showConfirmDialog(null, "Datos guardados exitosamente......","Exitoso",JOptionPane.DEFAULT_OPTION);
+						JOptionPane.showConfirmDialog(FrmDevolucion.this, "Datos guardados exitosamente......","Exitoso",JOptionPane.DEFAULT_OPTION);
 						
 						txtBuscar.setText("");
 						txtCodigo.setText("");
@@ -194,7 +194,7 @@ public class FrmDevolucion extends JDialog {
 						
 					}
 				}else{
-					JOptionPane.showConfirmDialog(null, "No ha seleccionado ningun elemento","Error",JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showConfirmDialog(FrmDevolucion.this, "No ha seleccionado ningun elemento","Error",JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});

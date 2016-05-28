@@ -15,7 +15,7 @@ public class EstadoSistema {
 	
 	public int mostrarLector(){ 
 		int CantidadLectores = 0;
-		sql = "SELECT * FROM lector";
+		sql = "SELECT COUNT(id) FROM lector";
 		
 		
 		Statement sentencia;
@@ -24,7 +24,7 @@ public class EstadoSistema {
 			resultado = sentencia.executeQuery(sql);
 			
 			if(resultado.next()){ 
-				CantidadLectores = resultado.getRow();
+				CantidadLectores = resultado.getInt(1);
 			}
 		} catch (SQLException e) {
 		  CantidadLectores = 0;
@@ -37,15 +37,16 @@ public class EstadoSistema {
 	
 	public int mostrarLibros(){ 
 		int CantidadLibros = 0;
-		sql = "SELECT * FROM libros";
+		String sql1 = "SELECT COUNT(id) FROM libros";
 		Statement sentencia;
 		try {
 			sentencia = conexion.createStatement();
-			resultado = sentencia.executeQuery(sql);
+			resultado = sentencia.executeQuery(sql1);
 			
 			if(resultado.next()){ 
-				CantidadLibros = resultado.getRow();
+				CantidadLibros = resultado.getInt(1);
 			}
+			
 		} catch (SQLException e) {
 		  CantidadLibros = 0;
 		}
@@ -54,7 +55,7 @@ public class EstadoSistema {
 	}
 		public int mostrarLibrosPrestados(){ 
 			int CantidadLibrosPrestado = 0;
-			sql = "SELECT * FROM prestamo";
+			sql = "SELECT COUNT(id) FROM prestamo";
 			
 			
 			Statement sentencia;
@@ -63,7 +64,7 @@ public class EstadoSistema {
 				resultado = sentencia.executeQuery(sql);
 				
 				if(resultado.next()){ 
-					CantidadLibrosPrestado = resultado.getRow();
+					CantidadLibrosPrestado = resultado.getInt(1);
 				}
 			} catch (SQLException e) {
 			  CantidadLibrosPrestado = 0;

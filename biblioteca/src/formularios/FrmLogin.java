@@ -100,6 +100,7 @@ public class FrmLogin extends JDialog {
 					FrmLogin.this.dispose();
 					@SuppressWarnings("unused")
 					Login inicio = new Login(usuario,contrasena);
+					
 				 }
 			}
 		});

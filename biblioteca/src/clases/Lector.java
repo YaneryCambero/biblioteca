@@ -22,15 +22,16 @@ public class Lector {
 				if(!resultado.next())
 				{
 					sql = "INSERT into lector (nombre, apellido, FechaNacimiento, telefono, categoria, cedula, email, calle, sector, ciudad) "
-							+ "VALUES ('"+nombre+"', '"+apellido+"','"+fechaNacimiento+"',"+telefono+"', '"+categoria+"',"+cedula+"', '"+email+"', "+calle+"', '"+sector+"', '"+ciudad+"')";
+							+ "VALUES ('"+nombre+"', '"+apellido+"','"+fechaNacimiento+"','"+telefono+"', '"+categoria+"','"+cedula+"', '"+email+"', '"+calle+"', '"+sector+"', '"+ciudad+"')";
 						
 						Statement sentencia1 = conexion.createStatement();
 						sentencia1.executeUpdate(sql);
 						
-						JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
+						
 						
 				}else{
-					JOptionPane.showMessageDialog(null, "Lector existe........ favor verificar");
+					throw new SQLException("Lector existe........ favor verificar");
+					
 				}	
 					
 	}

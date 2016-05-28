@@ -59,7 +59,7 @@ public class Prestamo {
 			ps.executeUpdate();
 			ps.close();
 				
-				JOptionPane.showConfirmDialog(null, "Datos Guardados Correctamente","Confirmacion de guardado",JOptionPane.DEFAULT_OPTION);
+				
 				
 		}else{
 			JOptionPane.showConfirmDialog(null, "El Prestamo existe........ favor verificar","Confirmacion Prestamo existe", JOptionPane.DEFAULT_OPTION);
@@ -77,7 +77,7 @@ public class Prestamo {
 		     control = true;
 		}else
 		 {
-			 JOptionPane.showConfirmDialog(null, "Lector no encontrado","No hay datos",JOptionPane.DEFAULT_OPTION);
+			throw new SQLException("Lector no encontrado");
 		 }
 		
 		return control;
@@ -94,7 +94,7 @@ public class Prestamo {
 			control = true;
 		     
 		}else{
-			JOptionPane.showConfirmDialog(null, "Nombre no encontrado","No hay Datos",JOptionPane.DEFAULT_OPTION);
+			throw new SQLException("Nombre no encontrado");
 		}
 		
 		return control;

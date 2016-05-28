@@ -33,7 +33,7 @@ public class Devolucion {
 		
 		if(!resultado.next())
 		{
-			JOptionPane.showConfirmDialog(null, "Datos no encontrados.....","Error",JOptionPane.DEFAULT_OPTION);
+			throw new SQLException("Datos no encontrados.....");
 				
 		}	
 	}
@@ -47,7 +47,7 @@ public class Devolucion {
 		return resultado;
 	}
 	
-	public void guardarDatos(String codigoPrestamo){
+	public void guardarDatos(String codigoPrestamo) throws SQLException{
 		sql = "UPDATE prestamo SET estado = '2' WHERE id = "+codigoPrestamo;
 		
 		PreparedStatement ps;
@@ -56,7 +56,8 @@ public class Devolucion {
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
-			JOptionPane.showConfirmDialog(null, e,"Error sintaxis",JOptionPane.DEFAULT_OPTION);
+			throw new SQLException("Error sintaxis");
+			
 		}
 		
 		sql ="UPDATE libros SET cantidad = cantidad + 1 WHERE libros.id = (SELECT id_libro FROM prestamo WHERE id = "+codigoPrestamo+")";
@@ -66,7 +67,7 @@ public class Devolucion {
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
-			JOptionPane.showConfirmDialog(null, e,"Error sintaxis",JOptionPane.DEFAULT_OPTION);
+			throw new SQLException("Error sintaxis");
 		}
 	}
 

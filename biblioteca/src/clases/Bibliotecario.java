@@ -30,10 +30,10 @@ public class Bibliotecario {
 						sentencia1.executeUpdate();
 						
 						
-						JOptionPane.showConfirmDialog(null, "Datos guardados con exito","Confirmacion de guardado", JOptionPane.DEFAULT_OPTION);
+						
 						
 				}else{
-					JOptionPane.showConfirmDialog(null, "Bibliotecario existe....... favor de verificar","Confirmacion usuario existe",JOptionPane.DEFAULT_OPTION);
+					throw new SQLException("Bibliotecario existe....... favor de verificar");
 				}	
 					
 	}

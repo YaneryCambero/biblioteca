@@ -114,6 +114,11 @@ public class FrmAutor extends JDialog {
 				try {
 					@SuppressWarnings("unused")
 					Autor Autor = new Autor(txtNombre.getText(), txtApellido.getText(), txtNacionalidad.getText());
+					JOptionPane.showMessageDialog(FrmAutor.this, "Datos Guardados Correctamente");
+					
+					txtNombre.setText("");
+					txtApellido.setText("");
+					txtNacionalidad.setText("");
 				} catch (SQLException e1) {
 					JOptionPane.showConfirmDialog(null, e,"Error",JOptionPane.DEFAULT_OPTION);
 				}

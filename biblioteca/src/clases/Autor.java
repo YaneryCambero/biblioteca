@@ -27,10 +27,10 @@ public class Autor {
 				Statement sentencia1 = conectado.createStatement();
 				sentencia1.executeUpdate(sql);
 				
-				JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
+				
 				
 		}else{
-			JOptionPane.showMessageDialog(null, "Autor existe...... favor de verificar");
+			throw new SQLException("Autor existe...... favor de verificar");
 		}	
 	}
 

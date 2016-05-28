@@ -309,7 +309,7 @@ public class FrmPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Object[][] rows = {{"Heriberto Espino","100040664"},
 								   {"Wendy Rodriguez","100071795"},
-								   {"Francisco Moran","BE0326"},
+								   {"Francisco Moran"," BE0326"},
 								   {"Yanery R. Cambero","100159623"}};
 					Object[] cols = {"Nombre", "Matricula" };
 					JTable table = new JTable(rows, cols);
@@ -397,7 +397,7 @@ public class FrmPrincipal extends JFrame {
 	}
 
 	private void confirmarCierre() {
-		int opcion = JOptionPane.showConfirmDialog(this,"desea salir del sistema?","Confirmacion",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		int opcion = JOptionPane.showConfirmDialog(this,"Deseas salir del sistema?","Confirmacion",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 		if(opcion == JOptionPane.YES_OPTION)
 		{
 			System.exit(0);

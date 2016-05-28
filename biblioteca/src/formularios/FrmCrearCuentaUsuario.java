@@ -6,12 +6,14 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -108,12 +110,20 @@ public class FrmCrearCuentaUsuario extends JDialog {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				@SuppressWarnings("unused")
-				CrearUsuario nuevoUsuario = new CrearUsuario(TxtUsuario.getText(), new String(TxtContrasena.getPassword()), new String(TxtConfirmarContrasena.getPassword()), cbxAdmin.isSelected());
-				TxtUsuario.setText("");
-				TxtContrasena.setText("");
-				TxtConfirmarContrasena.setText("");
-				cbxAdmin.setSelected(false);
+				try {
+					@SuppressWarnings("unused")
+					
+					CrearUsuario nuevoUsuario = new CrearUsuario(TxtUsuario.getText(), new String(TxtContrasena.getPassword()), new String(TxtConfirmarContrasena.getPassword()), cbxAdmin.isSelected());
+					JOptionPane.showConfirmDialog(FrmCrearCuentaUsuario.this, "Datos Guardados Correctamente","Guardado",JOptionPane.DEFAULT_OPTION);
+					TxtUsuario.setText("");
+					TxtContrasena.setText("");
+					TxtConfirmarContrasena.setText("");
+					cbxAdmin.setSelected(false);
+				} catch (SQLException e1) {
+					JOptionPane.showConfirmDialog(FrmCrearCuentaUsuario.this, e1,"Error",JOptionPane.DEFAULT_OPTION);
+				}
+				
+				
 			}
 		});
 		btnGuardar.setBounds(141, 220, 89, 23);

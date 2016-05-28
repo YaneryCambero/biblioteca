@@ -24,8 +24,12 @@ public class Libro {
 		ResultSet resultado = sentencia.executeQuery(sql);
 		
 		if(resultado.next()){
-			if(String.format("%s %s", resultado.getString(2), resultado.getString(3)).equals(autor)){
-				id = resultado.getInt(1);
+			
+			resultado.beforeFirst();
+			while(resultado.next()){
+				if(String.format("%s %s", resultado.getString(2), resultado.getString(3)).equals(autor)){
+					id = resultado.getInt(1);
+				}
 			}
 		}else{
 			throw new SQLException("autor no encontrado");
@@ -43,10 +47,8 @@ public class Libro {
 				PreparedStatement sentencia1 = conexion.prepareStatement(sql1);
 				sentencia1.executeUpdate();
 				
-				JOptionPane.showConfirmDialog(null, "Datos Guardados Correctamente","Confirmacion de guardado",JOptionPane.DEFAULT_OPTION);
-				
 		}else{
-			JOptionPane.showConfirmDialog(null, "El libro existe........ favor verificar","Confirmacion libro existe", JOptionPane.DEFAULT_OPTION);
+			throw new SQLException("El libro existe........ favor verificar");
 		} 	
 	}
 	
