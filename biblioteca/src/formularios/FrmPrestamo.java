@@ -59,6 +59,8 @@ public class FrmPrestamo extends JDialog {
 	private JTextField txtHoraEntrega;
 	private boolean control;
 	private ResultSet datosDeFilas;
+	private int controlGuardado = 1;
+	private DefaultListModel seleccionado = new DefaultListModel();
 	Prestamo prestamoLibro;
 	@SuppressWarnings("rawtypes")
 	private DefaultListModel modeloLista=new DefaultListModel();
@@ -384,8 +386,13 @@ public class FrmPrestamo extends JDialog {
 		btnAgregar.addActionListener(new ActionListener() {
 			@SuppressWarnings({ "deprecation", "unchecked" })
 			public void actionPerformed(ActionEvent e) {
-				JlistElementosSeleccionados.setListData(JlistContenidoBusqueda.getSelectedValues());
-				JlistElementosSeleccionados.setSelectedIndex(0);
+				
+				
+				if(seleccionado.getSize() < 3){
+					seleccionado.addElement(JlistContenidoBusqueda.getSelectedValue());
+					JlistElementosSeleccionados.setModel(seleccionado);
+					controlGuardado++;
+				}
 			}
 		});
 		
@@ -393,13 +400,16 @@ public class FrmPrestamo extends JDialog {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Prestamo crearPrestamo = new Prestamo();
-				try {
-					crearPrestamo.crearPrestamo(txtFechaPrestamo.getText(), txtHoraPrestamo.getText(), txtHoraEntrega.getText(), Integer.parseInt(txtEstado.getText()),Integer.parseInt(txtIdBibliotecario.getText()), JlistElementosSeleccionados.getSelectedValue().toString(), Integer.parseInt(txtCodigo.getText()));
-					JOptionPane.showConfirmDialog(FrmPrestamo.this, "Datos Guardados Correctamente","Confirmacion de guardado",JOptionPane.DEFAULT_OPTION);
-				} catch (SQLException e) {
-					JOptionPane.showConfirmDialog(FrmPrestamo.this, e, "Error",JOptionPane.DEFAULT_OPTION);
-				}
 				
+				for(int i = 0; i < seleccionado.size();i++){
+					
+					try {
+						crearPrestamo.crearPrestamo(txtFechaPrestamo.getText(), txtHoraPrestamo.getText(), txtHoraEntrega.getText(), Integer.parseInt(txtEstado.getText()),Integer.parseInt(txtIdBibliotecario.getText()), seleccionado.getElementAt(i).toString(), Integer.parseInt(txtCodigo.getText()));
+						JOptionPane.showConfirmDialog(FrmPrestamo.this, "Datos Guardados Correctamente","Confirmacion de guardado",JOptionPane.DEFAULT_OPTION);
+					} catch (SQLException e) {
+						JOptionPane.showConfirmDialog(FrmPrestamo.this, e, "Error",JOptionPane.DEFAULT_OPTION);
+					}
+				}
 			}
 		});
 		
