@@ -60,6 +60,7 @@ public class FrmPrestamo extends JDialog {
 	private boolean control;
 	private ResultSet datosDeFilas;
 	private int controlGuardado = 1;
+	@SuppressWarnings("rawtypes")
 	private DefaultListModel seleccionado = new DefaultListModel();
 	Prestamo prestamoLibro;
 	@SuppressWarnings("rawtypes")
@@ -384,7 +385,7 @@ public class FrmPrestamo extends JDialog {
 		lblLibroSeleccionado.setBounds(385, 37, 112, 16);
 		panel_2.add(lblLibroSeleccionado);
 		btnAgregar.addActionListener(new ActionListener() {
-			@SuppressWarnings({ "deprecation", "unchecked" })
+			@SuppressWarnings({ "unchecked" })
 			public void actionPerformed(ActionEvent e) {
 				
 				
